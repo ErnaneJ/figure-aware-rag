@@ -1,0 +1,15 @@
+streamlit
+sqlalchemy
+psycopg2-binary
+python-dotenv
+celery
+redis
+PyMuPDF
+langchain
+faiss-cpu
+sentence-transformers
+langchain-community
+langchain-huggingface
+matplotlib
+langchain-google-genai
+google-generativeai
