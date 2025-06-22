@@ -25,7 +25,6 @@ class Page(Base):
 
     file = relationship("File", back_populates="pages")
 
-
 class Image(Base):
     __tablename__ = "images"
 
@@ -37,6 +36,7 @@ class Image(Base):
     ext = Column(String)
     path = Column(String)
     caption = Column(Text, nullable=True)
+    ocr_text = Column(Text, nullable=True)
 
     file = relationship("File", back_populates="images")
 

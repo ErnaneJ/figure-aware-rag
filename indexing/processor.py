@@ -1,6 +1,6 @@
 import fitz  # PyMuPDF
-import re
 from pathlib import Path
+from utils.ocr import extract_ocr_text
 
 from llm.caption_extractor import extract_caption_with_llm
 
@@ -35,6 +35,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
             with open(image_path, "wb") as f:
                 f.write(image_bytes)
 
+            ocr_text = extract_ocr_text(image_path)
             caption = extract_caption_with_llm(
                 page_text=text,
                 filename=path.name,
@@ -48,7 +49,8 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 "img_page_index": img_page_index,
                 "ext": image_ext,
                 "path": str(image_path),
-                "caption": caption
+                "caption": caption,
+                "ocr_text": ocr_text
             }
 
             result["images"].append(image_info)

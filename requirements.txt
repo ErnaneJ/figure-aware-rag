@@ -13,3 +13,5 @@ langchain-huggingface
 matplotlib
 langchain-google-genai
 google-generativeai
+pytesseract
+Pillow
