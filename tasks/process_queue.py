@@ -28,9 +28,11 @@ def process_pdf_task(file_hash: str, path: str):
             db.add(Image(
                 file_hash=file_hash,
                 page_number=img["page"],
-                index=img["index"],
+                img_doc_index=img["img_doc_index"],
+                img_page_index=img["img_page_index"],
                 ext=img["ext"],
-                path=img["path"]
+                path=img["path"],
+                caption=img.get("caption")
             ))
 
         file = db.query(File).filter(File.hash == file_hash).first()

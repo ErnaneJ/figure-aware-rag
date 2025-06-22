@@ -32,9 +32,11 @@ class Image(Base):
     id = Column(Integer, primary_key=True)
     file_hash = Column(String, ForeignKey("files.hash"))
     page_number = Column(Integer, nullable=False)
-    index = Column(Integer, nullable=False)
+    img_doc_index = Column(Integer, nullable=False)
+    img_page_index = Column(Integer, nullable=False)
     ext = Column(String)
-    path = Column(String)  # novo campo
+    path = Column(String)
+    caption = Column(Text, nullable=True)
 
     file = relationship("File", back_populates="images")
 

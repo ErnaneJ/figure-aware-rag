@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def build_prompt(question: str, documents: list[Document]) -> str:
-    print("🔍 Construindo o prompt para o LLM...")
-    print("Documentos encontrados: ", documents)
     context = "\n\n".join([
         f"[Arquivo: {d.metadata.get('filename')}] [Página {d.metadata.get('page_number')}] {d.page_content}"
         for d in documents
