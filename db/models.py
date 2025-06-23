@@ -37,6 +37,7 @@ class Image(Base):
     path = Column(String)
     caption = Column(Text, nullable=True)
     ocr_text = Column(Text, nullable=True)
+    llm_description = Column(Text, nullable=True)
 
     file = relationship("File", back_populates="images")
 

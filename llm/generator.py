@@ -6,30 +6,48 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def build_prompt(question: str, documents: list[Document]) -> str:
-    context = "\n\n".join([
+def build_prompt(question: str, text_documents: list[Document], image_documents: list[Document]) -> str:
+    # Arquivos únicos usados
+    filenames = sorted(set(d.metadata.get("filename") for d in text_documents + image_documents if d.metadata.get("filename")))
+
+    available_files = "\n".join(f"- `{name}`" for name in filenames)
+
+    text_context = "\n\n".join([
         f"[Arquivo: {d.metadata.get('filename')}] [Página {d.metadata.get('page_number')}] {d.page_content}"
-        for d in documents
+        for d in text_documents
+    ])
+
+    image_context = "\n".join([
+        f"[Imagem ID: {d.metadata['image_id']}] (Página {d.metadata.get('page_number')}) no arquivo `{d.metadata.get('filename')}`\nDescrição: {d.page_content}"
+        for d in image_documents
     ])
 
     prompt = (
-        f"Você é um assistente que responde apenas com base nos documentos fornecidos.\n\n"
-        f"CONTEÚDO EXTRAÍDO DOS ARQUIVOS:\n{context}\n\n"
-        f"PERGUNTA DO USUÁRIO:\n{question}\n\n"
-        f"Inclua, ao final da resposta, uma única linha como esta: "
-        f"\n\n***Fonte:** `nome_do_arquivo.pdf` — `página X`*, "
-        f"informando de onde você tirou a resposta. "
-        f"Se a informação não estiver presente, diga claramente isso e não invente.\n\n"
-        f"Responda de forma direta e factual."
+        "Você é um assistente que responde com base no conteúdo textual e nas descrições de imagens extraídas de documentos PDF.\n\n"
+        "### ARQUIVOS DISPONÍVEIS ###\n"
+        f"{available_files}\n\n"
+        "### TEXTOS EXTRAÍDOS ###\n"
+        f"{text_context if text_context else '[nenhum texto disponível]'}\n\n"
+        "### DESCRIÇÕES DE IMAGENS ###\n"
+        f"{image_context if image_context else '[nenhuma imagem disponível]'}\n\n"
+        "### INSTRUÇÕES ###\n"
+        "- Quando for mencionar uma imagem, diga primeiro algo como: 'A Figura 7 (`página X`) do arquivo `nome.pdf` apresenta...'\n"
+        "- Na **linha seguinte**, insira exatamente a tag correspondente à imagem: {{IMAGE:<id>}} e depois continue com a explicação.\n"
+        "- Nunca coloque a tag no meio de frases. Sempre quebre a linha antes e depois dela.\n"
+        "- Use apenas a descrição fornecida. Não invente conteúdos que não estão nela.\n"
+        "- Ao final, inclua a fonte no formato: ***Fonte:** `nome_do_arquivo.pdf` — `página X`*\n\n"
+        f"### PERGUNTA DO USUÁRIO ###\n{question}\n\n"
+        "Responda com clareza, tom explicativo, e respeite as instruções de formatação."
     )
+
     return prompt
 
 
-def generate_answer(question: str, documents: list[Document]) -> str:
-    prompt = build_prompt(question, documents)
+def generate_answer(question: str, text_documents: list[Document], image_documents: list[Document]) -> str:
+    prompt = build_prompt(question, text_documents, image_documents)
 
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",  # ou gemini-2.0-flash se estiver disponível
+        model="gemini-2.0-flash",
         google_api_key=os.getenv("GOOGLE_API_KEY"),
         temperature=0.3
     )

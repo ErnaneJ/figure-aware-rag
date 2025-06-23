@@ -3,7 +3,7 @@ import os
 from indexing.processor import extract_text_and_images
 from db.database import SessionLocal
 from db.models import Page, Image, File
-from indexing.indexer import index_file_pages
+from indexing.indexer import index_file
 
 redis_url = os.getenv("CELERY_BROKER_URL", "redis://redis:6379/0")
 celery_app = Celery("papyrus_worker", broker=redis_url)
@@ -33,7 +33,8 @@ def process_pdf_task(file_hash: str, path: str):
                 ext=img["ext"],
                 path=img["path"],
                 caption=img.get("caption", None),
-                ocr_text=img.get("ocr_text", None)
+                ocr_text=img.get("ocr_text", None),
+                llm_description=img.get("llm_description", None)
             ))
 
         file = db.query(File).filter(File.hash == file_hash).first()
@@ -42,7 +43,7 @@ def process_pdf_task(file_hash: str, path: str):
         db.commit()
         db.close()
 
-        index_file_pages(file_hash)
+        index_file(file_hash)
 
         print(f"✅ Processamento concluído: {file_hash}")
         return True

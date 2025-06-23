@@ -63,9 +63,55 @@ def get_file_by_hash(file_hash: str):
 
     db.close()
     return file
+
 def add_file(file_data: dict):
     db = SessionLocal()
     file = File(**file_data)
     db.add(file)
     db.commit()
+    db.close()
+
+def rename_chat(chat_id: int, new_name: str):
+    db = SessionLocal()
+    chat = db.query(Chat).filter(Chat.id == chat_id).first()
+    if chat:
+        chat.name = new_name
+        db.commit()
+    db.close()
+
+def delete_chat(chat_id: int):
+    db = SessionLocal()
+    chat = db.query(Chat).filter(Chat.id == chat_id).first()
+    if chat:
+        db.delete(chat)
+        db.commit()
+    db.close()
+
+def get_files_for_chat(chat_id: int):
+    db = SessionLocal()
+    chat = db.query(Chat).options(joinedload(Chat.files)).filter(Chat.id == chat_id).first()
+    files = chat.files if chat else []
+    db.close()
+    return files
+
+def all_files_processed(chat_id: int) -> bool:
+    db = SessionLocal()
+    chat = db.query(Chat).options(joinedload(Chat.files)).filter(Chat.id == chat_id).first()
+    result = all(f.processed for f in chat.files) if chat else False
+    db.close()
+    return result
+
+def remove_file_from_chat(chat_id: int, file_hash: str):
+    db = SessionLocal()
+    chat = db.query(Chat).filter(Chat.id == chat_id).first()
+    file = db.query(File).filter(File.hash == file_hash).first()
+
+    if chat and file and file in chat.files:
+        if len(chat.files) <= 1:
+            db.close()
+            raise ValueError("Um chat precisa ter ao menos um arquivo vinculado.")
+        
+        chat.files.remove(file)
+        db.commit()
+
     db.close()
