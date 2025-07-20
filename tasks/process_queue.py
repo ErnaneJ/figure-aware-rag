@@ -2,6 +2,7 @@ from celery import Celery
 import os
 from indexing.processor import extract_text_and_images
 from db.database import SessionLocal
+import hashlib
 from db.models import Page, Image, File
 from indexing.indexer import index_file
 

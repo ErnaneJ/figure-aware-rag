@@ -16,3 +16,5 @@ google-generativeai
 pytesseract
 Pillow
 google-genai
+langgraph
+streamlit_pdf_viewer

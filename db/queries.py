@@ -42,6 +42,12 @@ def get_chat_messages(chat_id: int):
     db.close()
     return msgs
 
+def delete_chat_messages(chat_id: int):
+    db = SessionLocal()
+    db.query(ChatMessage).filter(ChatMessage.chat_id == chat_id).delete()
+    db.commit()
+    db.close()
+    
 def add_chat_message(chat_id: int, role: str, content: str):
     db = SessionLocal()
     msg = ChatMessage(chat_id=chat_id, role=role, content=content)

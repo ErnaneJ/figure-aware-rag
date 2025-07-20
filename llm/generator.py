@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def build_prompt(question: str, text_documents: list[Document], image_documents: list[Document]) -> str:
-    # Arquivos únicos usados
     filenames = sorted(set(d.metadata.get("filename") for d in text_documents + image_documents if d.metadata.get("filename")))
 
     available_files = "\n".join(f"- `{name}`" for name in filenames)
@@ -41,16 +40,3 @@ def build_prompt(question: str, text_documents: list[Document], image_documents:
     )
 
     return prompt
-
-
-def generate_answer(question: str, text_documents: list[Document], image_documents: list[Document]) -> str:
-    prompt = build_prompt(question, text_documents, image_documents)
-
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-2.0-flash",
-        google_api_key=os.getenv("GOOGLE_API_KEY"),
-        temperature=0.3
-    )
-
-    response = llm.invoke(prompt)
-    return response.content.strip()
