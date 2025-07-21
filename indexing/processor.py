@@ -4,8 +4,11 @@ from utils.ocr import extract_ocr_text
 from llm.image_describer import describe_image_with_context
 import time
 import hashlib
-
+from dotenv import load_dotenv
 from llm.caption_extractor import extract_caption_with_llm
+import os
+
+load_dotenv(override=True, verbose=True)
 
 def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
     path = Path(pdf_path)
@@ -60,16 +63,33 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
             with open(image_path, "wb") as f:
                 f.write(image_bytes)
 
-            ocr_text = extract_ocr_text(image_path)
-            llm_description = describe_image_with_context(image_path=image_path, page_text=text)
-            time.sleep(3)
-            caption = extract_caption_with_llm(
-                page_text=text,
-                filename=path.name,
-                page_number=page_num,
-                img_doc_index=img_doc_index
-            )
-            time.sleep(3)
+            if os.getenv("DISABLE_OCR", "false").lower() != "true":
+                print(f"Extraindo OCR para {image_path}")
+                ocr_text = extract_ocr_text(image_path)
+            else:
+                print(f"OCR desativado para {image_path}")
+                ocr_text = ""
+
+            if os.getenv("DISABLE_MULTIMODAL_DESCRIPTION", "false").lower() != "true":
+                print(f"Extraindo descrição multimodal para {image_path}")
+                llm_description = describe_image_with_context(image_path=image_path, page_text=text)
+                time.sleep(3)
+            else:
+                print(f"Descrição multimodal desativada para {image_path}")
+                llm_description = ""
+            
+            if os.getenv("DISABLE_LLM_CAPTION_EXTRACTION", "false").lower() != "true":
+                print(f"Extraindo legenda LLM para {image_path}")
+                caption = extract_caption_with_llm(
+                    page_text=text,
+                    filename=path.name,
+                    page_number=page_num,
+                    img_doc_index=img_doc_index
+                )
+                time.sleep(3)
+            else:
+                print(f"Extração de legenda LLM desativada para {image_path}")
+                caption = ""
 
             image_info = {
                 "page": page_num,

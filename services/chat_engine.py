@@ -13,8 +13,9 @@ def run_chat(chat_id: int, user_question: str) -> dict:
         "file_hashes": file_hashes,
     })
 
-    add_chat_message(chat_id, "user", user_question)
-    add_chat_message(chat_id, "assistant", result["answer"])
+    user_message = add_chat_message(chat_id, "user", user_question)
+    assistant_message = add_chat_message(chat_id, "assistant", result["answer"], think=result.get("think", ""),
+                     llm_model=result.get("llm_model", ""), llm_provider=result.get("llm_provider", ""))
 
     formatted_images = []
     for i, img in enumerate(result["image_docs"], start=1):
@@ -26,6 +27,6 @@ def run_chat(chat_id: int, user_question: str) -> dict:
         })
 
     return {
-        "answer": result["answer"],
+        "message": assistant_message,
         "images": formatted_images
     }

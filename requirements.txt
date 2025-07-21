@@ -18,3 +18,4 @@ Pillow
 google-genai
 langgraph
 streamlit_pdf_viewer
+langchain_ollama

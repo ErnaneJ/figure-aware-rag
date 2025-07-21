@@ -1,5 +1,4 @@
 from db.database import Base, engine
-from db.models import File, Page, Image, Chat, ChatMessage
 
 def reset_db():
     print("⚠️  Apagando tabelas existentes...")

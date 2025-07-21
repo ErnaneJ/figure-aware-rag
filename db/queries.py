@@ -48,12 +48,21 @@ def delete_chat_messages(chat_id: int):
     db.commit()
     db.close()
     
-def add_chat_message(chat_id: int, role: str, content: str):
+def add_chat_message(chat_id: int, role: str, content: str, think: str = "", llm_model: str = "", llm_provider: str = ""):
     db = SessionLocal()
-    msg = ChatMessage(chat_id=chat_id, role=role, content=content)
+    msg = ChatMessage(
+        chat_id=chat_id,
+        role=role,
+        content=content,
+        think=think if role == "assistant" else "",
+        llm_model=llm_model if role == "assistant" else "",
+        llm_provider=llm_provider if role == "assistant" else ""
+    )
     db.add(msg)
     db.commit()
     db.close()
+
+    return msg
 
 def get_file_by_hash(file_hash: str):
     db = SessionLocal()

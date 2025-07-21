@@ -2,7 +2,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from pathlib import Path
 
-embedding_model = HuggingFaceEmbeddings(model_name="local_models/all-MiniLM-L6-v2")
+embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transformers/all-MiniLM-L6-v2")
 
 def load_vectorstore(file_hash: str):
     index_path = Path("files") / file_hash / "vectorstore"

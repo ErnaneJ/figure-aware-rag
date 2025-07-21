@@ -1,10 +1,7 @@
-import os
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.chains import RetrievalQA
 from langchain.schema import Document
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True, verbose=True)
 
 def build_prompt(question: str, text_documents: list[Document], image_documents: list[Document]) -> str:
     filenames = sorted(set(d.metadata.get("filename") for d in text_documents + image_documents if d.metadata.get("filename")))

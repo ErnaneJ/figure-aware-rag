@@ -65,5 +65,8 @@ class ChatMessage(Base):
     role = Column(String)  # "user" ou "assistant"
     content = Column(Text)
     timestamp = Column(DateTime, default=datetime.utcnow)
+    think = Column(Text)
+    llm_model = Column(String)
+    llm_provider = Column(String)
 
     chat = relationship("Chat", back_populates="messages")

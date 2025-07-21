@@ -33,5 +33,5 @@ def render_main_content():
         with assistant_msg:
             with st.spinner("🧠 Pensando... (?)"):
                 result = run_chat(chat_id, question)
-            render_answer_with_images(result["answer"], assistant_msg, streaming=True)
+            render_answer_with_images(result["message"], assistant_msg, streaming=True)
             st.rerun()

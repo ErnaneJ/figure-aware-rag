@@ -1,7 +1,7 @@
 import re
 import streamlit as st
 from db.database import SessionLocal
-from db.models import Image
+from db.models import Image, ChatMessage
 import time
 
 def stream_response_data(text: str):
@@ -9,14 +9,14 @@ def stream_response_data(text: str):
         yield word + " "
         time.sleep(0.05)
 
-def render_answer_with_images(answer: str, container=None, streaming=False):
+def render_answer_with_images(message: ChatMessage, container=None, streaming=False):
     db = SessionLocal()
     cursor = 0
-    for match in re.finditer(r"\{\{IMAGE:(\d+)\}\}", answer):
+    for match in re.finditer(r"\{\{IMAGE:(\d+)\}\}", message.content):
         start, end = match.span()
 
         # Text
-        before = answer[cursor:start].strip()
+        before = message.content[cursor:start].strip()
         if before:
             if streaming:
                 container.write_stream(stream_response_data(before))
@@ -38,7 +38,7 @@ def render_answer_with_images(answer: str, container=None, streaming=False):
         cursor = end
 
     # Text
-    after = answer[cursor:].strip()
+    after = message.content[cursor:].strip()
     if after:
         if streaming:
             container.write_stream(stream_response_data(after))
@@ -48,9 +48,9 @@ def render_answer_with_images(answer: str, container=None, streaming=False):
     db.close()
 
 def render_chat_history(messages):
-    for m in messages:
-        container = st.chat_message(m.role)
-        if m.role == "assistant":
-            render_answer_with_images(m.content, container, streaming=False)
+    for message in messages:
+        container = st.chat_message(message.role)
+        if message.role == "assistant":
+            render_answer_with_images(message, container, streaming=False)
         else:
-            container.write(m.content)
+            container.write(message.content)

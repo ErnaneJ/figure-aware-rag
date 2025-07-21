@@ -1,19 +1,42 @@
-from langgraph.graph import START, MessagesState, StateGraph
+from langgraph.graph import StateGraph
+import re
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.runnables import RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+from pathlib import Path
 from indexing.retriever import retrieve_relevant_chunks
 from db.queries import get_chat_messages
 import os
 
-llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash",
-    google_api_key=os.getenv("GOOGLE_API_KEY"),
-    temperature=0.3
-)
+def get_llm_chat():
+    provider = os.getenv("LLM_PROVIDER_CHAT", "gemini").lower()
+    model = os.getenv("LLM_MODEL_CHAT", "gemini-2.0-flash")
+    api_key = os.getenv("LLM_API_KEY_CHAT", "")
+
+    if provider == "gemini":
+        if not api_key:
+            raise ValueError("LLM_API_KEY_CHAT necessário para uso com Gemini.")
+        return ChatGoogleGenerativeAI(
+            model=model,
+            google_api_key=api_key,
+            temperature=0.3
+        )
+
+    elif provider == "ollama":
+        from langchain_ollama import OllamaLLM
+
+        return OllamaLLM(
+            model=model,
+            base_url=os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434"),
+            temperature=0.3
+        )
+
+    else:
+        raise ValueError(f"LLM_PROVIDER_CHAT '{provider}' não suportado.")
 
 def fetch_context(state):
+    print("Fetching context for chat...")
     chat_id = state["chat_id"]
     question = state["question"]
 
@@ -33,6 +56,7 @@ def fetch_context(state):
         docs = retrieve_relevant_chunks(file_hash, question, k=10)
         all_docs.extend(docs)
 
+    print(f"Found {len(all_docs)} relevant documents for chat ID {chat_id}.")
     return {
         "chat_id": chat_id,
         "question": question,
@@ -43,6 +67,10 @@ def fetch_context(state):
 def build_prompt_and_run_llm(state):
     from llm.generator import build_prompt
 
+    print("Building prompt and invoking LLM...")
+
+    llm = get_llm_chat()
+
     text_docs = [d for d in state["docs"] if d.metadata.get("source") == "text"]
     image_docs = [d for d in state["docs"] if d.metadata.get("source") == "image"]
 
@@ -51,21 +79,45 @@ def build_prompt_and_run_llm(state):
     messages = state["memory"] + [HumanMessage(content=prompt)]
     response = llm.invoke(messages)
 
+    answer = ""
+    think = ""
+    if response.__class__ is str:
+        think = re.search(r"<think>(.*?)</think>", response, re.DOTALL)
+        think = think.group(1).strip() if think else ""
+        answer = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
+    else:
+        answer = response.content.strip()
+
+    print(f"LLM response: {answer}")
     return {
         "chat_id": state["chat_id"],
-        "answer": response.content,
+        "answer": answer,
+        "think": think,
         "text_docs": text_docs,
         "image_docs": image_docs
     }
 
-def build_chat_graph():
-    graph = StateGraph(state_schema=dict)
+def build_chat_graph(save_workflow: bool = False):
+    builder = StateGraph(state_schema=dict)
 
-    graph.add_node("search", RunnableLambda(fetch_context))
-    graph.add_node("llm", RunnableLambda(build_prompt_and_run_llm))
+    builder.add_node("search", RunnableLambda(fetch_context))
+    builder.add_node("llm", RunnableLambda(build_prompt_and_run_llm))
+
+    builder.set_entry_point("search")
+    builder.add_edge("search", "llm")
+    builder.set_finish_point("llm")
+
+    graph = builder.compile()
     
-    graph.set_entry_point("search")
-    graph.add_edge("search", "llm")
-    graph.set_finish_point("llm")
+    if save_workflow:
+        output_path = Path("llm/graph_outputs")
+        output_path.mkdir(exist_ok=True)
 
-    return graph.compile()
+        graph_path = output_path / "chat_workflow.png"
+        image_data = graph.get_graph().draw_mermaid_png()
+        with open(graph_path, "wb") as f:
+            f.write(image_data)
+        print(f"🖼️ Grafo salvo em: {graph_path}")
+
+    return graph
+
