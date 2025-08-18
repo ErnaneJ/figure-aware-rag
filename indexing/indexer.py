@@ -50,8 +50,15 @@ def index_file(file_hash: str):
             "img_page_index": image.img_page_index,
             "image_path": image.path,
             "image_id": image.id,
+            "image_caption": image.caption,
+            "image_description": image.llm_description,
+            "ocr_text": image.ocr_text,
             "source": "image"
         }
+
+        # page = [page for page in pages if page.page_number == image.page_number][0]
+        # content += f"\n\nConteúdo da página {page.page_number}:\n{page.text}"
+        
         docs.append(Document(page_content=content, metadata=metadata))
 
     if not docs:

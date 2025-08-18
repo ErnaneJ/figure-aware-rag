@@ -31,8 +31,8 @@ def save_file_if_new(file_bytes: bytes, filename: str) -> dict:
         f.write(file_bytes)
 
     add_file({
-        "hash": file_hash,
-        "filename": filename,
+        "hash": str(file_hash),
+        "filename": str(filename),
         "path": str(file_path),
     })
 
