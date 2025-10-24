@@ -1,5 +1,7 @@
 # 📚 Papyrus AI
 
+> A inclusão de conteúdo visual indexado melhora a precisão de respostas em RAG sobre PDFs com elementos multimodais?
+
 **Converse com seus PDFs de forma inteligente!**
 
 > **LLMs e Vetorização Semântica para Interação Multimodal com Documentos PDF: Uma Abordagem de Geração Aumentada por Recuperação (RAG)**

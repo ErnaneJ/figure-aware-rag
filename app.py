@@ -2,7 +2,7 @@ import streamlit as st
 from frontend.sidebar_ui import render_sidebar
 from frontend.main_content_ui import render_main_content
 
-st.set_page_config(page_title="Papyrus Chat", layout="wide")
+st.set_page_config(page_title="Papyrus Chat")
 
 if chat_id := st.query_params.get("chat_id", [None])[0]:
     st.session_state.chat_id = int(chat_id)

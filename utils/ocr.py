@@ -3,10 +3,6 @@ import pytesseract
 import re
 
 def extract_ocr_text(image_path: str) -> str | None:
-    """
-    Realiza OCR na imagem indicada usando português e inglês.
-    Retorna o texto extraído se houver conteúdo significativo, caso contrário retorna None.
-    """
     try:
         img = Image.open(image_path).convert("RGB")
 
@@ -19,5 +15,5 @@ def extract_ocr_text(image_path: str) -> str | None:
         return cleaned_text
 
     except Exception as e:
-        print(f"[OCR] Erro ao processar imagem '{image_path}': {e}")
+        print(f"[OCR] Error to extract text from image '{image_path}': {e}")
         return None

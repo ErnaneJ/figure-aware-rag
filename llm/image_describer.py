@@ -83,5 +83,5 @@ def describe_image_with_context(image_path: str, page_text: str = "") -> str | N
         return multimodal_llm(prompt, image_bytes, mime_type)
 
     except Exception as e:
-        print(f"[Multimodal] Erro ao descrever imagem '{image_path}': {e}")
+        print(f"[Multimodal] Error to describe image {image_path}: {e}")
         return None
