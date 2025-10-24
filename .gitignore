@@ -5,3 +5,4 @@ files/
 .DS_Store
 test.py
 local_models/
+.venv

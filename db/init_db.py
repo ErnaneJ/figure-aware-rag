@@ -8,8 +8,11 @@ def reset_db():
 
     print("ℹ️ Inspect:", inspect(engine).get_table_names())
 
-    Base.metadata.drop_all(bind=engine, checkfirst=False)
-
+    try:
+        Base.metadata.drop_all(bind=engine, checkfirst=False)
+    except Exception as e:
+        print("Erro ao apagar tabelas:", e)
+        
     print("🔧 Criando tabelas do zero...")
     Base.metadata.create_all(bind=engine, checkfirst=False)
 

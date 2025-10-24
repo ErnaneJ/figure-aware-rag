@@ -15,4 +15,4 @@ def retrieve_relevant_chunks(file_hash: str, question: str, k: int = 5):
     vs = load_vectorstore(file_hash)
     results = vs.similarity_search(question, k=k)
 
-    return results  # Cada item é um langchain.schema.Document
+    return results  # Cada item é um langchain_core.documents.documents.Document
