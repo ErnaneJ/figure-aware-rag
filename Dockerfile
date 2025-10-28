@@ -22,8 +22,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 RUN mkdir -p files local_models && chown -R papyrus:papyrus /app
 
-COPY utils/init_models.py .
-RUN python init_models.py
+COPY utils/download_all_miniLM.py .
+RUN python download_all_miniLM.py
 
 USER papyrus
 
