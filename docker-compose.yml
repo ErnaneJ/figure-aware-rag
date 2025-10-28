@@ -7,11 +7,10 @@ services:
       - "28502:8501"
     volumes:
       - files_volume:/app/files
-      - streamlit_data:/app/.streamlit
     env_file: .env
     environment:
-      - STREAMLIT_CONFIG_DIR=/app/.streamlit
-      - XDG_CONFIG_HOME=/app/.config
+      - STREAMLIT_SERVER_FILE_WATCHER_TYPE=none
+      - PYTHONPATH=/app
     depends_on:
       - db
       - redis
@@ -23,11 +22,9 @@ services:
     command: celery -A tasks.process_queue worker --loglevel=info
     volumes:
       - files_volume:/app/files
-      - streamlit_data:/app/.streamlit
     env_file: .env
     environment:
-      - STREAMLIT_CONFIG_DIR=/app/.streamlit
-      - XDG_CONFIG_HOME=/app/.config
+      - PYTHONPATH=/app
     depends_on:
       - db
       - redis
@@ -41,11 +38,10 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   redis:
-    image: redis:6
+    image: redis:6-alpine
     ports:
       - "26380:6379"
 
 volumes:
   pgdata:
   files_volume:
-  streamlit_data:
