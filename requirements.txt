@@ -2,6 +2,7 @@ celery==5.3.4
 redis==4.5.4
 kombu==5.3.4
 langchain_community==0.4
+google-genai==1.46.0
 langchain_core==1.0.0
 langchain_google_genai==3.0.0
 langchain_huggingface==1.0.0
