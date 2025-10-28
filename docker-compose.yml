@@ -6,8 +6,17 @@ services:
     ports:
       - "28502:8501"
     volumes:
-      - .:/app
+      - ./app.py:/app/app.py
+      - ./frontend:/app/frontend
+      - ./db:/app/db
+      - ./indexing:/app/indexing
+      - ./llm:/app/llm
+      - ./services:/app/services
+      - ./tasks:/app/tasks
+      - ./utils:/app/utils
       - ./.env:/app/.env
+      - files_volume:/app/files
+      - local_models_volume:/app/local_models
     env_file: .env
     depends_on:
       - db
@@ -19,8 +28,17 @@ services:
       dockerfile: Dockerfile
     command: celery -A tasks.process_queue worker --loglevel=info
     volumes:
-      - .:/app
+      - ./app.py:/app/app.py
+      - ./frontend:/app/frontend
+      - ./db:/app/db
+      - ./indexing:/app/indexing
+      - ./llm:/app/llm
+      - ./services:/app/services
+      - ./tasks:/app/tasks
+      - ./utils:/app/utils
       - ./.env:/app/.env
+      - files_volume:/app/files
+      - local_models_volume:/app/local_models
     env_file: .env
     depends_on:
       - db
@@ -41,3 +59,5 @@ services:
 
 volumes:
   pgdata:
+  files_volume:
+  local_models_volume:

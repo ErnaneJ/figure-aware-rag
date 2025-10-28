@@ -5,7 +5,7 @@ from db.database import SessionLocal
 from db.models import Page, File, Image
 from pathlib import Path
 
-embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transformers/all-MiniLM-L6-v2")
 
 def index_file(file_hash: str):
     db = SessionLocal()

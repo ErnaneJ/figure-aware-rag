@@ -13,7 +13,7 @@ file_hash = "fe523df48ad2837d60c3b3b2e227594a911f06c2b990a215e6ff8cc44de4fa4f"
 index_path = Path("files") / file_hash / "vectorstore"
 
 # === CARREGAR ===
-embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transformers/all-MiniLM-L6-v2")
 vectorstore = FAISS.load_local(str(index_path), embedding_model, allow_dangerous_deserialization=True)
 
 faiss_index = vectorstore.index

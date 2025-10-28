@@ -1,0 +1,11 @@
+#!/bin/bash
+
+mkdir -p files local_models
+
+chmod -R 755 files local_models
+
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+
+echo "✅ Aplicação rodando em http://localhost:28502"
