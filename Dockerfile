@@ -29,6 +29,4 @@ USER papyrus
 
 COPY . .
 
-RUN chmod -R 755 /app/files /app/local_models
-
 CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]
