@@ -12,21 +12,24 @@ RUN apt-get update && apt-get install -y \
     python3-dev \
     && apt-get clean
 
-RUN groupadd -r papyrus && useradd -r -g papyrus papyrus
-
 WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN mkdir -p files local_models && chown -R papyrus:papyrus /app
+RUN mkdir -p files local_models
 
 COPY utils/download_all_miniLM.py .
 RUN python download_all_miniLM.py
 
-USER papyrus
-
 COPY . .
+
+RUN chmod -R 755 /app/files /app/local_models
+
+RUN groupadd -r papyrus && useradd -r -g papyrus papyrus \
+    && chown -R papyrus:papyrus /app
+
+USER papyrus
 
 CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]
