@@ -15,7 +15,7 @@ def render_sidebar():
     with st.sidebar.expander("➕ Criar novo chat"):
         new_chat_name = st.text_input("Título do chat", key="new_chat_name")
         new_pdf = st.file_uploader("Arquivo(s) PDF", type="pdf", key="upload_new_chat")
-        if new_chat_name and new_pdf and st.button("Criar", use_container_width=True):
+        if new_chat_name and new_pdf and st.button("Criar", width='stretch'):
             file_bytes = new_pdf.read()
             file_info = save_file_if_new(file_bytes, new_pdf.name)
             new_chat_id = create_chat(new_chat_name, file_info["hash"])
@@ -34,7 +34,7 @@ def render_sidebar():
         all_files_processed_for_this_chat = all_files_processed(chat.id)
         if cols[0].button(
            f"{chat.name.title()}" if all_files_processed_for_this_chat else f"{chat.name.title()} ⏳",
-           key=f"select_{chat.id}", use_container_width=True, disabled=not all_files_processed_for_this_chat
+           key=f"select_{chat.id}", width='stretch', disabled=not all_files_processed_for_this_chat
         ):
             st.query_params.chat_id = chat.id
             st.session_state.chat_id = chat.id
@@ -65,7 +65,7 @@ def render_sidebar():
               "Status": ["✅" if f.processed else "⏳" for f in files],
               "Arquivo": [f.filename for f in files]
             })
-            st.dataframe(files_table, use_container_width=True, hide_index=True)
+            st.dataframe(files_table, width='stretch', hide_index=True)
             
             if st.session_state.get("dialog_viewing_pdf") is not None:
               st.session_state.dialog_editing_chat_id = None
@@ -76,11 +76,11 @@ def render_sidebar():
 def delete_chat_dialog(chat):
   st.write(f"Tem certeza que deseja excluir o chat '`{chat.name}`'?")
   col1, col2 = st.columns([1, 1])
-  if col1.button("✅ Confirmar", key=f"confirm_delete_{chat.id}", use_container_width=True) and "dialog_confirm_delete_id" in st.session_state:
+  if col1.button("✅ Confirmar", key=f"confirm_delete_{chat.id}", width='stretch') and "dialog_confirm_delete_id" in st.session_state:
     delete_chat(chat.id)
     st.session_state["dialog_confirm_delete_id"] = None
     st.rerun()
-  if col2.button("❌ Cancelar", key=f"cancel_editing_chat_{chat.id}", use_container_width=True) and "dialog_confirm_delete_id" in st.session_state:
+  if col2.button("❌ Cancelar", key=f"cancel_editing_chat_{chat.id}", width='stretch') and "dialog_confirm_delete_id" in st.session_state:
     st.session_state["dialog_confirm_delete_id"] = None
     st.rerun()
 
@@ -89,13 +89,13 @@ def edit_chat_dialog(chat):
     st.write(f"Título do Chat")
     col1, col2 = st.columns([2, 1])
     new_name = col1.text_input("Título", value=chat.name, key=f"new_name_input_{chat.id}", label_visibility="collapsed")
-    if col2.button("✅ Atualizar", key=f"editing_chat_{chat.id}", use_container_width=True):
+    if col2.button("✅ Atualizar", key=f"editing_chat_{chat.id}", width='stretch'):
       rename_chat(chat.id, new_name)
       st.session_state["dialog_editing_chat_id"] = None
       st.session_state["dialog_viewing_pdf"] = None
       st.rerun()
 
-    if st.button("🧹 Limpar Mensagens do Chat", key=f"delete_messages_{chat.id}", use_container_width=True):
+    if st.button("🧹 Limpar Mensagens do Chat", key=f"delete_messages_{chat.id}", width='stretch'):
         delete_chat_messages(chat.id)
         st.session_state["dialog_editing_chat_id"] = None
         st.rerun()
@@ -113,7 +113,7 @@ def edit_chat_dialog(chat):
         
         file_row[0].markdown(label)
 
-        if file_row[1].button("📄", key=f"view_file_{file.hash}_{chat.id}", use_container_width=True):
+        if file_row[1].button("📄", key=f"view_file_{file.hash}_{chat.id}", width='stretch'):
             st.session_state["dialog_editing_chat_id"] = None
             st.session_state["dialog_viewing_pdf"] = file.hash
             st.rerun()
@@ -127,14 +127,14 @@ def edit_chat_dialog(chat):
 
     st.subheader("Adicionar Novo(s) Arquivo(s)")
     new_file = st.file_uploader("Selecione um PDF", type="pdf", key=f"new_file_upload_{chat.id}")
-    if new_file and st.button("📎 Adicionar Arquivo(s)", key=f"add_file_{chat.id}", use_container_width=True):
+    if new_file and st.button("📎 Adicionar Arquivo(s)", key=f"add_file_{chat.id}", width='stretch'):
       file_bytes = new_file.read()
       file_info = save_file_if_new(file_bytes, new_file.name)
       associate_file_to_chat(chat.id, file_info["hash"])
       st.success("Arquivo adicionado com sucesso.")
       st.rerun()
 
-    if st.button("❌ Cancelar", key=f"cancel_edit_chat_{chat.id}", use_container_width=True):
+    if st.button("❌ Cancelar", key=f"cancel_edit_chat_{chat.id}", width='stretch'):
         st.session_state["dialog_editing_chat_id"] = None
         st.rerun()
 
@@ -145,6 +145,6 @@ def view_pdf_dialog(file_hash):
 
     pdfBytes = open(file.path, "rb").read()
     pdf_viewer(pdfBytes, height=800, zoom_level=1.0, key=f"pdf_viewer_{file.hash}")
-    if st.button("❌ Fechar", use_container_width=True):
+    if st.button("❌ Fechar", width='stretch'):
         st.session_state["dialog_viewing_pdf"] = None
         st.rerun()
