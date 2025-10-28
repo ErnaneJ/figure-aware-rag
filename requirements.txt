@@ -18,3 +18,4 @@ streamlit_pdf_viewer==0.0.26
 PyMuPDF==1.26.5
 psycopg2-binary==2.9.11
 sentence-transformers==5.1.2
+faiss-cpu==1.12.0
