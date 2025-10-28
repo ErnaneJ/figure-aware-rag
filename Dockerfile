@@ -29,4 +29,4 @@ RUN chmod -R 755 /app/files /app/local_models
 
 RUN mkdir -p /app/.streamlit && chmod 755 /app/.streamlit
 
-CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.fileWatcherType=none", "--global.disableWatchdogWarning=true"]
+CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]
