@@ -27,9 +27,12 @@ COPY . .
 
 RUN chmod -R 755 /app/files /app/local_models
 
-RUN groupadd -r papyrus && useradd -r -g papyrus papyrus \
-    && chown -R papyrus:papyrus /app
+RUN groupadd -r papyrus && useradd -r -g papyrus -m -d /home/papyrus papyrus \
+    && chown -R papyrus:papyrus /app /home/papyrus
 
 USER papyrus
+
+ENV STREAMLIT_CONFIG_DIR=/app/.streamlit
+ENV XDG_CONFIG_HOME=/app/.config
 
 CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]

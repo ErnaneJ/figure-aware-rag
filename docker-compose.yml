@@ -7,7 +7,11 @@ services:
       - "28502:8501"
     volumes:
       - files_volume:/app/files
+      - streamlit_data:/app/.streamlit
     env_file: .env
+    environment:
+      - STREAMLIT_CONFIG_DIR=/app/.streamlit
+      - XDG_CONFIG_HOME=/app/.config
     depends_on:
       - db
       - redis
@@ -19,7 +23,11 @@ services:
     command: celery -A tasks.process_queue worker --loglevel=info
     volumes:
       - files_volume:/app/files
+      - streamlit_data:/app/.streamlit
     env_file: .env
+    environment:
+      - STREAMLIT_CONFIG_DIR=/app/.streamlit
+      - XDG_CONFIG_HOME=/app/.config
     depends_on:
       - db
       - redis
@@ -40,3 +48,4 @@ services:
 volumes:
   pgdata:
   files_volume:
+  streamlit_data:
