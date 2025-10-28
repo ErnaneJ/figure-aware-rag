@@ -7,7 +7,6 @@ services:
       - "28502:8501"
     volumes:
       - files_volume:/app/files
-      - ./.env:/app/.env:ro
     env_file: .env
     depends_on:
       - db
@@ -20,7 +19,6 @@ services:
     command: celery -A tasks.process_queue worker --loglevel=info
     volumes:
       - files_volume:/app/files
-      - ./.env:/app/.env:ro
     env_file: .env
     depends_on:
       - db
