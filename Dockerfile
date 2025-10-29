@@ -18,6 +18,15 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN mkdir -p files local_models
+
+COPY utils/download_all_miniLM.py .
+RUN python download_all_miniLM.py
+
 COPY . .
+
+RUN chmod -R 755 /app/files /app/local_models
+
+RUN mkdir -p /app/.streamlit && chmod 755 /app/.streamlit
 
 CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0"]

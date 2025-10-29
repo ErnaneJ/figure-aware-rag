@@ -1,0 +1,22 @@
+#!/bin/bash
+
+docker-compose down
+
+mkdir -p files local_models
+
+chmod -R 755 files local_models
+
+docker-compose down
+docker-compose build --no-cache
+docker-compose up -d
+
+echo "Aguardando serviços iniciarem..."
+sleep 10
+
+docker-compose ps |grep "papyrus"
+
+echo "✅ Aplicação rodando em http://localhost:28502"
+
+sleep 3
+
+docker-compose logs -f
