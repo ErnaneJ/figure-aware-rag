@@ -96,7 +96,9 @@ def build_prompt_and_run_llm(state):
         "answer": answer,
         "think": think,
         "text_docs": text_docs,
-        "image_docs": image_docs
+        "image_docs": image_docs,
+        "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
+        "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
     }
 
 def build_chat_graph(save_workflow: bool = False):

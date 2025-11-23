@@ -51,6 +51,7 @@ def delete_chat_messages(chat_id: int):
 def add_chat_message(chat_id: int, role: str, content: str, think: str = "", llm_model: str = "", llm_provider: str = ""):
     db = SessionLocal()
     try:
+        print(f"Adding chat message to chat ID {chat_id}: role={role}, llm_model={llm_model}, llm_provider={llm_provider}")
         msg = ChatMessage(
             chat_id=chat_id,
             role=role,

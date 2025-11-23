@@ -66,6 +66,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
             if os.getenv("DISABLE_OCR", "false").lower() != "true":
                 print(f"Extraindo OCR para {image_path}")
                 ocr_text = extract_ocr_text(image_path)
+                print(f"OCR extraído: {ocr_text}")
             else:
                 print(f"OCR desativado para {image_path}")
                 ocr_text = ""
@@ -73,6 +74,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
             if os.getenv("DISABLE_MULTIMODAL_DESCRIPTION", "false").lower() != "true":
                 print(f"Extraindo descrição multimodal para {image_path}")
                 llm_description = describe_image_with_context(image_path=image_path, page_text=text)
+                print(f"Descrição obtida: {llm_description}")
                 time.sleep(3)
             else:
                 print(f"Descrição multimodal desativada para {image_path}")
@@ -86,6 +88,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                     page_number=page_num,
                     img_doc_index=img_doc_index
                 )
+                print(f"Legenda obtida: {caption}")
                 time.sleep(3)
             else:
                 print(f"Extração de legenda LLM desativada para {image_path}")
