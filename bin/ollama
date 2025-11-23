@@ -1,0 +1,13 @@
+docker stop ollama 2>/dev/null || true
+docker rm ollama 2>/dev/null || true
+
+docker run -d \
+  --name ollama \
+  --runtime=nvidia \
+  -p 11434:11434 \
+  -v ollama_data:/root/.ollama \
+  -e OLLAMA_HOST=0.0.0.0:11434 \
+  -e OLLAMA_GPU_LAYERS=100 \
+  -e NVIDIA_VISIBLE_DEVICES=all \
+  --restart unless-stopped \
+  ollama/ollama:latest
