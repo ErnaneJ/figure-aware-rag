@@ -51,13 +51,9 @@ services:
       - ollama_data:/root/.ollama
     environment:
       - OLLAMA_HOST=0.0.0.0:11434
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+      - OLLAMA_GPU_LAYERS=100
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
     restart: unless-stopped
 
 volumes:
