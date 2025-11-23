@@ -14,6 +14,7 @@ def get_multimodal_llm():
     api_key = os.getenv("LLM_API_KEY_IMAGE_DESCRIBER", "")
 
     if provider == "gemini":
+        print("[ℹ️ Multimodal] Usando Gemini LLM para descrição de imagem.")
         from google import genai
         client = genai.Client(api_key=api_key)
         return lambda prompt, image_bytes, mime_type: client.models.generate_content(
@@ -25,6 +26,7 @@ def get_multimodal_llm():
         ).text.strip()
 
     elif provider == "ollama":
+        print("[ℹ️ Multimodal] Usando Ollama LLM para descrição de imagem.")
         def ollama_image_call(prompt: str, image_bytes: bytes, mime_type: str) -> str:
             img_b64 = base64.b64encode(image_bytes).decode("utf-8")
             base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")

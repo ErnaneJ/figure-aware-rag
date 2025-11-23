@@ -9,6 +9,7 @@ def llm_constructor() -> object:
     api_key = os.getenv("LLM_API_KEY_CAPTIONS", "")
 
     if provider == "gemini":
+        print("[ℹ️ Caption LLM] Usando Gemini LLM para extração de legendas.")
         from langchain_google_genai import ChatGoogleGenerativeAI
 
         if not api_key:
@@ -21,6 +22,7 @@ def llm_constructor() -> object:
         )
 
     elif provider == "ollama":
+        print("[ℹ️ Caption LLM] Usando Ollama LLM para extração de legendas.")
         from langchain_ollama import OllamaLLM
 
         return OllamaLLM(

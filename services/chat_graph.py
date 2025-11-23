@@ -15,6 +15,7 @@ def get_llm_chat():
     api_key = os.getenv("LLM_API_KEY_CHAT", "")
 
     if provider == "gemini":
+        print("[ℹ️ Chat LLM] Usando Gemini LLM para chat.")
         if not api_key:
             raise ValueError("LLM_API_KEY_CHAT necessário para uso com Gemini.")
         return ChatGoogleGenerativeAI(
@@ -24,6 +25,7 @@ def get_llm_chat():
         )
 
     elif provider == "ollama":
+        print("[ℹ️ Chat LLM] Usando Ollama LLM para chat.")
         from langchain_ollama import OllamaLLM
 
         return OllamaLLM(

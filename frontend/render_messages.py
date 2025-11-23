@@ -45,6 +45,7 @@ def render_answer_with_images(message: ChatMessage, container=None, streaming=Fa
         else:
             container.write(after)
 
+    container.write(f"🤖 _Powered by {message.llm_provider} - {message.llm_model}_.")
     db.close()
 
 def render_chat_history(messages):
