@@ -61,6 +61,59 @@ def get_multimodal_llm():
 
         return ollama_image_call
 
+    elif provider == "openai":
+        print("[ℹ️ Multimodal] Usando OpenAI LLM para descrição de imagem.")
+        def openai_image_call(prompt: str, image_bytes: bytes, mime_type: str) -> str:
+            base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+            img_b64 = base64.b64encode(image_bytes).decode("utf-8")
+
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}"
+            }
+
+            payload = {
+                "model": model,
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": prompt
+                            },
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:{mime_type};base64,{img_b64}"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "max_tokens": 1000
+            }
+
+            try:
+                response = httpx.post(
+                    f"{base_url}/chat/completions",
+                    headers=headers,
+                    json=payload,
+                    timeout=120
+                )
+                response.raise_for_status()
+                
+                result = response.json()
+                return result["choices"][0]["message"]["content"].strip()
+
+            except Exception as e:
+                print(f"[❌ OpenAI LLM] Erro: {e}")
+                if hasattr(e, 'response') and e.response is not None:
+                    print(f"Resposta de erro: {e.response.text}")
+                return None
+
+        return openai_image_call
+
     else:
         raise ValueError(f"LLM provider '{provider}' não suportado para imagem multimodal.")
     

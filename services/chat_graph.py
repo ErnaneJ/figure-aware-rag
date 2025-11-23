@@ -34,6 +34,22 @@ def get_llm_chat():
             temperature=0.3
         )
 
+    elif provider == "openai":
+        print("[ℹ️ Chat LLM] Usando OpenAI LLM para chat.")
+        from langchain_openai import ChatOpenAI
+        
+        if not api_key:
+            raise ValueError("LLM_API_KEY_CHAT necessário para uso com OpenAI.")
+
+        base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        
+        return ChatOpenAI(
+            model=model,
+            api_key=api_key,
+            base_url=base_url,
+            temperature=0.3
+        )
+
     else:
         raise ValueError(f"LLM_PROVIDER_CHAT '{provider}' não suportado.")
 
@@ -55,7 +71,7 @@ def fetch_context(state):
 
     all_docs = []
     for file_hash in file_hashes:
-        docs = retrieve_relevant_chunks(file_hash, question, k=10)
+        docs = retrieve_relevant_chunks(file_hash, question, k=25)
         all_docs.extend(docs)
 
     print(f"Found {len(all_docs)} relevant documents for chat ID {chat_id}.")
@@ -124,4 +140,3 @@ def build_chat_graph(save_workflow: bool = False):
         print(f"🖼️ Grafo salvo em: {graph_path}")
 
     return graph
-

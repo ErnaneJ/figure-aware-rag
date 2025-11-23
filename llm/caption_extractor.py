@@ -31,8 +31,21 @@ def llm_constructor() -> object:
             temperature=0.3,
         )
 
-    # elif provider == "openai":
-    #     return ChatOpenAI(model=model_name, api_key=api_key)
+    elif provider == "openai":
+        print("[ℹ️ Caption LLM] Usando OpenAI LLM para extração de legendas.")
+        from langchain_openai import ChatOpenAI
+        
+        if not api_key:
+            raise ValueError("LLM_API_KEY_CAPTIONS necessário para uso com OpenAI.")
+
+        base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        
+        return ChatOpenAI(
+            model=model_name,
+            api_key=api_key,
+            base_url=base_url,
+            temperature=0.3,
+        )
 
     else:
         raise ValueError(f"LLM provider não suportado: {provider}")
