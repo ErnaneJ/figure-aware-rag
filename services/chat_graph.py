@@ -8,16 +8,34 @@ from pathlib import Path
 from indexing.retriever import retrieve_relevant_chunks
 from db.queries import get_chat_messages
 import os
+import httpx
+
+def get_api_key(provider):
+    """Obtém a chave API baseada no provedor"""
+    provider_keys = {
+        'openai': 'OPENAI_API_KEY',
+        'gemini': 'GEMINI_API_KEY', 
+        'ollama': 'OLLAMA_API_KEY',
+        'azure-petrobras': 'AZURE_PETROBRAS_API_VERSION'
+    }
+    
+    key_name = provider_keys.get(provider)
+    if not key_name:
+        raise ValueError(f"Provedor '{provider}' não suportado")
+    
+    api_key = os.getenv(key_name)
+    if not api_key and provider != 'ollama':  # Ollama pode não precisar de chave
+        raise ValueError(f"{key_name} necessário para uso com {provider}")
+    
+    return api_key
 
 def get_llm_chat():
     provider = os.getenv("LLM_PROVIDER_CHAT", "gemini").lower()
     model = os.getenv("LLM_MODEL_CHAT", "gemini-2.0-flash")
-    api_key = os.getenv("LLM_API_KEY_CHAT", "")
+    api_key = get_api_key(provider)
 
     if provider == "gemini":
         print("[ℹ️ Chat LLM] Usando Gemini LLM para chat.")
-        if not api_key:
-            raise ValueError("LLM_API_KEY_CHAT necessário para uso com Gemini.")
         return ChatGoogleGenerativeAI(
             model=model,
             google_api_key=api_key,
@@ -38,9 +56,6 @@ def get_llm_chat():
         print("[ℹ️ Chat LLM] Usando OpenAI LLM para chat.")
         from langchain_openai import ChatOpenAI
         
-        if not api_key:
-            raise ValueError("LLM_API_KEY_CHAT necessário para uso com OpenAI.")
-
         base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
         
         return ChatOpenAI(
@@ -48,6 +63,33 @@ def get_llm_chat():
             api_key=api_key,
             base_url=base_url,
             temperature=0.3
+        )
+
+    elif provider == "azure-petrobras":
+        print("[ℹ️ Chat LLM] Usando Azure Petrobras LLM para chat.")
+        from langchain_openai import AzureChatOpenAI
+        
+        azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
+        api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
+        
+        if not azure_base_url:
+            raise ValueError("AZURE_PETROBRAS_BASE_URL necessário para uso com Azure Petrobras.")
+
+        http_client = None
+        ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
+        if os.path.exists(ca_cert_path):
+            http_client = httpx.Client(verify=ca_cert_path)
+            print(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
+        else:
+            print(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
+
+        return AzureChatOpenAI(
+            azure_deployment=model,
+            api_version=api_version,
+            azure_endpoint=azure_base_url,
+            api_key=api_key,
+            http_client=http_client,
+            temperature=0.3,
         )
 
     else:
