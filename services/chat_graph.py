@@ -173,10 +173,10 @@ def build_prompt_and_run_llm(state):
             "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
             "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
         }
-    except:
+    except Exception as e:
         return {
             "chat_id": state["chat_id"],
-            "answer": f"Desculpe, ocorreu um erro ao processar sua solicitação.",
+            "answer": f"Desculpe, ocorreu um erro ao processar sua solicitação. Erro: {str(e)}",
             "think": "...",
             "text_docs": [],
             "image_docs": [],
