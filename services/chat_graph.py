@@ -16,7 +16,7 @@ def get_api_key(provider):
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GEMINI_API_KEY', 
         'ollama': 'OLLAMA_API_KEY',
-        'azure-petrobras': 'AZURE_PETROBRAS_API_VERSION'
+        'azure-petrobras': 'AZURE_PETROBRAS_API_KEY'
     }
     
     key_name = provider_keys.get(provider)
