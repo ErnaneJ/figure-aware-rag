@@ -108,7 +108,7 @@ def llm_constructor():
                     response = self.client.chat.completions.create(
                         model=self.model_name,
                         messages=messages,
-                        temperature=0.3,
+                        temperature=1,
                         max_completion_tokens=1000,
                         frequency_penalty=0,
                         presence_penalty=0
