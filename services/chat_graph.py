@@ -125,39 +125,50 @@ def fetch_context(state):
     }
 
 def build_prompt_and_run_llm(state):
-    from llm.generator import build_prompt
+    try:
+        from llm.generator import build_prompt
 
-    print("Building prompt and invoking LLM...")
+        print("Building prompt and invoking LLM...")
 
-    llm = get_llm_chat()
+        llm = get_llm_chat()
 
-    text_docs = [d for d in state["docs"] if d.metadata.get("source") == "text"]
-    image_docs = [d for d in state["docs"] if d.metadata.get("source") == "image"]
+        text_docs = [d for d in state["docs"] if d.metadata.get("source") == "text"]
+        image_docs = [d for d in state["docs"] if d.metadata.get("source") == "image"]
 
-    prompt = build_prompt(state["question"], text_docs, image_docs)
+        prompt = build_prompt(state["question"], text_docs, image_docs)
 
-    messages = state["memory"] + [HumanMessage(content=prompt)]
-    response = llm.invoke(messages)
+        messages = state["memory"] + [HumanMessage(content=prompt)]
+        response = llm.invoke(messages)
 
-    answer = ""
-    think = ""
-    if response.__class__ is str:
-        think = re.search(r"<think>(.*?)</think>", response, re.DOTALL)
-        think = think.group(1).strip() if think else ""
-        answer = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
-    else:
-        answer = response.content.strip()
+        answer = ""
+        think = ""
+        if response.__class__ is str:
+            think = re.search(r"<think>(.*?)</think>", response, re.DOTALL)
+            think = think.group(1).strip() if think else ""
+            answer = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
+        else:
+            answer = response.content.strip()
 
-    print(f"LLM response: {answer}")
-    return {
-        "chat_id": state["chat_id"],
-        "answer": answer,
-        "think": think,
-        "text_docs": text_docs,
-        "image_docs": image_docs,
-        "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
-        "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
-    }
+        print(f"LLM response: {answer}")
+        return {
+            "chat_id": state["chat_id"],
+            "answer": answer,
+            "think": think,
+            "text_docs": text_docs,
+            "image_docs": image_docs,
+            "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
+            "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
+        }
+    except:
+        return {
+            "chat_id": state["chat_id"],
+            "answer": f"Desculpe, ocorreu um erro ao processar sua solicitação.",
+            "think": "...",
+            "text_docs": [],
+            "image_docs": [],
+            "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
+            "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
+        }
 
 def build_chat_graph(save_workflow: bool = False):
     builder = StateGraph(state_schema=dict)
