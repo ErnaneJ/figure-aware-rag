@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
 import httpx
+from openai import AzureOpenAI
+from types import SimpleNamespace
 
 load_dotenv(override=True, verbose=True)
 
@@ -10,7 +12,7 @@ def get_api_key(provider):
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GEMINI_API_KEY', 
         'ollama': 'OLLAMA_API_KEY',
-        'azure-petrobras': 'AZURE_PETROBRAS_API_VERSION'
+        'azure-petrobras': 'AZURE_PETROBRAS_API_KEY'
     }
     
     key_name = provider_keys.get(provider)
@@ -23,7 +25,7 @@ def get_api_key(provider):
     
     return api_key
 
-def llm_constructor() -> object:
+def llm_constructor():
     provider = os.getenv("LLM_PROVIDER_CAPTIONS", "gemini").lower()
     model_name = os.getenv("LLM_MODEL_CAPTIONS", "gemini-2.0-flash")
     api_key = get_api_key(provider)
@@ -63,7 +65,6 @@ def llm_constructor() -> object:
 
     elif provider == "azure-petrobras":
         print("[ℹ️ Caption LLM] Usando Azure Petrobras LLM para extração de legendas.")
-        from langchain_openai import AzureChatOpenAI
         
         azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
         api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
@@ -79,14 +80,47 @@ def llm_constructor() -> object:
         else:
             print(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
 
-        return AzureChatOpenAI(
-            azure_deployment=model_name,
-            api_version=api_version,
-            azure_endpoint=azure_base_url,
+        client = AzureOpenAI(
             api_key=api_key,
+            api_version=api_version,
+            base_url=azure_base_url,
             http_client=http_client,
-            temperature=0.3,
         )
+
+        class AzureCaptionWrapper:
+            def __init__(self, client, model_name):
+                self.client = client
+                self.model_name = model_name
+            
+            def invoke(self, context: str):
+                try:
+                    messages = [
+                        {
+                            "role": "system", 
+                            "content": "Você é um assistente que deve responder com base no conteúdo textual da página."
+                        },
+                        {
+                            "role": "user", 
+                            "content": context
+                        }
+                    ]
+                    
+                    response = self.client.chat.completions.create(
+                        model=self.model_name,
+                        messages=messages,
+                        temperature=0.3,
+                        max_completion_tokens=1000,
+                        frequency_penalty=0,
+                        presence_penalty=0
+                    )
+                    
+                    return SimpleNamespace(content=response.choices[0].message.content.strip())
+                
+                except Exception as e:
+                    print(f"[❌ Azure Caption LLM] Erro: {e}")
+                    return SimpleNamespace(content="UNDEFINED")
+
+        return AzureCaptionWrapper(client, model_name)
 
     else:
         raise ValueError(f"LLM provider não suportado: {provider}")

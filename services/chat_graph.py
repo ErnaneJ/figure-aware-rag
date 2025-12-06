@@ -158,7 +158,6 @@ def build_prompt_and_run_llm(state):
                 for m in state["memory"]
             ]
 
-
             messages = memory_in_adapted_format + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
             response = llm.chat.completions.create(
                 model=os.getenv("LLM_MODEL_CHAT", "o4-mini-petrobras"),

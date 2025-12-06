@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import mimetypes
 import httpx
 import json
+from openai import AzureOpenAI
 
 load_dotenv(override=True, verbose=True)
 
@@ -13,7 +14,7 @@ def get_api_key(provider):
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GEMINI_API_KEY', 
         'ollama': 'OLLAMA_API_KEY',
-        'azure-petrobras': 'AZURE_PETROBRAS_API_VERSION'
+        'azure-petrobras': 'AZURE_PETROBRAS_API_KEY'
     }
     
     key_name = provider_keys.get(provider)
@@ -134,33 +135,35 @@ def get_multimodal_llm():
 
     elif provider == "azure-petrobras":
         print("[ℹ️ Multimodal] Usando Azure Petrobras LLM para descrição de imagem.")
+        
         def azure_openai_image_call(prompt: str, image_bytes: bytes, mime_type: str) -> str:
             try:
-                from openai import AzureOpenAI
-                
                 azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
                 api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
                 
-                ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
-                
+                if not azure_base_url:
+                    raise ValueError("AZURE_PETROBRAS_BASE_URL necessário para uso com Azure Petrobras.")
+
                 http_client = None
+                ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
                 if os.path.exists(ca_cert_path):
                     http_client = httpx.Client(verify=ca_cert_path)
+                    print(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
                 else:
                     print(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
 
                 client = AzureOpenAI(
                     api_key=api_key,
                     api_version=api_version,
-                    azure_endpoint=azure_base_url,
-                    http_client=http_client
+                    base_url=azure_base_url,
+                    http_client=http_client,
                 )
 
                 img_b64 = base64.b64encode(image_bytes).decode("utf-8")
 
                 messages = [
                     {
-                        "role": "system", 
+                        "role": "system",
                         "content": "Você é um assistente que descreve imagens de forma objetiva e detalhada."
                     },
                     {
@@ -183,9 +186,8 @@ def get_multimodal_llm():
                 response = client.chat.completions.create(
                     model=model,
                     messages=messages,
-                    temperature=0.5,
-                    max_tokens=1000,
-                    top_p=0.9,
+                    temperature=1,
+                    max_completion_tokens=1000,
                     frequency_penalty=0,
                     presence_penalty=0
                 )
