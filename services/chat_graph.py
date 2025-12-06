@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph
 import re
-from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
 from openai import AzureOpenAI
@@ -140,16 +140,24 @@ def build_prompt_and_run_llm(state):
         response = None
         if isinstance(llm, AzureOpenAI):
             memory_in_adapted_format = [
+            (
+                m if isinstance(m, dict) else 
                 {
-                    "role": m.role,
-                    "content": (
-                        [{"type": "text", "text": m.content}]
-                        if m.role == "user" or m.role == "assistant"
-                        else m.content
-                    )
+                    "role":
+                        "user" if isinstance(m, HumanMessage) else 
+                        "assistant" if isinstance(m, AIMessage) else 
+                        "system",
+
+                    "content":
+                        (
+                            [{"type": "text", "text": m.content}] if isinstance(m, HumanMessage) or isinstance(m, AIMessage) else
+                            m.content
+                        )
                 }
-                for m in state["memory"]
-            ]
+            )
+            for m in state["memory"]
+        ]
+
 
             messages = memory_in_adapted_format + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
             response = llm.chat.completions.create(
