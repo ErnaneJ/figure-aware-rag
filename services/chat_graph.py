@@ -140,23 +140,23 @@ def build_prompt_and_run_llm(state):
         response = None
         if isinstance(llm, AzureOpenAI):
             memory_in_adapted_format = [
-            (
-                m if isinstance(m, dict) else 
-                {
-                    "role":
-                        "user" if isinstance(m, HumanMessage) else 
-                        "assistant" if isinstance(m, AIMessage) else 
-                        "system",
+                (
+                    m if isinstance(m, dict) else 
+                    {
+                        "role":
+                            "user" if isinstance(m, HumanMessage) else 
+                            "assistant" if isinstance(m, AIMessage) else 
+                            "system",
 
-                    "content":
-                        (
-                            [{"type": "text", "text": m.content}] if isinstance(m, HumanMessage) or isinstance(m, AIMessage) else
-                            m.content
-                        )
-                }
-            )
-            for m in state["memory"]
-        ]
+                        "content":
+                            (
+                                [{"type": "text", "text": m.content}] if isinstance(m, HumanMessage) or isinstance(m, AIMessage) else
+                                m.content
+                            )
+                    }
+                )
+                for m in state["memory"]
+            ]
 
 
             messages = memory_in_adapted_format + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
@@ -164,7 +164,7 @@ def build_prompt_and_run_llm(state):
                 model=os.getenv("LLM_MODEL_CHAT", "o4-mini-petrobras"),
                 messages=messages,
                 temperature=1,
-                max_completion_tokens=500,
+                max_completion_tokens=10000,
                 frequency_penalty=0,
                 presence_penalty=0,
             )
