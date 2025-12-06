@@ -139,7 +139,19 @@ def build_prompt_and_run_llm(state):
 
         response = None
         if isinstance(llm, AzureOpenAI):
-            messages = state["memory"] + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
+            memory_in_adapted_format = [
+                {
+                    "role": m.role,
+                    "content": (
+                        [{"type": "text", "text": m.content}]
+                        if m.role == "user" or m.role == "assistant"
+                        else m.content
+                    )
+                }
+                for m in state["memory"]
+            ]
+
+            messages = memory_in_adapted_format + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
             response = llm.chat.completions.create(
                 model=os.getenv("LLM_MODEL_CHAT", "o4-mini-petrobras"),
                 messages=messages,
