@@ -3,6 +3,9 @@ import re
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.runnables import RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
+from openai import AzureOpenAI
+
+from types import SimpleNamespace
 
 from pathlib import Path
 from indexing.retriever import retrieve_relevant_chunks
@@ -67,7 +70,6 @@ def get_llm_chat():
 
     elif provider == "azure-petrobras":
         print("[ℹ️ Chat LLM] Usando Azure Petrobras LLM para chat.")
-        from langchain_openai import AzureChatOpenAI
         
         azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
         api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
@@ -83,13 +85,11 @@ def get_llm_chat():
         else:
             print(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
 
-        return AzureChatOpenAI(
-            azure_deployment=model,
-            api_version=api_version,
-            azure_endpoint=azure_base_url,
+        return AzureOpenAI(
             api_key=api_key,
+            api_version=api_version,
+            base_url=azure_base_url,
             http_client=http_client,
-            temperature=0.3,
         )
 
     else:
@@ -137,8 +137,22 @@ def build_prompt_and_run_llm(state):
 
         prompt = build_prompt(state["question"], text_docs, image_docs)
 
-        messages = state["memory"] + [HumanMessage(content=prompt)]
-        response = llm.invoke(messages)
+        response = None
+        if isinstance(llm, AzureOpenAI):
+            messages = state["memory"] + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
+            response = llm.chat.completions.create(
+                model=os.getenv("LLM_MODEL_CHAT", "o4-mini-petrobras"),
+                messages=messages,
+                temperature=1,
+                max_completion_tokens=500,
+                frequency_penalty=0,
+                presence_penalty=0,
+            )
+            
+            response = SimpleNamespace(**{'content': response.choices[0].message.content})
+        else:
+            messages = state["memory"] + [HumanMessage(content=prompt)]
+            response = llm.invoke(messages, request_timeout=120)
 
         answer = ""
         think = ""
