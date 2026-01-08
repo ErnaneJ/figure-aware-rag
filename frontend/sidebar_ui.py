@@ -14,10 +14,11 @@ def render_sidebar():
     # ➕ Criar novo chat
     with st.sidebar.expander("➕ Criar novo chat"):
         new_chat_name = st.text_input("Título do chat", key="new_chat_name")
-        new_pdf = st.file_uploader("Arquivo(s) PDF", type="pdf", key="upload_new_chat")
-        if new_chat_name and new_pdf and st.button("Criar", width='stretch'):
-            file_bytes = new_pdf.read()
-            file_info = save_file_if_new(file_bytes, new_pdf.name)
+        new_pdfs = st.file_uploader("Arquivo(s) PDF", type="pdf", key="upload_new_chat", accept_multiple_files=True)
+        if new_chat_name and new_pdfs and st.button("Criar", width='stretch'):
+            for new_pdf in new_pdfs:
+                file_bytes = new_pdf.read()
+                file_info = save_file_if_new(file_bytes, new_pdf.name)
             new_chat_id = create_chat(new_chat_name, file_info["hash"])
             st.query_params.chat_id = new_chat_id
             st.rerun()
@@ -126,12 +127,13 @@ def edit_chat_dialog(chat):
                 st.warning(str(e))
 
     st.subheader("Adicionar Novo(s) Arquivo(s)")
-    new_file = st.file_uploader("Selecione um PDF", type="pdf", key=f"new_file_upload_{chat.id}")
-    if new_file and st.button("📎 Adicionar Arquivo(s)", key=f"add_file_{chat.id}", width='stretch'):
-      file_bytes = new_file.read()
-      file_info = save_file_if_new(file_bytes, new_file.name)
-      associate_file_to_chat(chat.id, file_info["hash"])
-      st.success("Arquivo adicionado com sucesso.")
+    new_files = st.file_uploader("Selecione", type="pdf", key=f"new_file_upload_{chat.id}", accept_multiple_files=True)
+    if new_files and st.button("📎 Adicionar Arquivo(s)", key=f"add_file_{chat.id}", width='stretch'):
+      for new_file in new_files:
+          file_bytes = new_file.read()
+          file_info = save_file_if_new(file_bytes, new_file.name)
+          associate_file_to_chat(chat.id, file_info["hash"])
+      st.success("Arquivo(s) adicionado(s) com sucesso.")
       st.rerun()
 
     if st.button("❌ Cancelar", key=f"cancel_edit_chat_{chat.id}", width='stretch'):
