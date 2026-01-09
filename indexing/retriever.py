@@ -11,8 +11,19 @@ def load_vectorstore(file_hash: str):
     
     return FAISS.load_local(str(index_path), embedding_model, allow_dangerous_deserialization=True)
 
-def retrieve_relevant_chunks(file_hash: str, question: str, k: int = 5):
-    vs = load_vectorstore(file_hash)
+def retrieve_relevant_chunks(file_hash: str, question: str, k: int = 12): 
+    vs = load_vectorstore(file_hash) 
     results = vs.similarity_search(question, k=k)
-
-    return results  # Cada item é um langchain_core.documents.documents.Document
+    text_docs = [] 
+    image_docs = [] 
+    
+    for doc in results: 
+        if doc.metadata.get("source") == "image": 
+            image_docs.append(doc) 
+        else: 
+            text_docs.append(doc)
+    
+    text_docs = text_docs[:3]
+    image_docs = image_docs[:2]
+    
+    return text_docs, image_docs

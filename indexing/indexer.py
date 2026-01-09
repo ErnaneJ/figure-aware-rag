@@ -7,6 +7,9 @@ from pathlib import Path
 
 embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transformers/all-MiniLM-L6-v2")
 
+MAX_PAGE_CHARS = 1800     # ~1200 tokens
+MAX_OCR_CHARS = 600       # ~400 tokens
+
 def index_file(file_hash: str):
     db = SessionLocal()
     file = db.query(File).filter(File.hash == file_hash).first()
@@ -21,22 +24,33 @@ def index_file(file_hash: str):
     docs = []
 
     for page in pages:
+        text = (page.text or "").strip()
+        if not text:
+            continue
+
+        text = text[:MAX_PAGE_CHARS]
+
         metadata = {
             "file_hash": file_hash,
             "filename": file.filename,
             "page_number": page.page_number,
+            "char_count": len(text),
             "source": "text"
         }
-        docs.append(Document(page_content=page.text, metadata=metadata))
+
+        docs.append(Document(page_content=text, metadata=metadata))
 
     for image in images:
         parts = []
+
         if image.caption:
-            parts.append(f"Legenda: {image.caption}")
+            parts.append(f"Legenda: {image.caption[:300]}")
+
         if image.ocr_text:
-            parts.append(f"OCR: {image.ocr_text}")
+            parts.append(f"OCR: {image.ocr_text[:MAX_OCR_CHARS]}")
+
         if hasattr(image, "llm_description") and image.llm_description:
-            parts.append(f"Descrição IA: {image.llm_description}")
+            parts.append(f"Descrição IA: {image.llm_description[:400]}")
 
         content = "\n".join(parts).strip()
         if not content:

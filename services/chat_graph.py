@@ -113,10 +113,27 @@ def fetch_context(state):
 
     all_docs = []
     for file_hash in file_hashes:
-        docs = retrieve_relevant_chunks(file_hash, question, k=25)
-        all_docs.extend(docs)
+        text_docs, image_docs = retrieve_relevant_chunks(file_hash, question, k=5)
+        all_docs.extend(text_docs)
+        all_docs.extend(image_docs)
 
-    print(f"Found {len(all_docs)} relevant documents for chat ID {chat_id}.")
+    seen = set()
+    unique_docs = []
+
+    for d in all_docs:
+        key = (d.metadata.get("filename"), d.metadata.get("page_number"), d.page_content[:50])
+        if key not in seen:
+            seen.add(key)
+            unique_docs.append(d)
+
+    all_docs = unique_docs
+
+    print(
+        f"[DEBUG] Contexto final: "
+        f"{len([d for d in all_docs if d.metadata.get('source') == 'text'])} textos, "
+        f"{len([d for d in all_docs if d.metadata.get('source') == 'image'])} imagens"
+    )
+
     return {
         "chat_id": chat_id,
         "question": question,
