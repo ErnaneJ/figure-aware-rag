@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: celery -A tasks.process_queue worker --loglevel=info
+    command: celery -A tasks.process_queue worker --loglevel=info --concurrency=2 --prefetch-multiplier=1
     volumes:
       - files_volume:/app/files
     env_file: .env

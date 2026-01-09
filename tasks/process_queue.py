@@ -8,8 +8,16 @@ from indexing.indexer import index_file
 redis_url = os.getenv("CELERY_BROKER_URL", "redis://redis:6379/0")
 celery_app = Celery("papyrus_worker", broker=redis_url)
 
-@celery_app.task
-def process_pdf_task(file_hash: str, path: str):
+@celery_app.task(
+    bind=True,
+    autoretry_for=(Exception,),
+    retry_backoff=True,
+    retry_jitter=True,
+    retry_kwargs={"max_retries": 3},
+    soft_time_limit=900,
+    time_limit=930
+)
+def process_pdf_task(self, file_hash: str, path: str):
     print(f"📄 Processando PDF: {path} (hash={file_hash})")
 
     try:
@@ -25,6 +33,15 @@ def process_pdf_task(file_hash: str, path: str):
             ))
 
         for img in content["images"]:
+            caption = img.get("caption")
+            llm_description = img.get("llm_description")
+
+            if caption == "__PENDING__":
+                caption = None
+
+            if llm_description == "__PENDING__":
+                llm_description = None
+    
             db.add(Image(
                 file_hash=file_hash,
                 page_number=img["page"],
@@ -32,13 +49,13 @@ def process_pdf_task(file_hash: str, path: str):
                 img_page_index=img["img_page_index"],
                 ext=img["ext"],
                 path=img["path"],
-                caption=img.get("caption", None),
+                caption=caption,
                 ocr_text=img.get("ocr_text", None),
-                llm_description=img.get("llm_description", None)
+                llm_description=llm_description
             ))
 
         file = db.query(File).filter(File.hash == file_hash).first()
-        file.processed = True
+        file.processed = True # @TODO to improve this info
 
         db.commit()
         db.close()
@@ -50,4 +67,4 @@ def process_pdf_task(file_hash: str, path: str):
 
     except Exception as e:
         print(f"❌ Erro ao processar PDF: {e}")
-        return False
+        raise
