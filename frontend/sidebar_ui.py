@@ -16,7 +16,7 @@ def render_sidebar():
         new_chat_name = st.text_input("Título do chat", key="new_chat_name")
         new_pdfs = st.file_uploader("Arquivo(s) PDF", type="pdf", key="upload_new_chat", accept_multiple_files=True)
         if new_chat_name and new_pdfs and st.button("Criar", width='stretch'):
-            new_chat_id = create_chat(new_chat_name, file_info["hash"])
+            new_chat_id = create_chat(new_chat_name, "-- NONE --")
             for new_pdf in new_pdfs:
                 file_bytes = new_pdf.read()
                 file_info = save_file_if_new(file_bytes, new_pdf.name)
