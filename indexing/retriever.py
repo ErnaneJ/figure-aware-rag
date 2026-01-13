@@ -29,7 +29,7 @@ def retrieve_relevant_chunks(file_hash: str, question: str, k: int = 100):
         
         doc.metadata["score"] = score
 
-        if score > 0.6:
+        if score > 1.8:
             continue
 
         if doc.metadata.get("source") == "image":
