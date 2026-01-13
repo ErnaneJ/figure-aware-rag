@@ -4,6 +4,10 @@ import httpx
 from openai import AzureOpenAI
 from types import SimpleNamespace
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 load_dotenv(override=True, verbose=True)
 
 def get_api_key(provider):
@@ -31,7 +35,7 @@ def llm_constructor():
     api_key = get_api_key(provider)
 
     if provider == "gemini":
-        print("[ℹ️ Caption LLM] Usando Gemini LLM para extração de legendas.")
+        logger.info("[ℹ️ Caption LLM] Usando Gemini LLM para extração de legendas.")
         from langchain_google_genai import ChatGoogleGenerativeAI
 
         return ChatGoogleGenerativeAI(
@@ -41,7 +45,7 @@ def llm_constructor():
         )
 
     elif provider == "ollama":
-        print("[ℹ️ Caption LLM] Usando Ollama LLM para extração de legendas.")
+        logger.info("[ℹ️ Caption LLM] Usando Ollama LLM para extração de legendas.")
         from langchain_ollama import OllamaLLM
 
         return OllamaLLM(
@@ -51,7 +55,7 @@ def llm_constructor():
         )
 
     elif provider == "openai":
-        print("[ℹ️ Caption LLM] Usando OpenAI LLM para extração de legendas.")
+        logger.info("[ℹ️ Caption LLM] Usando OpenAI LLM para extração de legendas.")
         from langchain_openai import ChatOpenAI
         
         base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
@@ -64,7 +68,7 @@ def llm_constructor():
         )
 
     elif provider == "azure-petrobras":
-        print("[ℹ️ Caption LLM] Usando Azure Petrobras LLM para extração de legendas.")
+        logger.info("[ℹ️ Caption LLM] Usando Azure Petrobras LLM para extração de legendas.")
         
         azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
         api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
@@ -76,9 +80,9 @@ def llm_constructor():
         ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
         if os.path.exists(ca_cert_path):
             http_client = httpx.Client(verify=ca_cert_path)
-            print(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
+            logger.info(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
         else:
-            print(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
+            logger.info(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
 
         client = AzureOpenAI(
             api_key=api_key,
@@ -117,7 +121,7 @@ def llm_constructor():
                     return SimpleNamespace(content=response.choices[0].message.content.strip())
                 
                 except Exception as e:
-                    print(f"[❌ Azure Caption LLM] Erro: {e}")
+                    logger.info(f"[❌ Azure Caption LLM] Erro: {e}")
                     return SimpleNamespace(content="UNDEFINED")
 
         return AzureCaptionWrapper(client, model_name)

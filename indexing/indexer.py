@@ -5,6 +5,10 @@ from db.database import SessionLocal
 from db.models import Page, File, Image
 from pathlib import Path
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transformers/all-MiniLM-L6-v2")
 
 MAX_PAGE_CHARS = 1800     # ~1200 tokens
@@ -18,7 +22,7 @@ def index_file(file_hash: str):
     db.close()
 
     if not file:
-        print(f"❌ Arquivo {file_hash} não encontrado.")
+        logger.info(f"❌ Arquivo {file_hash} não encontrado.")
         return
 
     docs = []
@@ -76,7 +80,7 @@ def index_file(file_hash: str):
         docs.append(Document(page_content=content, metadata=metadata))
 
     if not docs:
-        print(f"⚠️ Nenhum conteúdo indexável encontrado para o arquivo {file_hash}")
+        logger.info(f"⚠️ Nenhum conteúdo indexável encontrado para o arquivo {file_hash}")
         return
 
     index_path = Path("files") / file_hash / "vectorstore"
@@ -85,4 +89,4 @@ def index_file(file_hash: str):
     vectorstore = FAISS.from_documents(docs, embedding_model)
     vectorstore.save_local(str(index_path))
 
-    print(f"✅ Índice vetorial unificado salvo em: {index_path}")
+    logger.info(f"✅ Índice vetorial unificado salvo em: {index_path}")

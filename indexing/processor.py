@@ -8,6 +8,9 @@ from dotenv import load_dotenv
 from llm.caption_extractor import extract_caption_with_llm
 import os
 from utils.llm_retry import llm_call_with_retry, RateLimitException
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv(override=True, verbose=True)
 
@@ -65,15 +68,15 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 f.write(image_bytes)
 
             if os.getenv("DISABLE_OCR", "false").lower() != "true":
-                print(f"Extraindo OCR para {image_path}")
+                logger.info(f"Extraindo OCR para {image_path}")
                 ocr_text = extract_ocr_text(image_path)
-                print(f"OCR extraído: {ocr_text}")
+                logger.info(f"OCR extraído: {ocr_text}")
             else:
-                print(f"OCR desativado para {image_path}")
+                logger.info(f"OCR desativado para {image_path}")
                 ocr_text = ""
 
             if os.getenv("DISABLE_MULTIMODAL_DESCRIPTION", "false").lower() != "true":
-                print(f"Extraindo descrição multimodal para {image_path}")
+                logger.info(f"Extraindo descrição multimodal para {image_path}")
                 try:
                     llm_description = llm_call_with_retry(
                         lambda: describe_image_with_context(
@@ -84,14 +87,14 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 except RateLimitException:
                     llm_description = "__PENDING__"
     
-                print(f"Descrição obtida: {llm_description}")
+                logger.info(f"Descrição obtida: {llm_description}")
                 time.sleep(3)
             else:
-                print(f"Descrição multimodal desativada para {image_path}")
+                logger.info(f"Descrição multimodal desativada para {image_path}")
                 llm_description = ""
             
             if os.getenv("DISABLE_LLM_CAPTION_EXTRACTION", "false").lower() != "true":
-                print(f"Extraindo legenda LLM para {image_path}")
+                logger.info(f"Extraindo legenda LLM para {image_path}")
                 try:
                     caption = llm_call_with_retry(
                         lambda: extract_caption_with_llm(
@@ -104,10 +107,10 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 except RateLimitException:
                     caption = "__PENDING__"
 
-                print(f"Legenda obtida: {caption}")
+                logger.info(f"Legenda obtida: {caption}")
                 time.sleep(3)
             else:
-                print(f"Extração de legenda LLM desativada para {image_path}")
+                logger.info(f"Extração de legenda LLM desativada para {image_path}")
                 caption = ""
 
             image_info = {

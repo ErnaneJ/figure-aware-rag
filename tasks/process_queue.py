@@ -4,6 +4,11 @@ from indexing.processor import extract_text_and_images
 from db.database import SessionLocal
 from db.models import Page, Image, File
 from indexing.indexer import index_file
+import time
+
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 redis_url = os.getenv("CELERY_BROKER_URL", "redis://redis:6379/0")
 celery_app = Celery("papyrus_worker", broker=redis_url)
@@ -14,15 +19,17 @@ celery_app = Celery("papyrus_worker", broker=redis_url)
     retry_backoff=True,
     retry_jitter=True,
     retry_kwargs={"max_retries": 3},
-    soft_time_limit=900,
-    time_limit=930
 )
 def process_pdf_task(self, file_hash: str, path: str):
-    print(f"📄 Processando PDF: {path} (hash={file_hash})")
+    logger.info(f"📄 Processando PDF: {path} (hash={file_hash}) Iniciado.")
 
     try:
+        start_time = time.time()
+        t0 = time.time()
         content = extract_text_and_images(path, file_hash)
+        logger.info(f"[TIME] ⏱️ Extração total: {(time.time()-t0)/60:.2f} min")
 
+        t1 = time.time()
         db = SessionLocal()
 
         for page in content["pages"]:
@@ -59,12 +66,17 @@ def process_pdf_task(self, file_hash: str, path: str):
 
         db.commit()
         db.close()
+        
+        logger.info(f"[TIME] ⏱️ Salvamento no DB: {(time.time()-t1)/60:.2f} min")
 
+        t2 = time.time()
         index_file(file_hash)
+        logger.info(f"[TIME] ⏱️ Indexação: {(time.time()-t2)/60:.2f} min")
 
-        print(f"✅ Processamento concluído: {file_hash}")
+        elapsed = time.time() - start_time
+        logger.info(f"[TIME] ✅ Processamento de {file_hash} concluído em {elapsed/60:.2f} minutos")
         return True
 
     except Exception as e:
-        print(f"❌ Erro ao processar PDF: {e}")
+        logger.info(f"❌ Erro ao processar PDF: {e}")
         raise

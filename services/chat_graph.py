@@ -13,6 +13,10 @@ from db.queries import get_chat_messages
 import os
 import httpx
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 def get_api_key(provider):
     """Obtém a chave API baseada no provedor"""
     provider_keys = {
@@ -38,7 +42,7 @@ def get_llm_chat():
     api_key = get_api_key(provider)
 
     if provider == "gemini":
-        print("[ℹ️ Chat LLM] Usando Gemini LLM para chat.")
+        logger.info("[ℹ️ Chat LLM] Usando Gemini LLM para chat.")
         return ChatGoogleGenerativeAI(
             model=model,
             google_api_key=api_key,
@@ -46,7 +50,7 @@ def get_llm_chat():
         )
 
     elif provider == "ollama":
-        print("[ℹ️ Chat LLM] Usando Ollama LLM para chat.")
+        logger.info("[ℹ️ Chat LLM] Usando Ollama LLM para chat.")
         from langchain_ollama import OllamaLLM
 
         return OllamaLLM(
@@ -56,7 +60,7 @@ def get_llm_chat():
         )
 
     elif provider == "openai":
-        print("[ℹ️ Chat LLM] Usando OpenAI LLM para chat.")
+        logger.info("[ℹ️ Chat LLM] Usando OpenAI LLM para chat.")
         from langchain_openai import ChatOpenAI
         
         base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
@@ -69,7 +73,7 @@ def get_llm_chat():
         )
 
     elif provider == "azure-petrobras":
-        print("[ℹ️ Chat LLM] Usando Azure Petrobras LLM para chat.")
+        logger.info("[ℹ️ Chat LLM] Usando Azure Petrobras LLM para chat.")
         
         azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
         api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
@@ -81,9 +85,9 @@ def get_llm_chat():
         ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
         if os.path.exists(ca_cert_path):
             http_client = httpx.Client(verify=ca_cert_path)
-            print(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
+            logger.info(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
         else:
-            print(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
+            logger.info(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
 
         return AzureOpenAI(
             api_key=api_key,
@@ -96,7 +100,7 @@ def get_llm_chat():
         raise ValueError(f"LLM_PROVIDER_CHAT '{provider}' não suportado.")
 
 def fetch_context(state):
-    print("Fetching context for chat...")
+    logger.info("Fetching context for chat...")
     chat_id = state["chat_id"]
     question = state["question"]
 
@@ -128,7 +132,7 @@ def fetch_context(state):
 
     all_docs = unique_docs
 
-    print(
+    logger.info(
         f"[DEBUG] Contexto final: "
         f"{len([d for d in all_docs if d.metadata.get('source') == 'text'])} textos, "
         f"{len([d for d in all_docs if d.metadata.get('source') == 'image'])} imagens"
@@ -145,7 +149,7 @@ def build_prompt_and_run_llm(state):
     try:
         from llm.generator import build_prompt
 
-        print("Building prompt and invoking LLM...")
+        logger.info("Building prompt and invoking LLM...")
 
         llm = get_llm_chat()
 
@@ -199,7 +203,7 @@ def build_prompt_and_run_llm(state):
         else:
             answer = response.content.strip()
 
-        print(f"LLM response: {answer}")
+        logger.info(f"LLM response: {answer}")
         return {
             "chat_id": state["chat_id"],
             "answer": answer,
@@ -240,6 +244,6 @@ def build_chat_graph(save_workflow: bool = False):
         image_data = graph.get_graph().draw_mermaid_png()
         with open(graph_path, "wb") as f:
             f.write(image_data)
-        print(f"🖼️ Grafo salvo em: {graph_path}")
+        logger.info(f"🖼️ Grafo salvo em: {graph_path}")
 
     return graph
