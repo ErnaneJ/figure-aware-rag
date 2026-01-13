@@ -39,8 +39,7 @@ def build_prompt(question: str, text_documents, image_documents) -> str:
         - Na linha seguinte, insira exatamente:
         {{IMAGE:<id>}}
         - Não invente informações.
-        - Finalize com:
-        Fonte: arquivo — página
+        - Sempre referencie a fonte da informação com: 'Fonte: arquivo — página'. Se mais de uma, liste todas. O mesmo vale para imagens.
 
         PERGUNTA:
         {question}
