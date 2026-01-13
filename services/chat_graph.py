@@ -133,10 +133,12 @@ def fetch_context(state):
     all_docs = unique_docs
 
     logger.info(
-        f"[DEBUG] Contexto final: "
-        f"{len([d for d in all_docs if d.metadata.get('source') == 'text'])} textos, "
-        f"{len([d for d in all_docs if d.metadata.get('source') == 'image'])} imagens"
+        f"Contexto recuperado: {len(all_docs)} documentos para a pergunta '{question}' no chat_id '{chat_id}'.",
     )
+    logger.info(
+        f"Documentos recuperados: {[d.metadata.get('filename') for d in all_docs]}",
+    )
+    logger.info(all_docs)
 
     return {
         "chat_id": chat_id,
