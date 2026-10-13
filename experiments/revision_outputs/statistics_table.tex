@@ -1,0 +1,28 @@
+\begin{table}[htbp]
+\caption{Wilcoxon signed-rank test results comparing Baseline vs.\
+Papyrus AI per model and reasoning category ($N=30$ paired observations,
+three runs $\times$ ten questions).
+$p_{\text{corr}}$: Bonferroni-corrected $p$-value (10 comparisons).
+Effect size $r = |Z|/\sqrt{N}$.
+Superscript $d$: Cohen's $d$ computed for Llama~3.1~70B Visual.
+Significance: $^{*}p<0.05$, $^{**}p<0.01$, $^{***}p<0.001$,
+\textit{ns}: not significant.}
+\label{tab:statistics}
+\begin{tabularx}{\columnwidth}{llrrrrl}
+\toprule
+\textbf{Model} & \textbf{Cat.} & \textbf{N} & \textbf{W} & \textbf{$p$} &
+\textbf{$p_{\text{corr}}$} & \textbf{$r$} \\
+\midrule
+  Claude 3.5 Sonnet & Textual & 30 & 36.0 & 0.0156 & 0.1561 & 0.441$^{d=nan}$ & \textit{ns} \\
+   & Visual & 30 & 77.0 & 0.7065 & 1.0000 & 0.069$^{d=nan}$ & \textit{ns} \\
+  DeepSeek Chat & Textual & 30 & 29.0 & 0.0043 & 0.0429 & 0.521$^{d=nan}$ & * \\
+   & Visual & 30 & 68.0 & 0.6858 & 1.0000 & 0.074$^{d=nan}$ & \textit{ns} \\
+  Gemini 2.5 Flash Lite & Textual & 30 & 9.5 & 0.0000 & 0.0003 & 0.756$^{d=nan}$ & *** \\
+   & Visual & 30 & 78.5 & 0.1166 & 1.0000 & 0.287$^{d=nan}$ & \textit{ns} \\
+  GPT-4o & Textual & 30 & 18.0 & 0.0007 & 0.0066 & 0.622$^{d=nan}$ & ** \\
+   & Visual & 30 & 92.5 & 0.6341 & 1.0000 & 0.087$^{d=nan}$ & \textit{ns} \\
+  Llama 3.1 70B & Textual & 30 & 84.0 & 0.0035 & 0.0350 & 0.533$^{d=nan}$ & * \\
+   & Visual & 30 & 40.0 & 0.0005 & 0.0052 & 0.633$^{d=1.01}$ & ** \\
+\bottomrule
+\end{tabularx}
+\end{table}

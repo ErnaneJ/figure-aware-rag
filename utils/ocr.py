@@ -2,6 +2,10 @@ from PIL import Image
 import pytesseract
 import re
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 def extract_ocr_text(image_path: str) -> str | None:
     try:
         img = Image.open(image_path).convert("RGB")
@@ -15,5 +19,5 @@ def extract_ocr_text(image_path: str) -> str | None:
         return cleaned_text
 
     except Exception as e:
-        print(f"[OCR] Error to extract text from image '{image_path}': {e}")
+        logger.info(f"[OCR] Error to extract text from image '{image_path}': {e}")
         return None

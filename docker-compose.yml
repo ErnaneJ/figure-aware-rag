@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: celery -A tasks.process_queue worker --loglevel=info
+    command: celery -A tasks.process_queue worker --loglevel=info --concurrency=2 --prefetch-multiplier=1
     volumes:
       - files_volume:/app/files
     env_file: .env
@@ -42,6 +42,19 @@ services:
     ports:
       - "26380:6379"
 
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   container_name: ollama
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   environment:
+  #     - OLLAMA_HOST=0.0.0.0:11434
+  #   runtime: nvidia
+  #   restart: unless-stopped
+
 volumes:
   pgdata:
   files_volume:
+  # ollama_data:

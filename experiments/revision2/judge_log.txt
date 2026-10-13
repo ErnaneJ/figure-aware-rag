@@ -1,0 +1,1429 @@
+to score 714
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 1 1 1.0
+
+PAGE_TEXT deepseek/deepseek-chat 1 1 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 1 2 1.0
+
+PAGE_TEXT deepseek/deepseek-chat 1 2 0.7
+
+PAGE_TEXT google/gemini-2.5-flash-lite 1 1 1.0
+
+PAGE_TEXT google/gemini-2.5-flash-lite 1 2 1.0
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 2 1 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 2 2 0.9
+
+PAGE_TEXT deepseek/deepseek-chat 2 1 0.1
+
+PAGE_TEXT deepseek/deepseek-chat 2 2 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 2 1 0.1
+
+PAGE_TEXT google/gemini-2.5-flash-lite 2 2 0.6
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 3 2 0.6
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 3 1 0.6
+
+PAGE_TEXT deepseek/deepseek-chat 3 1 0.2
+
+PAGE_TEXT deepseek/deepseek-chat 3 2 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 3 1 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 3 2 0.2
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 4 2 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 4 1 0.9
+
+PAGE_TEXT deepseek/deepseek-chat 4 1 0.9
+
+PAGE_TEXT deepseek/deepseek-chat 4 2 0.8
+
+PAGE_TEXT google/gemini-2.5-flash-lite 4 1 0.9
+
+PAGE_TEXT google/gemini-2.5-flash-lite 4 2 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 5 2 0.4
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 5 1 0.4
+
+PAGE_TEXT deepseek/deepseek-chat 5 1 0.4
+
+PAGE_TEXT deepseek/deepseek-chat 5 2 0.4
+
+PAGE_TEXT google/gemini-2.5-flash-lite 5 2 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 6 1 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 5 1 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 6 2 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 6 1 0.1
+
+PAGE_TEXT deepseek/deepseek-chat 6 1 0.2
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 6 2 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 6 2 0.1
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 7 1 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 7 2 1.0
+
+PAGE_TEXT deepseek/deepseek-chat 7 1 1.0
+
+PAGE_TEXT google/gemini-2.5-flash-lite 7 1 1.0
+
+PAGE_TEXT google/gemini-2.5-flash-lite 7 2 1.0
+
+PAGE_TEXT deepseek/deepseek-chat 7 2 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 8 1 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 8 2 0.2
+
+PAGE_TEXT deepseek/deepseek-chat 8 2 0.7
+
+PAGE_TEXT deepseek/deepseek-chat 8 1 0.8
+
+PAGE_TEXT google/gemini-2.5-flash-lite 8 1 0.7
+
+PAGE_TEXT google/gemini-2.5-flash-lite 8 2 0.7
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 9 1 0.6
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 9 2 0.4
+
+PAGE_TEXT deepseek/deepseek-chat 9 1 0.9
+
+PAGE_TEXT google/gemini-2.5-flash-lite 9 1 0.9
+
+PAGE_TEXT deepseek/deepseek-chat 9 2 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 10 1 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 9 2 0.9
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 10 2 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 10 1 0.4
+
+PAGE_TEXT deepseek/deepseek-chat 10 2 0.4
+
+PAGE_TEXT google/gemini-2.5-flash-lite 10 1 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 10 2 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 11 1 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 11 2 0.4
+
+PAGE_TEXT deepseek/deepseek-chat 11 1 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 11 2 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 11 1 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 11 2 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 12 2 0.7
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 12 1 0.7
+
+PAGE_TEXT deepseek/deepseek-chat 12 1 1.0
+
+PAGE_TEXT deepseek/deepseek-chat 12 2 0.7
+
+PAGE_TEXT google/gemini-2.5-flash-lite 12 1 0.8
+
+PAGE_TEXT google/gemini-2.5-flash-lite 12 2 0.8
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 13 1 0.0
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 13 2 0.0
+
+PAGE_TEXT deepseek/deepseek-chat 13 1 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 13 1 0.1
+
+PAGE_TEXT deepseek/deepseek-chat 13 2 0.2
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 14 1 0.1
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 14 2 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 13 2 0.1
+
+PAGE_TEXT deepseek/deepseek-chat 14 1 0.1
+
+PAGE_TEXT deepseek/deepseek-chat 14 2 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 14 1 0.1
+
+PAGE_TEXT google/gemini-2.5-flash-lite 14 2 0.1
+
+PAGE_TEXT 
+meta-llama/llama-3.1-70b-instruct 15 1 0.1
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 15 2 0.2
+
+PAGE_TEXT deepseek/deepseek-chat 15 1 0.2
+
+PAGE_TEXT deepseek/deepseek-chat 15 2 0.7
+
+PAGE_TEXT google/gemini-2.5-flash-lite 15 1 0.2
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 16 1 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 15 2 0.2
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 16 2 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 16 1 0.2
+
+PAGE_TEXT deepseek/deepseek-chat 16 2 0.3
+
+PAGE_TEXT google/gemini-2.5-flash-lite 16 1 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 16 2 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 17 1 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 17 2 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 17 1 1.0
+
+PAGE_TEXT deepseek/deepseek-chat 17 2 1.0
+
+PAGE_TEXT google/gemini-2.5-flash-lite 17 1 0.4
+
+PAGE_TEXT google/gemini-2.5-flash-lite 17 2 0.4
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 18 1 0.8
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 18 2 0.7
+
+PAGE_TEXT deepseek/deepseek-chat 18 1 0.7
+
+PAGE_TEXT deepseek/deepseek-chat 18 2 0.3
+
+
+PAGE_TEXT google/gemini-2.5-flash-lite 18 1 0.7
+PAGE_TEXT google/gemini-2.5-flash-lite 18 2 1.0
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 19 1 0.2
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 19 2 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 19 2 0.2
+
+PAGE_TEXT deepseek/deepseek-chat 19 1 0.2
+
+PAGE_TEXT google/gemini-2.5-flash-lite 19 1 0.3
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 20 1 0.1
+
+PAGE_TEXT meta-llama/llama-3.1-70b-instruct 20 2 0.1
+
+PAGE_TEXT google/gemini-2.5-flash-lite 19 2 0.3
+
+PAGE_TEXT deepseek/deepseek-chat 20 1 0.1
+
+PAGE_TEXT deepseek/deepseek-chat 20 2 0.1
+
+PAGE_TEXT google/gemini-2.5-flash-lite 20 1 0.0
+
+PAGE_TEXT google/gemini-2.5-flash-lite 20 2 0.0
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 1 1 1.0
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 1 2 1.0
+
+PAGE_FULL google/gemini-2.5-flash-lite 1 1 1.0
+
+PAGE_FULL deepseek/deepseek-chat 1 2 0.3
+
+PAGE_FULL deepseek/deepseek-chat 1 1 0.7
+
+PAGE_FULL google/gemini-2.5-flash-lite 1 2 1.0
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 2 1 0.1
+
+PAGE_FULL deepseek/deepseek-chat 2 1 0.1
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 2 2 0.1
+
+PAGE_FULL deepseek/deepseek-chat 2 2 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 2 2 0.1
+
+PAGE_FULL google/gemini-2.5-flash-lite 2 1 0.1
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 3 2 0.6
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 3 1 0.6
+
+PAGE_FULL deepseek/deepseek-chat 3 1 0.2
+
+PAGE_FULL deepseek/deepseek-chat 3 2 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 3 2 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 3 1 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 4 1 0.6
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 4 2 0.6
+
+PAGE_FULL deepseek/deepseek-chat 4 1 0.4
+
+PAGE_FULL deepseek/deepseek-chat 4 2 0.4
+
+PAGE_FULL google/gemini-2.5-flash-lite 4 2 0.6
+
+PAGE_FULL google/gemini-2.5-flash-lite 4 1 0.7
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 5 2 0.4
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 5 1 0.4
+
+PAGE_FULL deepseek/deepseek-chat 5 1 0.4
+
+PAGE_FULL google/gemini-2.5-flash-lite 5 1 0.4
+
+PAGE_FULL deepseek/deepseek-chat 5 2 0.4
+
+PAGE_FULL google/gemini-2.5-flash-lite 5 2 0.4
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 6 1 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 6 2 0.2
+
+PAGE_FULL deepseek/deepseek-chat 6 1 0.2
+
+PAGE_FULL deepseek/deepseek-chat 6 2 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 6 1 0.0
+
+PAGE_FULL google/gemini-2.5-flash-lite 6 2 0.3
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 7 1 0.9
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 7 2 1.0
+
+PAGE_FULL google/gemini-2.5-flash-lite 7 1 1.0
+
+PAGE_FULL google/gemini-2.5-flash-lite 7 2 1.0
+
+PAGE_FULL deepseek/deepseek-chat 7 2 0.8
+
+PAGE_FULL deepseek/deepseek-chat 7 1 0.9
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 8 1 0.9
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 8 2 0.9
+
+PAGE_FULL deepseek/deepseek-chat 8 1 0.9
+
+PAGE_FULL google/gemini-2.5-flash-lite 8 1 0.1
+
+PAGE_FULL google/gemini-2.5-flash-lite 8 2 0.2
+
+PAGE_FULL deepseek/deepseek-chat 8 2 0.8
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 9 1 0.4
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 9 2 0.4
+
+PAGE_FULL deepseek/deepseek-chat 9 1 1.0
+
+PAGE_FULL deepseek/deepseek-chat 9 2 0.9
+
+PAGE_FULL google/gemini-2.5-flash-lite 9 1 0.9
+
+PAGE_FULL google/gemini-2.5-flash-lite 9 2 0.9
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 10 1 0.3
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 10 2 0.3
+
+PAGE_FULL deepseek/deepseek-chat 10 1 0.4
+
+PAGE_FULL deepseek/deepseek-chat 10 2 0.6
+
+PAGE_FULL google/gemini-2.5-flash-lite 10 1 0.3
+
+PAGE_FULL google/gemini-2.5-flash-lite 10 2 0.3
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 11 1 0.9
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 11 2 0.9
+
+PAGE_FULL deepseek/deepseek-chat 11 2 0.9
+
+PAGE_FULL deepseek/deepseek-chat 11 1 0.7
+
+PAGE_FULL google/gemini-2.5-flash-lite 11 1 0.8
+
+PAGE_FULL google/gemini-2.5-flash-lite 11 2 0.8
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 12 1 0.7
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 12 2 0.7
+
+PAGE_FULL deepseek/deepseek-chat 12 1 0.7
+
+PAGE_FULL deepseek/deepseek-chat 12 2 1.0
+
+PAGE_FULL 
+google/gemini-2.5-flash-lite 12 1 0.8
+PAGE_FULL google/gemini-2.5-flash-lite 12 2 0.7
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 13 1 1.0
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 13 2 0.6
+
+PAGE_FULL deepseek/deepseek-chat 13 2 1.0
+
+PAGE_FULL deepseek/deepseek-chat 13 1 0.8
+
+PAGE_FULL google/gemini-2.5-flash-lite 13 1 0.1
+
+PAGE_FULL google/gemini-2.5-flash-lite 13 2 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 14 1 0.1
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 14 2 0.1
+
+PAGE_FULL deepseek/deepseek-chat 14 1 0.2
+
+PAGE_FULL deepseek/deepseek-chat 14 2 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 14 1 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 14 2 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 15 1 0.1
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 15 2 0.1
+
+PAGE_FULL google/gemini-2.5-flash-lite 15 1 0.2
+
+PAGE_FULL deepseek/deepseek-chat 15 2 0.8
+
+PAGE_FULL deepseek/deepseek-chat 15 1 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 15 2 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 16 1 0.3
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 16 2 0.1
+
+PAGE_FULL deepseek/deepseek-chat 16 1 0.2
+
+PAGE_FULL deepseek/deepseek-chat 16 2 0.4
+
+PAGE_FULL google/gemini-2.5-flash-lite 16 1 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 17 1 1.0
+
+PAGE_FULL google/gemini-2.5-flash-lite 16 2 0.3
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 17 2 1.0
+
+PAGE_FULL deepseek/deepseek-chat 17 1 1.0
+
+PAGE_FULL google/gemini-2.5-flash-lite 17 1 1.0
+
+PAGE_FULL deepseek/deepseek-chat 17 2 0.9
+
+PAGE_FULL google/gemini-2.5-flash-lite 17 2 1.0
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 18 1 0.9
+
+PAGE_FULL deepseek/deepseek-chat 18 1 0.2
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 18 2 0.9
+
+PAGE_FULL deepseek/deepseek-chat 18 2 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 18 1 0.8
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 19 1 0.2
+
+PAGE_FULL google/gemini-2.5-flash-lite 18 2 0.8
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 19 2 0.6
+
+PAGE_FULL deepseek/deepseek-chat 19 1 0.7
+
+PAGE_FULL google/gemini-2.5-flash-lite 19 1 0.3
+
+PAGE_FULL deepseek/deepseek-chat 19 2 0.3
+
+PAGE_FULL google/gemini-2.5-flash-lite 19 2 0.8
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 20 1 0.2
+
+PAGE_FULL deepseek/deepseek-chat 20 1 0.1
+
+PAGE_FULL meta-llama/llama-3.1-70b-instruct 20 2 0.2
+
+PAGE_FULL deepseek/deepseek-chat 20 2 0.1
+
+PAGE_FULL google/gemini-2.5-flash-lite 20 1 0.1
+
+PAGE_FULL google/gemini-2.5-flash-lite 20 2 0.0
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 1 1 1.0
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 1 2 1.0
+
+SUB_TEXT deepseek/deepseek-chat 1 2 0.7
+
+SUB_TEXT deepseek/deepseek-chat 1 1 0.7
+
+SUB_TEXT google/gemini-2.5-flash-lite 1 1 1.0
+
+SUB_TEXT google/gemini-2.5-flash-lite 1 2 1.0
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 2 1 0.7
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 2 2 0.3
+
+SUB_TEXT deepseek/deepseek-chat 2 1 0.2
+
+SUB_TEXT deepseek/deepseek-chat 2 2 0.6
+
+SUB_TEXT google/gemini-2.5-flash-lite 2 2 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 2 1 0.3
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 3 1 1.0
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 3 2 0.3
+
+SUB_TEXT deepseek/deepseek-chat 3 2 1.0
+
+SUB_TEXT deepseek/deepseek-chat 3 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 3 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 3 2 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 4 1 0.6
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 4 2 0.6
+
+SUB_TEXT deepseek/deepseek-chat 4 1 0.6
+
+
+SUB_TEXT google/gemini-2.5-flash-lite 4 2 0.6
+SUB_TEXT google/gemini-2.5-flash-lite 4 1 0.6
+
+SUB_TEXT deepseek/deepseek-chat 4 2 0.7
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 5 1 1.0
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 5 2 1.0
+
+SUB_TEXT deepseek/deepseek-chat 5 1 1.0
+
+SUB_TEXT deepseek/deepseek-chat 5 2 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 5 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 5 2 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 6 1 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 6 2 0.9
+
+SUB_TEXT deepseek/deepseek-chat 6 1 1.0
+
+SUB_TEXT deepseek/deepseek-chat 6 2 1.0
+
+SUB_TEXT google/gemini-2.5-flash-lite 6 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 6 2 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 7 2 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 7 1 0.9
+
+SUB_TEXT deepseek/deepseek-chat 7 2 0.9
+
+SUB_TEXT deepseek/deepseek-chat 7 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 7 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 7 2 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 8 1 0.7
+
+SUB_TEXT deepseek/deepseek-chat 8 1 0.8
+
+SUB_TEXT deepseek/deepseek-chat 8 2 1.0
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 8 2 0.8
+
+SUB_TEXT google/gemini-2.5-flash-lite 8 1 0.8
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 9 1 0.4
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 9 2 1.0
+
+SUB_TEXT google/gemini-2.5-flash-lite 8 2 0.8
+
+SUB_TEXT google/gemini-2.5-flash-lite 9 1 0.9
+
+SUB_TEXT deepseek/deepseek-chat 9 2 0.9
+
+SUB_TEXT deepseek/deepseek-chat 9 1 0.9
+
+SUB_TEXT google/gemini-2.5-flash-lite 9 2 0.9
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 10 2 0.3
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 10 1 0.3
+
+SUB_TEXT deepseek/deepseek-chat 10 1 0.3
+
+SUB_TEXT deepseek/deepseek-chat 10 2 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 10 1 0.3
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 11 1 0.6
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 11 2 0.6
+
+SUB_TEXT google/gemini-2.5-flash-lite 10 2 0.3
+
+SUB_TEXT deepseek/deepseek-chat 11 2 0.3
+
+SUB_TEXT deepseek/deepseek-chat 11 1 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 11 1 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 11 2 0.6
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 12 1 0.3
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 12 2 0.3
+
+SUB_TEXT deepseek/deepseek-chat 12 2 0.4
+
+SUB_TEXT deepseek/deepseek-chat 12 1 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 12 1 0.2
+
+SUB_TEXT google/gemini-2.5-flash-lite 12 2 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 13 1 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 13 2 0.1
+
+SUB_TEXT deepseek/deepseek-chat 13 1 0.8
+
+SUB_TEXT deepseek/deepseek-chat 13 2 0.3
+
+SUB_TEXT google/gemini-2.5-flash-lite 13 1 0.1
+
+SUB_TEXT google/gemini-2.5-flash-lite 13 2 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 14 1 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 14 2 0.2
+
+SUB_TEXT deepseek/deepseek-chat 14 2 0.2
+
+SUB_TEXT deepseek/deepseek-chat 14 1 0.3
+
+SUB_TEXT google/gemini-2.5-flash-lite 14 1 0.1
+
+SUB_TEXT google/gemini-2.5-flash-lite 14 2 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 15 2 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 15 1 0.1
+
+SUB_TEXT deepseek/deepseek-chat 15 1 0.1
+
+SUB_TEXT deepseek/deepseek-chat 15 2 0.2
+
+SUB_TEXT google/gemini-2.5-flash-lite 15 2 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 16 1 0.2
+
+SUB_TEXT google/gemini-2.5-flash-lite 15 1 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 16 2 0.2
+
+SUB_TEXT deepseek/deepseek-chat 16 1 0.1
+
+SUB_TEXT google/gemini-2.5-flash-lite 16 1 0.8
+
+SUB_TEXT deepseek/deepseek-chat 16 2 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 17 1 0.6
+
+SUB_TEXT google/gemini-2.5-flash-lite 16 2 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 17 2 1.0
+
+SUB_TEXT deepseek/deepseek-chat 17 1 0.3
+
+SUB_TEXT deepseek/deepseek-chat 17 2 0.3
+
+SUB_TEXT google/gemini-2.5-flash-lite 17 1 0.2
+
+SUB_TEXT google/gemini-2.5-flash-lite 17 2 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 18 2 0.7
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 18 1 0.3
+
+
+SUB_TEXT deepseek/deepseek-chat 18 2 0.3
+SUB_TEXT deepseek/deepseek-chat 18 1 0.3
+
+SUB_TEXT google/gemini-2.5-flash-lite 18 2 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 18 1 0.4
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 19 1 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 19 2 0.3
+
+SUB_TEXT deepseek/deepseek-chat 19 1 0.3
+
+SUB_TEXT deepseek/deepseek-chat 19 2 0.3
+
+SUB_TEXT google/gemini-2.5-flash-lite 19 1 0.4
+
+SUB_TEXT google/gemini-2.5-flash-lite 19 2 0.2
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 20 1 0.1
+
+SUB_TEXT deepseek/deepseek-chat 20 1 0.1
+
+SUB_TEXT meta-llama/llama-3.1-70b-instruct 20 2 0.2
+
+SUB_TEXT deepseek/deepseek-chat 20 2 0.1
+
+SUB_TEXT google/gemini-2.5-flash-lite 20 1 0.2
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 1 1 1.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 1 2 1.0
+
+SUB_TEXT google/gemini-2.5-flash-lite 20 2 0.2
+
+SUB_OCRCAP deepseek/deepseek-chat 1 1 0.7
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 1 1 0.8
+
+SUB_OCRCAP deepseek/deepseek-chat 1 2 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 2 1 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 1 2 0.8
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 2 2 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 2 1 0.2
+
+SUB_OCRCAP deepseek/deepseek-chat 2 2 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 2 1 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 2 2 0.2
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 3 1 0.6
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 3 2 1.0
+
+SUB_OCRCAP deepseek/deepseek-chat 3 1 0.8
+
+SUB_OCRCAP deepseek/deepseek-chat 3 2 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 3 2 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 3 1 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 4 1 0.6
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 4 2 0.6
+
+SUB_OCRCAP deepseek/deepseek-chat 4 1 0.6
+
+SUB_OCRCAP deepseek/deepseek-chat 4 2 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 4 1 0.7
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 5 1 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 4 2 0.6
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 5 2 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 5 1 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 5 1 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 5 2 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 6 2 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 6 1 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 6 1 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 5 2 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 6 2 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 6 2 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 6 1 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 7 2 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 7 2 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 7 1 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 7 1 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 7 1 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 7 2 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 8 1 0.8
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 8 2 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 8 1 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 8 2 0.8
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 8 1 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 8 2 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 9 1 1.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 9 2 0.6
+
+SUB_OCRCAP deepseek/deepseek-chat 9 1 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 9 2 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 9 2 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 9 1 0.9
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 10 1 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 10 2 0.3
+
+SUB_OCRCAP deepseek/deepseek-chat 10 1 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 10 1 0.3
+
+SUB_OCRCAP deepseek/deepseek-chat 10 2 0.6
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 11 1 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 10 2 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 11 2 0.8
+
+SUB_OCRCAP deepseek/deepseek-chat 11 1 0.9
+
+SUB_OCRCAP deepseek/deepseek-chat 11 2 0.8
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 11 1 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 11 2 0.8
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 12 2 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 12 1 0.3
+
+SUB_OCRCAP deepseek/deepseek-chat 12 1 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 12 1 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 12 2 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 12 2 0.1
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 13 1 0.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 13 2 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 13 1 0.2
+
+SUB_OCRCAP deepseek/deepseek-chat 13 2 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 13 2 0.1
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 13 1 0.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 14 2 0.1
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 14 1 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 14 2 0.2
+
+SUB_OCRCAP deepseek/deepseek-chat 14 1 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 14 1 0.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 14 2 0.1
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 15 2 0.2
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 15 1 0.2
+
+SUB_OCRCAP deepseek/deepseek-chat 15 1 0.3
+
+SUB_OCRCAP deepseek/deepseek-chat 15 2 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 15 1 0.1
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 15 2 0.2
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 16 1 0.1
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 16 2 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 16 1 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 16 2 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 16 1 0.1
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 16 2 0.2
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 17 1 1.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 17 2 1.0
+
+SUB_OCRCAP deepseek/deepseek-chat 17 1 0.9
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 17 1 1.0
+
+SUB_OCRCAP deepseek/deepseek-chat 17 2 1.0
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 17 2 1.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 18 1 1.0
+
+SUB_OCRCAP deepseek/deepseek-chat 18 2 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 18 2 0.3
+
+SUB_OCRCAP deepseek/deepseek-chat 18 1 0.4
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 18 1 0.8
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 18 2 0.8
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 19 1 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 19 2 0.2
+
+SUB_OCRCAP deepseek/deepseek-chat 19 1 0.7
+
+SUB_OCRCAP deepseek/deepseek-chat 19 2 0.3
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 19 2 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 19 1 0.3
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 20 1 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 20 1 0.0
+
+SUB_OCRCAP meta-llama/llama-3.1-70b-instruct 20 2 0.1
+
+SUB_OCRCAP deepseek/deepseek-chat 20 2 0.1
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 20 1 0.2
+
+SUB_OCRCAP google/gemini-2.5-flash-lite 20 2 0.2
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 1 2 1.0
+
+SUB_FULL deepseek/deepseek-chat 1 2 0.6
+
+SUB_FULL google/gemini-2.5-flash-lite 1 2 0.9
+
+SUB_FULL deepseek/deepseek-chat 2 1 0.2
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 2 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 2 1 0.8
+
+SUB_FULL deepseek/deepseek-chat 2 2 0.2
+
+SUB_FULL google/gemini-2.5-flash-lite 2 1 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 2 2 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 3 1 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 3 2 1.0
+
+SUB_FULL deepseek/deepseek-chat 3 1 0.8
+
+SUB_FULL google/gemini-2.5-flash-lite 3 1 0.9
+
+SUB_FULL deepseek/deepseek-chat 3 2 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 3 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 4 1 0.7
+
+SUB_FULL deepseek/deepseek-chat 4 2 0.7
+
+SUB_FULL deepseek/deepseek-chat 4 1 0.6
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 4 2 0.6
+
+SUB_FULL google/gemini-2.5-flash-lite 4 1 0.7
+
+SUB_FULL google/gemini-2.5-flash-lite 4 2 0.6
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 5 1 1.0
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 5 2 1.0
+
+SUB_FULL deepseek/deepseek-chat 5 1 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 5 1 0.9
+
+SUB_FULL deepseek/deepseek-chat 5 2 0.9
+
+SUB_FULL google/gemini-2.5-flash-lite 5 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 6 1 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 6 2 0.9
+
+SUB_FULL deepseek/deepseek-chat 6 1 1.0
+
+SUB_FULL deepseek/deepseek-chat 6 2 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 6 1 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 7 1 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 7 2 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 6 2 0.9
+
+SUB_FULL deepseek/deepseek-chat 7 1 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 7 1 0.9
+
+SUB_FULL google/gemini-2.5-flash-lite 7 2 0.9
+
+SUB_FULL deepseek/deepseek-chat 7 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 8 1 0.8
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 8 2 0.8
+
+SUB_FULL deepseek/deepseek-chat 8 1 0.4
+
+SUB_FULL deepseek/deepseek-chat 8 2 0.8
+
+SUB_FULL google/gemini-2.5-flash-lite 8 1 0.7
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 9 1 1.0
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 9 2 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 8 2 0.8
+
+SUB_FULL deepseek/deepseek-chat 9 1 0.9
+
+SUB_FULL google/gemini-2.5-flash-lite 9 1 0.9
+
+SUB_FULL deepseek/deepseek-chat 9 2 0.9
+
+SUB_FULL google/gemini-2.5-flash-lite 9 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 10 2 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 10 1 0.3
+
+SUB_FULL deepseek/deepseek-chat 10 1 0.4
+
+SUB_FULL deepseek/deepseek-chat 10 2 0.6
+
+SUB_FULL google/gemini-2.5-flash-lite 10 1 0.3
+
+SUB_FULL google/gemini-2.5-flash-lite 10 2 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 11 1 0.7
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 11 2 0.8
+
+SUB_FULL deepseek/deepseek-chat 11 1 1.0
+
+SUB_FULL deepseek/deepseek-chat 11 2 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 11 2 0.7
+
+SUB_FULL google/gemini-2.5-flash-lite 11 1 0.4
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 12 1 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 12 2 0.4
+
+SUB_FULL deepseek/deepseek-chat 12 1 0.4
+
+SUB_FULL deepseek/deepseek-chat 12 2 0.6
+
+SUB_FULL google/gemini-2.5-flash-lite 12 1 0.2
+
+SUB_FULL google/gemini-2.5-flash-lite 12 2 0.1
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 13 2 0.9
+
+SUB_FULL deepseek/deepseek-chat 13 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 14 1 0.3
+
+SUB_FULL google/gemini-2.5-flash-lite 13 2 0.9
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 14 2 0.0
+
+SUB_FULL deepseek/deepseek-chat 14 1 0.2
+
+SUB_FULL 
+google/gemini-2.5-flash-lite 14 1 0.1
+SUB_FULL deepseek/deepseek-chat 14 2 0.2
+
+SUB_FULL google/gemini-2.5-flash-lite 14 2 0.1
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 15 1 0.1
+
+SUB_FULL deepseek/deepseek-chat 15 1 0.2
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 15 2 0.2
+
+SUB_FULL deepseek/deepseek-chat 15 2 0.2
+
+SUB_FULL google/gemini-2.5-flash-lite 15 1 0.2
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 16 1 0.2
+
+SUB_FULL google/gemini-2.5-flash-lite 15 2 0.0
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 16 2 0.2
+
+
+SUB_FULL deepseek/deepseek-chat 16 2 0.2
+SUB_FULL deepseek/deepseek-chat 16 1 0.2
+
+SUB_FULL google/gemini-2.5-flash-lite 16 1 0.1
+
+SUB_FULL google/gemini-2.5-flash-lite 16 2 0.1
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 17 1 1.0
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 17 2 1.0
+
+SUB_FULL deepseek/deepseek-chat 17 1 0.9
+
+SUB_FULL deepseek/deepseek-chat 17 2 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 17 1 0.8
+
+SUB_FULL google/gemini-2.5-flash-lite 17 2 0.8
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 18 1 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 18 2 0.8
+
+SUB_FULL deepseek/deepseek-chat 18 1 0.4
+
+SUB_FULL deepseek/deepseek-chat 18 2 0.4
+
+SUB_FULL google/gemini-2.5-flash-lite 18 1 0.3
+
+SUB_FULL google/gemini-2.5-flash-lite 18 2 0.8
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 19 2 0.2
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 19 1 0.3
+
+SUB_FULL deepseek/deepseek-chat 19 1 0.3
+
+SUB_FULL deepseek/deepseek-chat 19 2 0.3
+
+SUB_FULL google/gemini-2.5-flash-lite 19 1 0.3
+
+SUB_FULL google/gemini-2.5-flash-lite 19 2 0.3
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 20 1 0.1
+
+SUB_FULL meta-llama/llama-3.1-70b-instruct 20 2 0.1
+
+SUB_FULL deepseek/deepseek-chat 20 1 0.1
+
+SUB_FULL deepseek/deepseek-chat 20 2 0.1
+
+SUB_FULL google/gemini-2.5-flash-lite 20 1 0.1
+
+FT meta-llama/llama-3.1-70b-instruct 1 1 1.0
+
+SUB_FULL google/gemini-2.5-flash-lite 20 2 0.1
+
+FT meta-llama/llama-3.1-70b-instruct 1 2 1.0
+
+FT deepseek/deepseek-chat 1 1 0.3
+
+FT deepseek/deepseek-chat 1 2 0.6
+
+FT google/gemini-2.5-flash-lite 1 2 1.0
+
+FT google/gemini-2.5-flash-lite 1 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 2 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 2 2 1.0
+
+FT deepseek/deepseek-chat 2 1 1.0
+
+FT deepseek/deepseek-chat 2 2 0.9
+
+FT google/gemini-2.5-flash-lite 2 1 1.0
+
+FT google/gemini-2.5-flash-lite 2 2 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 3 1 0.6
+
+FT deepseek/deepseek-chat 3 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 3 2 0.6
+
+FT deepseek/deepseek-chat 3 2 0.9
+
+FT google/gemini-2.5-flash-lite 3 1 0.9
+
+FT google/gemini-2.5-flash-lite 3 2 0.9
+
+FT meta-llama/llama-3.1-70b-instruct 4 1 0.9
+
+FT deepseek/deepseek-chat 4 1 0.7
+
+FT google/gemini-2.5-flash-lite 4 1 0.9
+
+FT meta-llama/llama-3.1-70b-instruct 4 2 1.0
+
+FT deepseek/deepseek-chat 4 2 0.9
+
+FT google/gemini-2.5-flash-lite 4 2 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 5 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 5 2 1.0
+
+FT deepseek/deepseek-chat 5 1 1.0
+
+FT deepseek/deepseek-chat 5 2 0.9
+
+FT google/gemini-2.5-flash-lite 5 1 1.0
+
+FT google/gemini-2.5-flash-lite 5 2 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 6 2 0.2
+
+FT deepseek/deepseek-chat 6 1 0.9
+
+FT meta-llama/llama-3.1-70b-instruct 6 1 0.2
+
+FT deepseek/deepseek-chat 6 2 0.9
+
+FT meta-llama/llama-3.1-70b-instruct 7 1 1.0
+
+FT google/gemini-2.5-flash-lite 6 1 1.0
+
+FT google/gemini-2.5-flash-lite 6 2 0.9
+
+FT meta-llama/llama-3.1-70b-instruct 7 2 1.0
+
+FT google/gemini-2.5-flash-lite 7 1 1.0
+
+FT deepseek/deepseek-chat 7 2 1.0
+
+FT deepseek/deepseek-chat 7 1 0.9
+
+FT google/gemini-2.5-flash-lite 7 2 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 8 1 0.3
+
+FT deepseek/deepseek-chat 8 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 8 2 0.8
+
+FT deepseek/deepseek-chat 8 2 0.4
+
+FT google/gemini-2.5-flash-lite 8 1 0.3
+
+FT meta-llama/llama-3.1-70b-instruct 9 2 0.3
+
+FT meta-llama/llama-3.1-70b-instruct 9 1 0.3
+
+FT google/gemini-2.5-flash-lite 8 2 0.4
+
+FT deepseek/deepseek-chat 9 1 0.8
+
+FT google/gemini-2.5-flash-lite 9 1 0.9
+
+FT google/gemini-2.5-flash-lite 9 2 0.9
+
+FT deepseek/deepseek-chat 9 2 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 10 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 10 2 1.0
+
+FT deepseek/deepseek-chat 10 1 0.8
+
+FT deepseek/deepseek-chat 10 2 0.6
+
+FT google/gemini-2.5-flash-lite 10 1 0.7
+
+FT google/gemini-2.5-flash-lite 10 2 0.8
+
+FT meta-llama/llama-3.1-70b-instruct 11 1 0.4
+
+FT meta-llama/llama-3.1-70b-instruct 11 2 0.3
+
+FT deepseek/deepseek-chat 11 1 0.4
+
+FT google/gemini-2.5-flash-lite 11 1 0.7
+
+FT deepseek/deepseek-chat 11 2 0.4
+
+FT google/gemini-2.5-flash-lite 11 2 0.7
+
+FT meta-llama/llama-3.1-70b-instruct 12 1 0.2
+
+FT meta-llama/llama-3.1-70b-instruct 12 2 0.6
+
+FT deepseek/deepseek-chat 12 1 0.7
+
+FT deepseek/deepseek-chat 12 2 0.7
+
+FT google/gemini-2.5-flash-lite 12 1 0.8
+
+FT google/gemini-2.5-flash-lite 12 2 0.8
+
+FT meta-llama/llama-3.1-70b-instruct 13 1 0.3
+
+FT meta-llama/llama-3.1-70b-instruct 13 2 0.1
+
+FT deepseek/deepseek-chat 13 2 0.5
+
+FT google/gemini-2.5-flash-lite 13 1 0.2
+
+FT deepseek/deepseek-chat 13 1 0.4
+
+FT google/gemini-2.5-flash-lite 13 2 0.1
+
+FT meta-llama/llama-3.1-70b-instruct 14 1 0.5
+
+FT meta-llama/llama-3.1-70b-instruct 14 2 0.3
+
+FT deepseek/deepseek-chat 14 1 0.2
+
+FT deepseek/deepseek-chat 14 2 0.6
+
+FT google/gemini-2.5-flash-lite 14 1 0.3
+
+FT google/gemini-2.5-flash-lite 14 2 0.2
+
+FT meta-llama/llama-3.1-70b-instruct 15 1 0.2
+
+FT meta-llama/llama-3.1-70b-instruct 15 2 0.2
+
+FT deepseek/deepseek-chat 15 1 0.4
+
+FT deepseek/deepseek-chat 15 2 0.2
+
+FT google/gemini-2.5-flash-lite 15 1 0.4
+
+FT google/gemini-2.5-flash-lite 15 2 0.4
+
+FT meta-llama/llama-3.1-70b-instruct 16 1 0.2
+
+FT meta-llama/llama-3.1-70b-instruct 16 2 0.0
+
+
+FT deepseek/deepseek-chat 16 2 0.3
+FT deepseek/deepseek-chat 16 1 0.6
+
+
+FT google/gemini-2.5-flash-lite 16 1 0.3
+FT google/gemini-2.5-flash-lite 16 2 0.2
+
+FT meta-llama/llama-3.1-70b-instruct 17 2 0.7
+
+FT meta-llama/llama-3.1-70b-instruct 17 1 0.3
+
+FT deepseek/deepseek-chat 17 2 1.0
+
+FT deepseek/deepseek-chat 17 1 0.9
+
+FT google/gemini-2.5-flash-lite 17 1 1.0
+
+FT google/gemini-2.5-flash-lite 17 2 0.9
+
+FT meta-llama/llama-3.1-70b-instruct 18 2 0.2
+
+FT meta-llama/llama-3.1-70b-instruct 18 1 0.2
+
+FT deepseek/deepseek-chat 18 2 1.0
+
+FT google/gemini-2.5-flash-lite 18 2 1.0
+
+FT google/gemini-2.5-flash-lite 18 1 0.7
+
+FT deepseek/deepseek-chat 18 1 1.0
+
+FT meta-llama/llama-3.1-70b-instruct 19 1 0.0
+
+FT meta-llama/llama-3.1-70b-instruct 19 2 0.0
+
+FT deepseek/deepseek-chat 19 1 0.2
+
+FT deepseek/deepseek-chat 19 2 0.2
+
+FT google/gemini-2.5-flash-lite 19 1 0.3
+
+FT google/gemini-2.5-flash-lite 19 2 0.8
+
+FT meta-llama/llama-3.1-70b-instruct 20 2 0.0
+
+FT meta-llama/llama-3.1-70b-instruct 20 1 0.0
+
+FT deepseek/deepseek-chat 20 1 0.0
+
+FT deepseek/deepseek-chat 20 2 0.1
+
+FT google/gemini-2.5-flash-lite 20 2 0.0
+
+FT google/gemini-2.5-flash-lite 20 1 0.1

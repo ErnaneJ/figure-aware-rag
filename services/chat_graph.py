@@ -1,22 +1,48 @@
 from langgraph.graph import StateGraph
 import re
-from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_core.runnables import RunnableLambda
 from langchain_google_genai import ChatGoogleGenerativeAI
+from openai import AzureOpenAI
+
+from types import SimpleNamespace
 
 from pathlib import Path
 from indexing.retriever import retrieve_relevant_chunks
 from db.queries import get_chat_messages
 import os
+import httpx
+
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def get_api_key(provider):
+    """Obtém a chave API baseada no provedor"""
+    provider_keys = {
+        'openai': 'OPENAI_API_KEY',
+        'gemini': 'GEMINI_API_KEY', 
+        'ollama': 'OLLAMA_API_KEY',
+        'azure-petrobras': 'AZURE_PETROBRAS_API_KEY'
+    }
+    
+    key_name = provider_keys.get(provider)
+    if not key_name:
+        raise ValueError(f"Provedor '{provider}' não suportado")
+    
+    api_key = os.getenv(key_name)
+    if not api_key and provider != 'ollama':  # Ollama pode não precisar de chave
+        raise ValueError(f"{key_name} necessário para uso com {provider}")
+    
+    return api_key
 
 def get_llm_chat():
     provider = os.getenv("LLM_PROVIDER_CHAT", "gemini").lower()
     model = os.getenv("LLM_MODEL_CHAT", "gemini-2.0-flash")
-    api_key = os.getenv("LLM_API_KEY_CHAT", "")
+    api_key = get_api_key(provider)
 
     if provider == "gemini":
-        if not api_key:
-            raise ValueError("LLM_API_KEY_CHAT necessário para uso com Gemini.")
+        logger.info("[ℹ️ Chat LLM] Usando Gemini LLM para chat.")
         return ChatGoogleGenerativeAI(
             model=model,
             google_api_key=api_key,
@@ -24,6 +50,7 @@ def get_llm_chat():
         )
 
     elif provider == "ollama":
+        logger.info("[ℹ️ Chat LLM] Usando Ollama LLM para chat.")
         from langchain_ollama import OllamaLLM
 
         return OllamaLLM(
@@ -32,11 +59,48 @@ def get_llm_chat():
             temperature=0.3
         )
 
+    elif provider == "openai":
+        logger.info(f"[ℹ️ Chat LLM] Usando OpenAI/OpenRouter LLM: {model}")
+        from langchain_openai import ChatOpenAI
+        
+        base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        
+        return ChatOpenAI(
+            model=model,
+            api_key=api_key,
+            base_url=base_url,
+            temperature=0.3
+        )
+
+    elif provider == "azure-petrobras":
+        logger.info("[ℹ️ Chat LLM] Usando Azure Petrobras LLM para chat.")
+        
+        azure_base_url = os.getenv("AZURE_PETROBRAS_BASE_URL", "")
+        api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
+        
+        if not azure_base_url:
+            raise ValueError("AZURE_PETROBRAS_BASE_URL necessário para uso com Azure Petrobras.")
+
+        http_client = None
+        ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
+        if os.path.exists(ca_cert_path):
+            http_client = httpx.Client(verify=ca_cert_path)
+            logger.info(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
+        else:
+            logger.info(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
+
+        return AzureOpenAI(
+            api_key=api_key,
+            api_version=api_version,
+            base_url=azure_base_url,
+            http_client=http_client,
+        )
+
     else:
         raise ValueError(f"LLM_PROVIDER_CHAT '{provider}' não suportado.")
 
 def fetch_context(state):
-    print("Fetching context for chat...")
+    logger.info("Fetching context for chat...")
     chat_id = state["chat_id"]
     question = state["question"]
 
@@ -53,10 +117,29 @@ def fetch_context(state):
 
     all_docs = []
     for file_hash in file_hashes:
-        docs = retrieve_relevant_chunks(file_hash, question, k=10)
-        all_docs.extend(docs)
+        text_docs, image_docs = retrieve_relevant_chunks(file_hash, question, k=5)
+        all_docs.extend(text_docs)
+        all_docs.extend(image_docs)
 
-    print(f"Found {len(all_docs)} relevant documents for chat ID {chat_id}.")
+    seen = set()
+    unique_docs = []
+
+    for d in all_docs:
+        key = (d.metadata.get("filename"), d.metadata.get("page_number"), d.page_content[:50])
+        if key not in seen:
+            seen.add(key)
+            unique_docs.append(d)
+
+    all_docs = unique_docs
+
+    logger.info(
+        f"Contexto recuperado: {len(all_docs)} documentos para a pergunta '{question}' no chat_id '{chat_id}'.",
+    )
+    logger.info(
+        f"Documentos recuperados: {[d.metadata.get('filename') for d in all_docs]}",
+    )
+    # logger.info(all_docs)
+
     return {
         "chat_id": chat_id,
         "question": question,
@@ -65,37 +148,83 @@ def fetch_context(state):
     }
 
 def build_prompt_and_run_llm(state):
-    from llm.generator import build_prompt
+    try:
+        from llm.generator import build_prompt
 
-    print("Building prompt and invoking LLM...")
+        logger.info("Building prompt and invoking LLM...")
 
-    llm = get_llm_chat()
+        llm = get_llm_chat()
 
-    text_docs = [d for d in state["docs"] if d.metadata.get("source") == "text"]
-    image_docs = [d for d in state["docs"] if d.metadata.get("source") == "image"]
+        text_docs = [d for d in state["docs"] if d.metadata.get("source") == "text"]
+        image_docs = [d for d in state["docs"] if d.metadata.get("source") == "image"]
 
-    prompt = build_prompt(state["question"], text_docs, image_docs)
+        prompt = build_prompt(state["question"], text_docs, image_docs)
 
-    messages = state["memory"] + [HumanMessage(content=prompt)]
-    response = llm.invoke(messages)
+        response = None
+        if isinstance(llm, AzureOpenAI):
+            memory_in_adapted_format = [
+                (
+                    m if isinstance(m, dict) else 
+                    {
+                        "role":
+                            "user" if isinstance(m, HumanMessage) else 
+                            "assistant" if isinstance(m, AIMessage) else 
+                            "system",
 
-    answer = ""
-    think = ""
-    if response.__class__ is str:
-        think = re.search(r"<think>(.*?)</think>", response, re.DOTALL)
-        think = think.group(1).strip() if think else ""
-        answer = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
-    else:
-        answer = response.content.strip()
+                        "content":
+                            (
+                                [{"type": "text", "text": m.content}] if isinstance(m, HumanMessage) or isinstance(m, AIMessage) else
+                                m.content
+                            )
+                    }
+                )
+                for m in state["memory"]
+            ]
 
-    print(f"LLM response: {answer}")
-    return {
-        "chat_id": state["chat_id"],
-        "answer": answer,
-        "think": think,
-        "text_docs": text_docs,
-        "image_docs": image_docs
-    }
+            messages = memory_in_adapted_format + [{"role": "user", "content": [{ "type": "text", "text": prompt}]}]
+            response = llm.chat.completions.create(
+                model=os.getenv("LLM_MODEL_CHAT", "o4-mini-petrobras"),
+                messages=messages,
+                temperature=1,
+                max_completion_tokens=10000,
+                frequency_penalty=0,
+                presence_penalty=0,
+            )
+            
+            response = SimpleNamespace(**{'content': response.choices[0].message.content})
+        else:
+            messages = state["memory"] + [HumanMessage(content=prompt)]
+            response = llm.invoke(messages)
+
+        answer = ""
+        think = ""
+        if response.__class__ is str:
+            think = re.search(r"<think>(.*?)</think>", response, re.DOTALL)
+            think = think.group(1).strip() if think else ""
+            answer = re.sub(r"<think>.*?</think>", "", response, flags=re.DOTALL).strip()
+        else:
+            answer = response.content.strip()
+
+        logger.info(f"LLM response: {answer}")
+        return {
+            "chat_id": state["chat_id"],
+            "answer": answer,
+            "think": think,
+            "text_docs": text_docs,
+            "image_docs": image_docs,
+            "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
+            "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
+        }
+    except Exception as e:
+        return {
+            "chat_id": state["chat_id"],
+            "answer": f"Desculpe, ocorreu um erro ao processar sua solicitação. Erro: {str(e)}",
+            "think": "...",
+            "text_docs": [],
+            "image_docs": [],
+            "llm_model": os.getenv("LLM_MODEL_CHAT", "unknown").lower(),
+            "llm_provider": os.getenv("LLM_PROVIDER_CHAT", "unknown").lower(),
+        }
 
 def build_chat_graph(save_workflow: bool = False):
     builder = StateGraph(state_schema=dict)
@@ -117,7 +246,6 @@ def build_chat_graph(save_workflow: bool = False):
         image_data = graph.get_graph().draw_mermaid_png()
         with open(graph_path, "wb") as f:
             f.write(image_data)
-        print(f"🖼️ Grafo salvo em: {graph_path}")
+        logger.info(f"🖼️ Grafo salvo em: {graph_path}")
 
     return graph
-

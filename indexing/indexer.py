@@ -4,8 +4,41 @@ from langchain_core.documents import Document
 from db.database import SessionLocal
 from db.models import Page, File, Image
 from pathlib import Path
+import os
+
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transformers/all-MiniLM-L6-v2")
+
+MAX_PAGE_CHARS = 1800     # ~1200 tokens, used only with TEXT_CHUNKING=page
+MAX_OCR_CHARS = 600       # ~400 tokens
+
+# "subpage" (default): whole page text split into overlapping windows cut at whitespace.
+# "page": one chunk per page holding its first MAX_PAGE_CHARS characters (original behavior).
+TEXT_CHUNKING = os.getenv("TEXT_CHUNKING", "subpage")
+CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "800"))
+CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "200"))
+
+
+def split_page(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP):
+    """Split text into windows of about `size` characters with `overlap` characters shared
+    between neighbors. Cuts fall on whitespace when possible. Returns (start, end, chunk) tuples."""
+    spans = []
+    start = 0
+    while start < len(text):
+        end = min(len(text), start + size)
+        if end < len(text):
+            cut = text.rfind(" ", start + size // 2, end)
+            end = cut if cut > 0 else end
+        spans.append((start, end, text[start:end].strip()))
+        if end >= len(text):
+            break
+        start = max(end - overlap, start + 1)
+        sp = text.find(" ", start)
+        start = sp + 1 if 0 <= sp < end else start
+    return spans
 
 def index_file(file_hash: str):
     db = SessionLocal()
@@ -15,28 +48,45 @@ def index_file(file_hash: str):
     db.close()
 
     if not file:
-        print(f"❌ Arquivo {file_hash} não encontrado.")
+        logger.info(f"❌ Arquivo {file_hash} não encontrado.")
         return
 
     docs = []
 
     for page in pages:
-        metadata = {
-            "file_hash": file_hash,
-            "filename": file.filename,
-            "page_number": page.page_number,
-            "source": "text"
-        }
-        docs.append(Document(page_content=page.text, metadata=metadata))
+        text = (page.text or "").strip()
+        if not text:
+            continue
+
+        if TEXT_CHUNKING == "page":
+            spans = [(0, min(len(text), MAX_PAGE_CHARS), text[:MAX_PAGE_CHARS])]
+        else:
+            spans = split_page(text)
+
+        for start, end, chunk in spans:
+            metadata = {
+                "file_hash": file_hash,
+                "filename": file.filename,
+                "page_number": page.page_number,
+                "char_start": start,
+                "char_end": end,
+                "char_count": len(chunk),
+                "source": "text"
+            }
+
+            docs.append(Document(page_content=chunk, metadata=metadata))
 
     for image in images:
         parts = []
+
         if image.caption:
-            parts.append(f"Legenda: {image.caption}")
+            parts.append(f"Legenda: {image.caption[:300]}")
+
         if image.ocr_text:
-            parts.append(f"OCR: {image.ocr_text}")
+            parts.append(f"OCR: {image.ocr_text[:MAX_OCR_CHARS]}")
+
         if hasattr(image, "llm_description") and image.llm_description:
-            parts.append(f"Descrição IA: {image.llm_description}")
+            parts.append(f"Descrição IA: {image.llm_description[:400]}")
 
         content = "\n".join(parts).strip()
         if not content:
@@ -62,7 +112,7 @@ def index_file(file_hash: str):
         docs.append(Document(page_content=content, metadata=metadata))
 
     if not docs:
-        print(f"⚠️ Nenhum conteúdo indexável encontrado para o arquivo {file_hash}")
+        logger.info(f"⚠️ Nenhum conteúdo indexável encontrado para o arquivo {file_hash}")
         return
 
     index_path = Path("files") / file_hash / "vectorstore"
@@ -71,4 +121,4 @@ def index_file(file_hash: str):
     vectorstore = FAISS.from_documents(docs, embedding_model)
     vectorstore.save_local(str(index_path))
 
-    print(f"✅ Índice vetorial unificado salvo em: {index_path}")
+    logger.info(f"✅ Índice vetorial unificado salvo em: {index_path}")

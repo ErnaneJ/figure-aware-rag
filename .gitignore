@@ -6,3 +6,10 @@ files/
 test.py
 local_models/
 .venv
+*.pem
+# Third-party source document (copyrighted, SEG). Download via DOI 10.1190/1.2098670
+experiments/gsgpy_70_5_3SO.pdf
+# Rebuilt from the PDF by experiments/revision2/rebuild_records.py
+experiments/revision2/records.json
+# DeepEval local cache
+.deepeval/

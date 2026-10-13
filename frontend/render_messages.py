@@ -12,7 +12,7 @@ def stream_response_data(text: str):
 def render_answer_with_images(message: ChatMessage, container=None, streaming=False):
     db = SessionLocal()
     cursor = 0
-    for match in re.finditer(r"\{\{IMAGE:(\d+)\}\}", message.content):
+    for match in re.finditer(r"\{\{?IMAGE:(\d+)\}?\}", message.content):
         start, end = match.span()
 
         # Text
@@ -45,6 +45,7 @@ def render_answer_with_images(message: ChatMessage, container=None, streaming=Fa
         else:
             container.write(after)
 
+    container.write(f"🚀 _Powered by {message.llm_provider or 'unknown'} - {message.llm_model or 'unknown'}_.")
     db.close()
 
 def render_chat_history(messages):

@@ -1,0 +1,47 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+n=40 spearman=0.94 (p=9.9e-19) mean_old=0.458 mean_new=0.540 MAD=0.102 exact=0.40
+                   score_correctness  rescore
+cond     category                            
+baseline text                   0.61     0.72
+         visual                 0.30     0.35
+papyrus  text                   0.48     0.59
+         visual                 0.44     0.50

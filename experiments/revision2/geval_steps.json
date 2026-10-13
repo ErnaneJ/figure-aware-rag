@@ -1,0 +1,6 @@
+[
+ "Compare the Actual Output to the Expected Output (Ground Truth) for factual accuracy.",
+ "Check if the Actual Output fully addresses all aspects of the Expected Output.",
+ "Identify any missing, incorrect, or extra information in the Actual Output compared to the Expected Output.",
+ "Assign a rating from 1 to 5 based on how factually correct and complete the Actual Output is relative to the Expected Output."
+]

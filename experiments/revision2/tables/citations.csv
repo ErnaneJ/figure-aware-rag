@@ -1,0 +1,9 @@
+,has_source,has_source,correct_page,correct_page
+category,text,visual,text,visual
+condition,,,,
+FT,0.7,0.7,0.317,0.15
+PAGE_TEXT,0.9,0.85,0.333,0.217
+PAGE_FULL,0.967,0.867,0.3,0.633
+SUB_TEXT,1.0,0.817,0.583,0.2
+SUB_OCRCAP,1.0,0.733,0.6,0.383
+SUB_FULL,1.0,0.817,0.55,0.517

@@ -1,0 +1,12 @@
+==================================================
+📊 TABLE: DATA INGESTION PIPELINE METRICS
+==================================================
+| Metric | Value | Description |
+| :--- | :--- | :--- |
+| **Document Size** | 33 MB | Technical Geological PDF |
+| **Total Pages** | 26 | Full text and structural layouts extracted |
+| **Total Images** | 33 | Complex seismic charts, diagrams, and maps |
+| **Vision Model** | Gemini 2.5 Flash | Used for Image-to-Text captioning |
+| **Total Pipeline Time** | 12.53 minutes | One-time asynchronous processing cost |
+| **Average Time per Image**| ~22.7 seconds | Includes layout detection, OCR, and AI captioning |
+==================================================

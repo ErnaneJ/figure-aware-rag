@@ -1,0 +1,41 @@
+model,id,iteration,cond,category,score_correctness,rescore
+openai/gpt-4o,10,3,baseline,text,0.3,0.7
+meta-llama/llama-3.1-70b-instruct,6,1,baseline,text,0.1,0.2
+meta-llama/llama-3.1-70b-instruct,3,2,baseline,text,0.2,0.2
+google/gemini-2.5-flash-lite-preview-09-2025,5,1,baseline,text,0.9,1.0
+anthropic/claude-3.5-sonnet,8,2,baseline,text,0.3,0.3
+meta-llama/llama-3.1-70b-instruct,3,3,baseline,text,0.9,1.0
+google/gemini-2.5-flash-lite-preview-09-2025,4,2,baseline,text,0.8,1.0
+deepseek/deepseek-chat,7,2,baseline,text,0.8,0.8
+meta-llama/llama-3.1-70b-instruct,1,3,baseline,text,1.0,1.0
+google/gemini-2.5-flash-lite-preview-09-2025,4,1,baseline,text,0.8,1.0
+google/gemini-2.5-flash-lite-preview-09-2025,18,3,baseline,visual,0.8,1.0
+google/gemini-2.5-flash-lite-preview-09-2025,13,2,baseline,visual,0.1,0.1
+meta-llama/llama-3.1-70b-instruct,19,3,baseline,visual,0.2,0.6
+deepseek/deepseek-chat,20,1,baseline,visual,0.0,0.0
+meta-llama/llama-3.1-70b-instruct,20,2,baseline,visual,0.0,0.0
+deepseek/deepseek-chat,16,2,baseline,visual,0.6,0.6
+google/gemini-2.5-flash-lite-preview-09-2025,19,2,baseline,visual,0.2,0.2
+openai/gpt-4o,15,1,baseline,visual,0.2,0.0
+anthropic/claude-3.5-sonnet,11,3,baseline,visual,0.8,1.0
+anthropic/claude-3.5-sonnet,20,2,baseline,visual,0.1,0.0
+Papyrus + openai/gpt-4o,8,2,papyrus,text,0.3,0.9
+Papyrus + deepseek/deepseek-chat,7,3,papyrus,text,0.8,0.9
+Papyrus + meta-llama/llama-3.1-70b-instruct,5,1,papyrus,text,0.3,0.4
+Papyrus + deepseek/deepseek-chat,5,1,papyrus,text,0.3,0.3
+Papyrus + deepseek/deepseek-chat,3,3,papyrus,text,0.2,0.2
+Papyrus + meta-llama/llama-3.1-70b-instruct,9,3,papyrus,text,0.8,1.0
+Papyrus + openai/gpt-4o,4,2,papyrus,text,0.7,0.6
+Papyrus + google/gemini-2.5-flash-lite-preview-09-2025,4,2,papyrus,text,0.3,0.4
+Papyrus + anthropic/claude-3.5-sonnet,7,3,papyrus,text,0.7,0.8
+Papyrus + anthropic/claude-3.5-sonnet,8,1,papyrus,text,0.4,0.4
+Papyrus + google/gemini-2.5-flash-lite-preview-09-2025,19,1,papyrus,visual,0.2,0.3
+Papyrus + anthropic/claude-3.5-sonnet,15,1,papyrus,visual,0.1,0.2
+Papyrus + google/gemini-2.5-flash-lite-preview-09-2025,20,3,papyrus,visual,0.0,0.0
+Papyrus + meta-llama/llama-3.1-70b-instruct,15,1,papyrus,visual,0.0,0.1
+Papyrus + meta-llama/llama-3.1-70b-instruct,11,1,papyrus,visual,0.8,0.8
+Papyrus + openai/gpt-4o,13,3,papyrus,visual,0.7,0.7
+Papyrus + anthropic/claude-3.5-sonnet,17,2,papyrus,visual,0.8,0.8
+Papyrus + deepseek/deepseek-chat,12,3,papyrus,visual,0.7,0.8
+Papyrus + openai/gpt-4o,19,3,papyrus,visual,0.2,0.3
+Papyrus + openai/gpt-4o,17,3,papyrus,visual,0.9,1.0

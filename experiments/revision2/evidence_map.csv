@@ -1,0 +1,21 @@
+id,category,ref,pdf_page,offset,overlap,page_len,beyond_1800
+1,text,Pg. 03,1,208,0.83,3538,False
+2,text,Pg. 04,2,109,0.78,7428,False
+3,text,Pg. 04,2,3807,0.91,7428,True
+4,text,Pg. 05,3,102,0.92,3986,False
+5,text,Pg. 06,4,4561,1.0,6916,True
+6,text,Pg. 06,4,5973,0.93,6916,True
+7,text,Pg. 08,6,1186,1.0,3415,False
+8,text,Pg. 14,12,2019,1.0,6910,True
+9,text,Pg. 15,13,1424,1.0,3976,False
+10,text,Pg. 17,15,1363,0.92,4519,False
+11,visual,Pg. 05. Fig. 001,19,2349,0.5,3776,True
+12,visual,Pg. 10. Fig. 010,8,0,0.53,3626,False
+13,visual,Pg. 10. Fig. 11A,12,4469,0.15,6910,True
+14,visual,Pg. 10. Fig. 11B,13,2150,0.2,3976,True
+15,visual,Pg. 10. Fig. 12A,8,1755,0.36,3626,False
+16,visual,Pg. 10. Fig. 12B,4,4198,0.31,6916,True
+17,visual,Pg. 05. Fig. 001,4,2738,1.0,6916,True
+18,visual,Pg. 05. Fig. 001,9,3241,1.0,4858,True
+19,visual,Pg. 05. Fig. 001,2,2900,0.33,7428,True
+20,visual,Pg. 05. Fig. 001,7,3378,1.0,3955,True

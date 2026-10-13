@@ -1,0 +1,301 @@
+generation_id,created_at,cost_total,cost_web_search,cost_cache,cost_file_processing,byok_usage_inference,tokens_prompt,tokens_completion,tokens_reasoning,tokens_cached,model_permaslug,provider_name,variant,cancelled,streamed,user,finish_reason_raw,finish_reason_normalized,generation_time_ms,time_to_first_token_ms,app_name,api_key_name
+gen-1771635326-lNR17vL0RkD1yBNZHzZy,2026-02-21 00:55:26.141,0.003417,,-0.00272,0,0,2195,65,0,2176,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1344,474,,Papyrus
+gen-1771635324-96v7VxaTJJ7GvKnu7fJE,2026-02-21 00:55:24.833,0.006017,,,0,0,2195,53,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1153,556,,Papyrus
+gen-1771635323-3hfUlbXIMj1ML2oiZuxS,2026-02-21 00:55:23.246,0.006187,,,0,0,2195,70,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1383,605,,Papyrus
+gen-1771635321-G5ti9zJt3F8rgucTCErv,2026-02-21 00:55:21.134,0.00397,,-0.00256,0,0,2148,116,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1961,544,,Papyrus
+gen-1771635319-yj3nwlnqvmgWxF5LI4Tj,2026-02-21 00:55:19.568,0.00379,,-0.00256,0,0,2148,98,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1366,498,,Papyrus
+gen-1771635317-I6U13lu1IdCat6bUUVvi,2026-02-21 00:55:17.574,0.00628,,,0,0,2148,91,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1769,665,,Papyrus
+gen-1771635314-jMtt3dYMiLottZ5D3KSO,2026-02-21 00:55:14.059,0.003682,,-0.00256,0,0,2145,88,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,3062,527,,Papyrus
+gen-1771635312-kxqAx6zRFc39tHYuKp3W,2026-02-21 00:55:12.378,0.003372,,-0.00256,0,0,2145,57,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1489,475,,Papyrus
+gen-1771635309-8QDuzKZjUUygcRlKcXzB,2026-02-21 00:55:09.558,0.006152,,,0,0,2145,79,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2657,1447,,Papyrus
+gen-1771635306-d0hfjlJZFO52riw2P7Br,2026-02-21 00:55:06.801,0.002927,,-0.00224,0,0,1827,60,0,1792,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2440,537,,Papyrus
+gen-1771635305-eDuARFOfy1FkeEv6uPHY,2026-02-21 00:55:05.364,0.005147,,,0,0,1827,58,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1286,578,,Papyrus
+gen-1771635303-paFXugfdW8tdtJtA7b0J,2026-02-21 00:55:03.677,0.005167,,,0,0,1827,60,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1163,531,,Papyrus
+gen-1771635301-xFf1oRudLuY6s6Z38vI8,2026-02-21 00:55:01.519,0.003777,,-0.00272,0,0,2203,99,0,2176,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1982,631,,Papyrus
+gen-1771635299-QgjXBKxzGYsQ5ny2ngv5,2026-02-21 00:54:59.228,0.003967,,-0.00272,0,0,2203,118,0,2176,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2036,479,,Papyrus
+gen-1771635297-Ka0bUV0rokiqes3AcujW,2026-02-21 00:54:57.703,0.006327,,,0,0,2203,82,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1343,457,,Papyrus
+gen-1771635296-UiGcJAqh0VOxXaoePwae,2026-02-21 00:54:56.231,0.002497,,-0.00208,0,0,1675,39,0,1664,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1337,506,,Papyrus
+gen-1771635294-buldL00Z7eXRUATn8pfP,2026-02-21 00:54:54.723,0.002537,,-0.00208,0,0,1675,43,0,1664,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1298,528,,Papyrus
+gen-1771635293-uavhqKwP4yArxzCbW5T5,2026-02-21 00:54:53.179,0.004617,,,0,0,1675,43,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1378,718,,Papyrus
+gen-1771635291-YRisjvrzPZ7WkST46PYZ,2026-02-21 00:54:51.780,0.00256,,-0.00192,0,0,1612,45,0,1536,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1157,641,,Papyrus
+gen-1771635290-QU8Rf5XN1AVaptSjBhbY,2026-02-21 00:54:50.805,0.00306,,-0.00128,0,0,1612,31,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,841,401,,Papyrus
+gen-1771635289-B4yKn7R9jQXuW2UqD1ro,2026-02-21 00:54:49.891,0.00439,,,0,0,1612,36,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,773,429,,Papyrus
+gen-1771635287-GSgg7ILpCzQFizg4s1rW,2026-02-21 00:54:47.532,0.002715,,-0.00144,0,0,1166,124,0,1152,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2134,493,,Papyrus
+gen-1771635286-KAMlgMGK1YqcSxvD4kOP,2026-02-21 00:54:46.011,0.002735,,-0.00144,0,0,1166,126,0,1152,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1282,451,,Papyrus
+gen-1771635283-kiydiGXwCONl4TM9sh47,2026-02-21 00:54:43.988,0.004055,,,0,0,1166,114,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1843,584,,Papyrus
+gen-1771635282-LZWsxtdT9SVQ2NzmxQ29,2026-02-21 00:54:42.477,0.003782,,-0.00304,0,0,2445,71,0,2432,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1112,457,,Papyrus
+gen-1771635281-wzMWbPBDVuHEaRz7pUfl,2026-02-21 00:54:41.054,0.003842,,-0.00304,0,0,2445,77,0,2432,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1262,589,,Papyrus
+gen-1771635279-GqmBIItuAdGonk4vhzCw,2026-02-21 00:54:39.796,0.006882,,,0,0,2445,77,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1045,554,,Papyrus
+gen-1771635277-iBdrcNc76EUoXdRoT2Vd,2026-02-21 00:54:37.575,0.004657,,-0.00128,0,0,1883,123,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1923,621,,Papyrus
+gen-1771635274-wVCRL4cOwJaNBDBBd5yF,2026-02-21 00:54:34.848,0.005027,,-0.00128,0,0,1883,160,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2313,568,,Papyrus
+gen-1771635271-yAsXRdV9KpsAMWDYAN4C,2026-02-21 00:54:31.887,0.005907,,,0,0,1883,120,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2796,819,,Papyrus
+gen-1771635270-xN3rdER78WfXDf2chCRH,2026-02-21 00:54:30.557,0.00386,,-0.00128,0,0,1776,70,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1115,535,,Papyrus
+gen-1771635269-19BWfFHLCQci4gE7EBdu,2026-02-21 00:54:29.264,0.00387,,-0.00128,0,0,1776,71,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1138,503,,Papyrus
+gen-1771635267-J6a9VZQXAXjZufWiq2PX,2026-02-21 00:54:27.238,0.00521,,,0,0,1776,77,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1721,680,,Papyrus
+gen-1771635266-E8bdKjoIxjd8jZjIESm7,2026-02-21 00:54:26.394,0.003407,,-0.00288,0,0,2371,36,0,2304,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,696,500,,Papyrus
+gen-1771635265-znkydc49fdsAPRVA9Urd,2026-02-21 00:54:25.420,0.006287,,,0,0,2371,36,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,821,614,,Papyrus
+gen-1771635264-0sxZZVmURgaoAbLkhCTM,2026-02-21 00:54:24.099,0.006397,,,0,0,2371,47,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1091,704,,Papyrus
+gen-1771635260-XMGcG4FEueRzKA3o4EEg,2026-02-21 00:54:20.636,0.004725,,-0.00256,0,0,2310,151,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,3148,394,,Papyrus
+gen-1771635254-X03Twi5lzJOVsgjynHMW,2026-02-21 00:54:14.080,0.004585,,-0.00256,0,0,2310,137,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,6317,1087,,Papyrus
+gen-1771635251-BwslkYlaoioKqdzr6xkM,2026-02-21 00:54:11.116,0.006975,,,0,0,2310,120,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2494,488,,Papyrus
+gen-1771635248-Rjh8VxhlO3WiTLKy8CxD,2026-02-21 00:54:08.803,0.003415,,-0.00256,0,0,2154,59,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2101,860,,Papyrus
+gen-1771635247-faN9WkkCYzuLE5xenqbN,2026-02-21 00:54:07.538,0.003645,,-0.00256,0,0,2154,82,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1097,398,,Papyrus
+gen-1771635246-GwHG8fXAW6vkjPSAh2Pd,2026-02-21 00:54:06.121,0.006265,,,0,0,2154,88,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1233,447,,Papyrus
+gen-1771635245-jQqRqvfvHnJarvuCZ4d6,2026-02-21 00:54:05.195,0.003822,,-0.00128,0,0,1885,39,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,688,429,,Papyrus
+gen-1771635244-w1HyChI6JMexP9JLv1pV,2026-02-21 00:54:04.290,0.003822,,-0.00128,0,0,1885,39,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,752,407,,Papyrus
+gen-1771635243-Cjn6WTxWskjQ4F8p6Nnq,2026-02-21 00:54:03.232,0.005092,,,0,0,1885,38,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,900,513,,Papyrus
+gen-1771635242-PWKWOIFCDfa5H4SzyyG8,2026-02-21 00:54:02.062,0.003182,,-0.0024,0,0,2021,53,0,1920,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,767,512,,Papyrus
+gen-1771635240-3mNk8UlL0Ze4Jg0WS7RN,2026-02-21 00:54:00.961,0.004292,,-0.00128,0,0,2021,52,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,885,490,,Papyrus
+gen-1771635239-WYR64xybjp6xjfuLBXkd,2026-02-21 00:53:59.663,0.005572,,,0,0,2021,52,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1070,645,,Papyrus
+gen-1771635238-cRH1DLlJHFMGOiWnUd6M,2026-02-21 00:53:57.994,0.00358,,-0.00128,0,0,1508,109,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1365,437,,Papyrus
+gen-1771635235-igv4nHqytJYk1HTFohO6,2026-02-21 00:53:55.940,0.00503,,,0,0,1508,126,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1862,450,,Papyrus
+gen-1771635233-aQhLUCx9Gr1hDfPe5Ciw,2026-02-21 00:53:53.625,0.00488,,,0,0,1508,111,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,2106,518,,Papyrus
+gen-1771635232-6OG8OwrmS37Gn98RhyxV,2026-02-21 00:53:52.256,0.003432,,-0.00256,0,0,2153,61,0,2048,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1152,513,,Papyrus
+gen-1771635230-WI7QO2MBIF6BVLqGfKQ7,2026-02-21 00:53:50.751,0.005882,,,0,0,2153,50,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1268,665,,Papyrus
+gen-1771635229-ZNmg5Z2CiURcS2MeaCEK,2026-02-21 00:53:49.345,0.005872,,,0,0,2153,49,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1255,553,,Papyrus
+gen-1771635227-Wv56HIXZE9QbwI18ylEG,2026-02-21 00:53:47.658,0.003002,,-0.00224,0,0,1817,70,0,1792,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1391,499,,Papyrus
+gen-1771635225-jLzfb31rrjYJvFgF3Yvw,2026-02-21 00:53:45.912,0.003112,,-0.00224,0,0,1817,81,0,1792,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1552,449,,Papyrus
+gen-1771635224-o2bRnJtZ14ZjSJP6z5d0,2026-02-21 00:53:44.102,0.005162,,,0,0,1817,62,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1623,557,,Papyrus
+gen-1771635222-gUX7uMZ1ZhKPGDx6B963,2026-02-21 00:53:42.619,0.004405,,-0.00128,0,0,1810,116,0,1024,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1278,493,,Papyrus
+gen-1771635220-BGablMFmmTnqwam3mtsz,2026-02-21 00:53:40.957,0.003445,,-0.00224,0,0,1810,116,0,1792,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,1277,577,,Papyrus
+gen-1771635219-tSTHSPoRKeeMU4VRFowy,2026-02-21 00:53:39.616,0.004845,,,0,0,1810,32,0,0,openai/gpt-4o,OpenAI,standard,false,true,,stop,stop,840,610,,Papyrus
+gen-1771634600-ITpzDnCmopDSQlOkcNpw,2026-02-21 00:43:20.531,0.000115,,-0.000183,,0,2318,168,0,2040,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3791,2573,,Papyrus
+gen-1771634596-7Bar34viEyZufv4HtKpQ,2026-02-21 00:43:16.393,0.000319,,,,0,2318,219,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3770,2305,,Papyrus
+gen-1771634595-8IhqwOSbz0MlBtlYnf0C,2026-02-21 00:43:15.266,0.000324,,,,0,2319,231,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,906,435,,Papyrus
+gen-1771634594-Anp2zyKjX9hXt7jWZ2Vl,2026-02-21 00:43:14.154,0.000125,,-0.000183,,0,2277,204,0,2040,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,884,396,,Papyrus
+gen-1771634590-U2ZNXdk0jKBd3vxgSzIm,2026-02-21 00:43:10.324,0.000304,,,,0,2276,193,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3687,2444,,Papyrus
+gen-1771634589-96qPwPk8UPJXsLPDGc7q,2026-02-21 00:43:09.268,0.000321,,,,0,2277,234,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,826,396,,Papyrus
+gen-1771634588-rGJa0Jkm54W5Iyj0rd4y,2026-02-21 00:43:08.018,0.000164,,-0.000183,,0,2272,303,0,2040,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1077,425,,Papyrus
+gen-1771634586-gS2EqSCotFZLXCsFSKrY,2026-02-21 00:43:06.490,0.000223,,-0.000183,,0,2272,449,0,2040,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1385,411,,Papyrus
+gen-1771634585-nOkYScvEiekzZ3HGWJF4,2026-02-21 00:43:05.621,0.000293,,,,0,2272,166,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,716,387,,Papyrus
+gen-1771634584-lI00b6MbL26yYwZkpLhD,2026-02-21 00:43:04.390,0.000285,,,,0,1914,235,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,834,411,,Papyrus
+gen-1771634582-BG51tPTDM38icjPe8lnN,2026-02-21 00:43:02.543,0.000313,,,,0,1914,305,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1708,1120,,Papyrus
+gen-1771634581-mFCf4lGyBhBSUADUBlhY,2026-02-21 00:43:01.412,0.000283,,,,0,1914,229,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,860,435,,Papyrus
+gen-1771634577-BdNOyKjpRcn4IusLZ9gh,2026-02-21 00:42:57.449,0.000308,,,,0,2342,186,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3593,2293,,Papyrus
+gen-1771634573-oDV9WbJMDAtgB8Z4OLx2,2026-02-21 00:42:53.530,0.000275,,,,0,2342,103,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3702,2697,,Papyrus
+gen-1771634571-7swKvwuyYfyLXiuxQZqH,2026-02-21 00:42:51.278,0.000299,,,,0,2343,164,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1918,1500,,Papyrus
+gen-1771634570-1h6OhX6fUwxDIQnwtW5m,2026-02-21 00:42:50.409,0.000217,,,,0,1774,100,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,667,428,,Papyrus
+gen-1771634569-TOBhMxhjupbSB7r2TaBp,2026-02-21 00:42:49.621,0.000212,,,,0,1774,87,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,587,388,,Papyrus
+gen-1771634566-1biRpqKFRN2TNcO8uV5d,2026-02-21 00:42:46.553,0.000206,,,,0,1773,74,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,2856,1983,,Papyrus
+gen-1771634565-k5SaVrXGuSTYutTBJ2iP,2026-02-21 00:42:45.740,0.000213,,,,0,1701,108,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,680,466,,Papyrus
+gen-1771634564-niXBA6fRuzQQnIC2oi78,2026-02-21 00:42:44.939,0.000117,,-0.000091,,0,1701,98,0,1019,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,676,482,,Papyrus
+gen-1771634564-lm5tFJLXb5XFUFsPvRPK,2026-02-21 00:42:44.288,0.0002,,,,0,1701,75,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,528,341,,Papyrus
+gen-1771634560-Wi4IMKGYejmOuBf2P58O,2026-02-21 00:42:40.579,0.000175,,,,0,1226,132,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3358,2244,,Papyrus
+gen-1771634557-0TFZdZxWeqiKyjkDX9bb,2026-02-21 00:42:37.407,0.000145,,,,0,1226,56,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,2947,2248,,Papyrus
+gen-1771634554-gmRQJNR8WfOgaPFOXjgg,2026-02-21 00:42:34.171,0.000161,,,,0,1226,98,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3109,2154,,Papyrus
+gen-1771634553-NZBgYaraZOayRw9jhSyd,2026-02-21 00:42:33.179,0.000299,,,,0,2635,89,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,607,423,,Papyrus
+gen-1771634549-BT6yA0BPlfvJmpejpHQ7,2026-02-21 00:42:29.640,0.000292,,,,0,2634,72,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3417,2540,,Papyrus
+gen-1771634546-ovQ0FWKtk35Hf96JoCAi,2026-02-21 00:42:26.475,0.000289,,,,0,2634,66,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,2851,2145,,Papyrus
+gen-1771634543-Xoc1DIE8EJqWBMWq2rkJ,2026-02-21 00:42:23.193,0.000236,,,,0,1990,94,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3152,2153,,Papyrus
+gen-1771634542-udo9N7bzeuaps4eWVBe3,2026-02-21 00:42:22.022,0.000318,,,,0,1991,298,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1045,449,,Papyrus
+gen-1771634540-Q5v8Nrf2ZUH8VEk7ZY3n,2026-02-21 00:42:20.854,0.00032,,,,0,1991,304,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,976,471,,Papyrus
+gen-1771634540-bX3C2AuQRiFuzesk8vof,2026-02-21 00:42:20.237,0.000201,,,,0,1854,40,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,466,414,,Papyrus
+gen-1771634538-2Rx5ZY9AVXQarCgT6k46,2026-02-21 00:42:18.884,0.00011,,-0.000091,,0,1854,41,0,1019,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1225,1169,,Papyrus
+gen-1771634537-HIG1ujpyuRUrpTTR5rFa,2026-02-21 00:42:17.483,0.000201,,,,0,1854,41,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1214,1147,,Papyrus
+gen-1771634536-8byFsgJ3THMVSmaTIqF8,2026-02-21 00:42:16.867,0.000086,,-0.000183,,0,2482,56,0,2041,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,479,422,,Papyrus
+gen-1771634533-pATjXRcrf8PtMbpA9O3V,2026-02-21 00:42:13.935,0.00027,,,,0,2481,55,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,2748,2064,,Papyrus
+gen-1771634533-zUSNHbtKKVIgJEHhGGpP,2026-02-21 00:42:13.293,0.000269,,,,0,2482,52,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,503,438,,Papyrus
+gen-1771634532-pRaKt3GrsxGJcv1RG1se,2026-02-21 00:42:12.587,0.00009,,-0.000183,,0,2415,81,0,2041,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,565,457,,Papyrus
+gen-1771634531-VKh1820dyTZ9KYxlU3fn,2026-02-21 00:42:11.710,0.000273,,,,0,2415,80,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,692,562,,Papyrus
+gen-1771634528-22tF8EkLPZ9N0kLmK520,2026-02-21 00:42:08.393,0.000272,,,,0,2414,78,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3186,2226,,Papyrus
+gen-1771634525-iE9j4CQUIZKR9mQ2F4jg,2026-02-21 00:42:05.080,0.000068,,-0.000183,,0,2273,61,0,2039,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3147,2324,,Papyrus
+gen-1771634521-eKfBHx0dkzjYfLnUEGeO,2026-02-21 00:42:01.214,0.000067,,-0.000183,,0,2273,60,0,2039,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3408,2658,,Papyrus
+gen-1771634517-zuoylJyB0FKoogJG9Zhe,2026-02-21 00:41:57.580,0.000251,,,,0,2273,61,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3404,2645,,Papyrus
+gen-1771634513-Z829X6dlokkgLjhG8Aym,2026-02-21 00:41:53.713,0.000313,,,,0,2003,283,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3674,2109,,Papyrus
+gen-1771634509-FWwzCavIwqUeQP9F2PRn,2026-02-21 00:41:49.601,0.000329,,,,0,2003,323,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3884,2287,,Papyrus
+gen-1771634508-6Pz6a9ubL2XJ4QRw7eXU,2026-02-21 00:41:48.352,0.000317,,,,0,2004,293,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1018,402,,Papyrus
+gen-1771634507-ttbWdXs9Gazgb9bYcnJI,2026-02-21 00:41:47.547,0.000259,,,,0,2145,112,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,634,479,,Papyrus
+gen-1771634504-fPTSuhltNxg9ZuipMeQ4,2026-02-21 00:41:44.368,0.000259,,,,0,2144,112,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,2973,2067,,Papyrus
+gen-1771634500-j0FHGIamR2l7fgVSvMZb,2026-02-21 00:41:40.938,0.000259,,,,0,2144,112,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3219,2117,,Papyrus
+gen-1771634497-2FPcbIdrYLSCMCuJkW6y,2026-02-21 00:41:37.717,0.00019,,,,0,1585,81,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3073,2166,,Papyrus
+gen-1771634494-jXKxJDOvHMKiYEuip8tp,2026-02-21 00:41:34.089,0.000204,,,,0,1585,114,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3296,2206,,Papyrus
+gen-1771634490-h47ckIHpaRJCZrBOi7dP,2026-02-21 00:41:30.699,0.000197,,,,0,1585,98,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3243,2281,,Papyrus
+gen-1771634489-YPfDXByn8l7Lm7qDi9m3,2026-02-21 00:41:29.690,0.000074,,-0.000183,,0,2282,75,0,2040,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,563,421,,Papyrus
+gen-1771634488-erRoLFz7sy2qnNqVwZYK,2026-02-21 00:41:28.251,0.000083,,-0.000183,,0,2282,96,0,2040,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1299,1110,,Papyrus
+gen-1771634486-Dn7YXXAQMXayBkQbyTZJ,2026-02-21 00:41:26.710,0.000281,,,,0,2282,133,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1398,1183,,Papyrus
+gen-1771634486-0WNTnL76sRihjBXBDdk1,2026-02-21 00:41:26.108,0.000213,,,,0,1915,56,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,461,387,,Papyrus
+gen-1771634485-IQC4k1HVQLwBezbnp48x,2026-02-21 00:41:25.402,0.000213,,,,0,1915,56,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,576,495,,Papyrus
+gen-1771634484-WdCLLjESt20CzJu6inE9,2026-02-21 00:41:24.005,0.000213,,,,0,1915,56,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,1215,1130,,Papyrus
+gen-1771634483-WQHHnqJLiV2h8X2iicW9,2026-02-21 00:41:23.396,0.000204,,,,0,1909,34,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google AI Studio,standard,false,true,,STOP,stop,463,459,,Papyrus
+gen-1771634480-WYNsOHeDwaIqklibfn23,2026-02-21 00:41:20.542,0.000204,,,,0,1908,34,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,2708,2071,,Papyrus
+gen-1771634477-JYgkvS6W0WyzgPg059uf,2026-02-21 00:41:17.177,0.000204,,,,0,1908,34,0,0,google/gemini-2.5-flash-lite-preview-09-2025,Google,standard,false,true,,STOP,stop,3186,2595,,Papyrus
+gen-1771634473-DZe1uWGAadU6F0DRwt36,2026-02-21 00:41:13.175,0.000902,,,0,0,2210,46,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,3845,891,,Papyrus
+gen-1771634470-8A5uhBnDcBsmZbAIwzPo,2026-02-21 00:41:10.635,0.000902,,,0,0,2210,46,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2412,756,,Papyrus
+gen-1771634468-vCv3kpZgkxTFd880zsqL,2026-02-21 00:41:08.292,0.000925,,,0,0,2235,79,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,2123,725,,Papyrus
+gen-1771634464-ifI61Dnoqe55P7l7irpe,2026-02-21 00:41:04.961,0.000919,,,0,0,2200,98,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,3163,1993,,Papyrus
+gen-1771634461-5we6UJhoFjQliAyAWol6,2026-02-21 00:41:01.891,0.000909,,,0,0,2175,99,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2833,324,,Papyrus
+gen-1771634458-5G79TtsYExWGGTCIw7MI,2026-02-21 00:40:58.342,0.000916,,,0,0,2175,116,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2687,568,,Papyrus
+gen-1771634456-kwGoUCAQ0iM6lOd395a5,2026-02-21 00:40:56.277,0.000899,,,0,0,2172,76,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1868,256,,Papyrus
+gen-1771634454-buodqGh5gZfwWrhE1CAS,2026-02-21 00:40:54.011,0.000882,,,0,0,2172,35,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2116,1296,,Papyrus
+gen-1771634451-bSQDEGqkOduyUiA95PRs,2026-02-21 00:40:51.857,0.000896,,,0,0,2172,68,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1919,379,,Papyrus
+gen-1771634450-avETjeYQYrYMFUfuoWiR,2026-02-21 00:40:50.702,0.000755,,,0,0,1865,24,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,945,536,,Papyrus
+gen-1771634449-LFlai6sNdSGKJaWagL82,2026-02-21 00:40:49.303,0.000773,,,0,0,1890,44,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1239,724,,Papyrus
+gen-1771634447-dv2Qd08PyXzMbQaoftdH,2026-02-21 00:40:47.655,0.000763,,,0,0,1865,43,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1412,604,,Papyrus
+gen-1771634444-8Mw72nXF7K8UVpHX4A91,2026-02-21 00:40:44.221,0.000958,,,0,0,2263,134,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,3048,855,,Papyrus
+gen-1771634442-ZY4soJGIMZs8Zdp7DqIB,2026-02-21 00:40:42.551,0.000935,,,0,0,2263,76,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1523,989,,Papyrus
+gen-1771634440-ELdzWCEauDMjhyGEpgDX,2026-02-21 00:40:40.444,0.000924,,,0,0,2238,72,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1936,620,,Papyrus
+gen-1771634439-6BTmMutc5QuDcIqRtWqG,2026-02-21 00:40:39.107,0.001562,,,0,0,1703,73,0,0,meta-llama/llama-3.1-70b-instruct,Together,standard,false,true,,stop,stop,1181,462,,Papyrus
+gen-1771634437-E2L8JF6cnRbrBDfFEh32,2026-02-21 00:40:37.908,0.000697,,,0,0,1728,15,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1047,951,,Papyrus
+gen-1771634436-sMgV1UviKuXJmliYUY7z,2026-02-21 00:40:36.718,0.000698,,,0,0,1728,17,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1024,769,,Papyrus
+gen-1771634435-nrDMcee7ZFwXN4cRO3S0,2026-02-21 00:40:35.126,0.000663,,,0,0,1643,15,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1458,319,,Papyrus
+gen-1771634434-pyHzJl2xc5V7YYdJ1CaO,2026-02-21 00:40:34.143,0.001459,,,0,0,1643,15,0,0,meta-llama/llama-3.1-70b-instruct,Together,standard,false,true,,stop,stop,824,753,,Papyrus
+gen-1771634432-OwRBMhn0nWIPwS2rnAbV,2026-02-21 00:40:32.622,0.000664,,,0,0,1643,19,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1379,504,,Papyrus
+gen-1771634429-LmAjdReIsTeZUIXrXSA6,2026-02-21 00:40:29.418,0.000522,,,0,0,1197,110,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2826,538,,Papyrus
+gen-1771634427-4lLIaXpAs8fJHPnPkkd6,2026-02-21 00:40:26.750,0.000517,,,0,0,1197,96,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2214,543,,Papyrus
+gen-1771634423-NMpB5xhOy87ZpIEL3fDL,2026-02-21 00:40:23.835,0.000517,,,0,0,1197,96,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2736,840,,Papyrus
+gen-1771634414-1o6sTv9pOOGY4tLWp62k,2026-02-21 00:40:14.677,0.001024,,,0,0,2474,87,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,8866,1023,,Papyrus
+gen-1771634412-0SIaLofXZ6vQ07pX7Byc,2026-02-21 00:40:12.626,0.002253,,,0,0,2474,87,0,0,meta-llama/llama-3.1-70b-instruct,Together,standard,false,true,,stop,stop,1854,745,,Papyrus
+gen-1771634409-Guutk22f9ipWuYRz9zXC,2026-02-21 00:40:09.566,0.001024,,,0,0,2474,87,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2902,426,,Papyrus
+gen-1771634405-lkxSegtqe1CD6TAyt4ln,2026-02-21 00:40:05.539,0.000804,,,0,0,1903,109,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,3873,366,,Papyrus
+gen-1771634402-VpjBHqgz65qjYPnQvorX,2026-02-21 00:40:02.730,0.000799,,,0,0,1903,96,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2633,617,,Papyrus
+gen-1771634398-jmLMHhMKzO2etmHPXR0T,2026-02-21 00:39:58.240,0.000798,,,0,0,1903,93,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,4087,1178,,Papyrus
+gen-1771634396-ZK6MURB8Avh3LK6uXKoM,2026-02-21 00:39:56.608,0.000752,,,0,0,1840,42,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1296,799,,Papyrus
+gen-1771634394-T7JYbSF6qxf4pRjS3gi2,2026-02-21 00:39:54.727,0.000742,,,0,0,1815,41,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1402,300,,Papyrus
+gen-1771634392-anvHG2HBYDbuozNOqI7C,2026-02-21 00:39:52.521,0.000742,,,0,0,1815,42,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1972,761,,Papyrus
+gen-1771634390-Kkg9d564CurQ1efvqH3G,2026-02-21 00:39:50.716,0.000995,,,0,0,2435,53,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1612,880,,Papyrus
+gen-1771634389-6vLLWzseZa2CGoRzekAQ,2026-02-21 00:39:49.199,0.000975,,,0,0,2410,29,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1286,801,,Papyrus
+gen-1771634387-SBnopfsm9ye8fGSGloa8,2026-02-21 00:39:47.538,0.000995,,,0,0,2435,54,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1233,941,,Papyrus
+gen-1771634384-pRykDoTTtMYnGeEj6MGu,2026-02-21 00:39:44.574,0.00097,,,0,0,2348,79,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2760,546,,Papyrus
+gen-1771634382-zeVXaVg4pdtTXyjdziFd,2026-02-21 00:39:42.257,0.000968,,,0,0,2348,73,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2079,648,,Papyrus
+gen-1771634380-WPYPM40jV8ZGAQTqDDlO,2026-02-21 00:39:40.257,0.00099,,,0,0,2373,104,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1822,772,,Papyrus
+gen-1771634378-Zm3ZlJ9fusjhOtp0uxXh,2026-02-21 00:39:38.100,0.00089,,,0,0,2179,46,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1937,922,,Papyrus
+gen-1771634376-lgq5sO3c1jxQ1drAUV5s,2026-02-21 00:39:36.950,0.0009,,,0,0,2204,46,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1002,741,,Papyrus
+gen-1771634374-OGW61WTpzwBivNa83KTX,2026-02-21 00:39:34.787,0.00089,,,0,0,2179,46,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1935,576,,Papyrus
+gen-1771634373-p3pbLEJ7kDgQYVNIqsZe,2026-02-21 00:39:33.048,0.00081,,,0,0,1924,103,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,1486,834,,Papyrus
+gen-1771634369-7b8m52Ii4OEsmPH2E2G1,2026-02-21 00:39:29.678,0.000798,,,0,0,1899,96,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,3188,616,,Papyrus
+gen-1771634365-Kel1E0sNniTGA8SJUjj9,2026-02-21 00:39:25.511,0.000801,,,0,0,1899,105,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,3981,1119,,Papyrus
+gen-1771634363-z7MVIBAq1B2wGstekFNm,2026-02-21 00:39:23.253,0.000842,,,0,0,2058,49,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1819,516,,Papyrus
+gen-1771634360-BHkJVPMZ2tXNeL8R4IHv,2026-02-21 00:39:20.503,0.000842,,,0,0,2058,49,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2451,799,,Papyrus
+gen-1771634357-oFqXRT7yQal6PoY2rRH0,2026-02-21 00:39:17.233,0.000843,,,0,0,2058,50,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,3078,2173,,Papyrus
+gen-1771634352-96b0HX3hnLI7GAiowYRf,2026-02-21 00:39:11.993,0.000641,,,0,0,1541,63,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,4855,385,,Papyrus
+gen-1771634349-u1pJjWTEV3MlEV7l3hHu,2026-02-21 00:39:09.106,0.000644,,,0,0,1541,69,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2716,658,,Papyrus
+gen-1771634346-zs3aMHNMrCWp79QIlNQR,2026-02-21 00:39:06.478,0.000643,,,0,0,1541,68,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,2312,822,,Papyrus
+gen-1771634342-e2LKXwxRIUT88saA8jc1,2026-02-21 00:39:02.807,0.00093,,,0,0,2205,120,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,3389,1228,,Papyrus
+gen-1771634341-mtlgOY0jaVPW7ls6pMRk,2026-02-21 00:39:01.136,0.000879,,,0,0,2180,19,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1468,999,,Papyrus
+gen-1771634340-nU3A62QWdr6lDOiJN3ha,2026-02-21 00:39:00.391,0.000874,,,0,0,2180,5,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,583,507,,Papyrus
+gen-1771634337-mKIOVgGFnuPb1zy3RjUo,2026-02-21 00:38:57.127,0.000784,,,0,0,1879,81,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,3022,991,,Papyrus
+gen-1771634333-eiUh9ru4Daa6emfJNJMy,2026-02-21 00:38:53.366,0.000767,,,0,0,1854,65,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,3615,1383,,Papyrus
+gen-1771634330-u1jZ29hH3HBjZUtCGe0x,2026-02-21 00:38:50.333,0.000786,,,0,0,1879,88,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,2580,967,,Papyrus
+gen-1771634328-A1VBuRcdVaG9TndEXe1L,2026-02-21 00:38:48.452,0.000752,,,0,0,1847,33,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,1703,913,,Papyrus
+gen-1771634325-xDqRdYBhVHe2ahitZv6N,2026-02-21 00:38:45.744,0.000762,,,0,0,1872,33,0,0,meta-llama/llama-3.1-70b-instruct,Hyperbolic,standard,false,true,,stop,stop,2550,2138,,Papyrus
+gen-1771634324-V33qvGyEK1L0PvcGNkxe,2026-02-21 00:38:44.576,0.000752,,,0,0,1847,33,0,0,meta-llama/llama-3.1-70b-instruct,DeepInfra,standard,false,true,,stop,stop,998,366,,Papyrus
+gen-1771634320-J5I5USemGKpu1WHlcO2p,2026-02-21 00:38:40.669,0.000785,,,0,0,2186,97,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3735,431,,Papyrus
+gen-1771634310-8SxKtGwOpRPIKFHvBNbA,2026-02-21 00:38:30.881,0.001163,,,0,0,2187,222,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,9546,1686,,Papyrus
+gen-1771634307-YFwHpPQgOXiVeg7HEyXJ,2026-02-21 00:38:27.886,0.000777,,,0,0,2186,88,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2849,390,,Papyrus
+gen-1771634302-W2pxShCrDY2Qu28sYJcj,2026-02-21 00:38:22.682,0.000987,,,0,0,2135,103,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5061,1761,,Papyrus
+gen-1771634299-OBKw2QHcdsZ0BwkVpLsE,2026-02-21 00:38:19.726,0.000769,,,0,0,2134,97,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2568,385,,Papyrus
+gen-1771634294-10p7G8Sio4y3Gcx9tETh,2026-02-21 00:38:14.164,0.000989,,,0,0,2135,104,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5376,1571,,Papyrus
+gen-1771634288-HFddkS8XMkeRjHYOmaHk,2026-02-21 00:38:08.348,0.000836,,,0,0,2131,174,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5494,845,,Papyrus
+gen-1771634283-dJG5UfNebveMz50mUIDA,2026-02-21 00:38:03.666,0.000828,,,0,0,2131,165,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4416,486,,Papyrus
+gen-1771634277-Pr6asIGcGL2FupVhXotK,2026-02-21 00:37:57.586,0.001084,,,0,0,2132,178,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5820,1427,,Papyrus
+gen-1771634274-h1DkUpMhwi9t8Z8GrDci,2026-02-21 00:37:54.843,0.000662,,,0,0,1829,87,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2502,377,,Papyrus
+gen-1771634269-KTXAtyMNEro51KQtvcnf,2026-02-21 00:37:49.109,0.000956,,,0,0,1830,173,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5547,1236,,Papyrus
+gen-1771634266-3YHG0EohR48JNd9v2q06,2026-02-21 00:37:46.263,0.000662,,,0,0,1829,87,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2411,573,,Papyrus
+gen-1771634261-2F9EuRTXs5LVfTtS0SDm,2026-02-21 00:37:41.755,0.000817,,,0,0,2193,130,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4249,354,,Papyrus
+gen-1771634256-a0AhWpHYR2d7SWESFJH1,2026-02-21 00:37:36.087,0.00101,,,0,0,2194,102,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5473,2213,,Papyrus
+gen-1771634249-TDRoXXsOLSP9CXGhKjAu,2026-02-21 00:37:29.489,0.001148,,,0,0,2194,208,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,6406,1277,,Papyrus
+gen-1771634245-Fhv9cnf3w9JQ66T0x1d0,2026-02-21 00:37:25.978,0.000603,,,0,0,1668,78,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3251,437,,Papyrus
+gen-1771634243-YdBm5gPZDtIzWdprq5RI,2026-02-21 00:37:23.067,0.000604,,,0,0,1668,79,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2633,457,,Papyrus
+gen-1771634240-KyOHsbZ3tGgnsXxf5Nfm,2026-02-21 00:37:20.186,0.000596,,,0,0,1668,71,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2648,471,,Papyrus
+gen-1771634238-dYkhlyewIr1Snm3AndsF,2026-02-21 00:37:18.056,0.000573,,,0,0,1621,62,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,1874,438,,Papyrus
+gen-1771634234-rOFXxcCPNjxGcZ6sbi33,2026-02-21 00:37:14.284,0.000576,,,0,0,1621,65,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3342,1011,,Papyrus
+gen-1771634230-N40BKsZkzG0u71u9SrG0,2026-02-21 00:37:10.726,0.000745,,,0,0,1622,74,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,3334,1280,,Papyrus
+gen-1771634224-mAN2ndpt1wImON7u4lYp,2026-02-21 00:37:04.372,0.000747,,,0,0,1197,207,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,6032,1089,,Papyrus
+gen-1771634220-r1WUC6bI7czE95qL8jvI,2026-02-21 00:37:00.301,0.000487,,,0,0,1196,118,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3923,503,,Papyrus
+gen-1771634214-HRCIeTKsGQTwrw8N1Lav,2026-02-21 00:36:54.487,0.00071,,,0,0,1197,178,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5548,1145,,Papyrus
+gen-1771634209-pUfVPwPQWgTJM6Ok1Mfe,2026-02-21 00:36:49.121,0.000887,,,0,0,2434,122,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5049,849,,Papyrus
+gen-1771634204-wONDDWc0uAsr0BHTfgYH,2026-02-21 00:36:44.594,0.000888,,,0,0,2434,123,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4247,813,,Papyrus
+gen-1771634200-RjL16xHir24cdDpb61qq,2026-02-21 00:36:40.588,0.000858,,,0,0,2434,89,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3478,715,,Papyrus
+gen-1771634191-533ljubvqP4xtuTOwTRL,2026-02-21 00:36:31.415,0.001025,,,0,0,1866,215,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,8993,2078,,Papyrus
+gen-1771634185-EddhPOs0rAFvTowxAH4K,2026-02-21 00:36:25.434,0.000729,,,0,0,1865,149,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5846,448,,Papyrus
+gen-1771634171-lrIIGUQsRVqJIftfKLko,2026-02-21 00:36:11.765,0.001155,,,0,0,1866,315,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,13367,2337,,Papyrus
+gen-1771634168-XTfb07DAzMlBk0jIUvQB,2026-02-21 00:36:08.909,0.000791,,,0,0,1775,63,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,2656,1132,,Papyrus
+gen-1771634164-zQYfBUskkkExh9oIGRuZ,2026-02-21 00:36:04.118,0.000806,,,0,0,1775,74,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,4384,1629,,Papyrus
+gen-1771634160-BDYSwdvI4L8jCDF9sswR,2026-02-21 00:36:00.623,0.000621,,,0,0,1774,60,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3292,822,,Papyrus
+gen-1771634157-T3x24iQO6zBvd0Kwugid,2026-02-21 00:35:57.803,0.00081,,,0,0,2363,61,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2630,797,,Papyrus
+gen-1771634155-RWBXc4nfd0q4da4lmpwc,2026-02-21 00:35:55.294,0.000811,,,0,0,2363,62,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2342,466,,Papyrus
+gen-1771634152-qLqmmzw3aeUhUnWYbyhW,2026-02-21 00:35:52.221,0.00081,,,0,0,2363,61,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,2862,489,,Papyrus
+gen-1771634146-ogDNlF5FZlANEtsugJNw,2026-02-21 00:35:46.727,0.000827,,,0,0,2280,110,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5318,350,,Papyrus
+gen-1771634141-BXLpCntIzibFEUg1akLo,2026-02-21 00:35:41.053,0.000834,,,0,0,2280,118,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5203,957,,Papyrus
+gen-1771634136-uf6zitk5mm9fDudcEu9T,2026-02-21 00:35:36.659,0.000818,,,0,0,2280,100,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4247,687,,Papyrus
+gen-1771634132-swxdveqB9xabLPrGjf73,2026-02-21 00:35:32.578,0.000767,,,0,0,2148,90,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3588,501,,Papyrus
+gen-1771634126-MPCbgVjUmlWvgN8OqIlU,2026-02-21 00:35:26.806,0.000992,,,0,0,2149,102,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,5488,2201,,Papyrus
+gen-1771634122-kyHpjZsAZOxQzAFoaluE,2026-02-21 00:35:22.518,0.000767,,,0,0,2148,90,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4071,626,,Papyrus
+gen-1771634118-wtqgb6RglxV71RPPgBpg,2026-02-21 00:35:18.844,0.000671,,,0,0,1873,81,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3485,495,,Papyrus
+gen-1771634114-7kCkoPreEICNeoumjTad,2026-02-21 00:35:14.596,0.000667,,,0,0,1873,76,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4091,875,,Papyrus
+gen-1771634110-gVGeYd7a8671ArWGr1vD,2026-02-21 00:35:10.027,0.000667,,,0,0,1873,76,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4376,985,,Papyrus
+gen-1771634104-EQiNoNLtrlDJ24t514kw,2026-02-21 00:35:04.789,0.000922,,,0,0,2036,83,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,4991,1942,,Papyrus
+gen-1771634100-ltTiVHo1kxdp93Yphrcs,2026-02-21 00:35:00.249,0.000917,,,0,0,2036,79,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,4076,1677,,Papyrus
+gen-1771634095-1YhR6UNHWTR3p99FlFdu,2026-02-21 00:34:55.598,0.000917,,,0,0,2036,79,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,4402,1693,,Papyrus
+gen-1771634089-vrHq4FnoSANFudMnm0Fc,2026-02-21 00:34:49.466,0.000605,,,0,0,1521,133,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5800,355,,Papyrus
+gen-1771634085-FStgq6JokT2Jir9nDHbW,2026-02-21 00:34:45.940,0.00072,,,0,0,1522,86,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,3324,1147,,Papyrus
+gen-1771634081-VnbYdJnJvOMXKS4ROFFW,2026-02-21 00:34:41.367,0.000582,,,0,0,1521,108,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4366,474,,Papyrus
+gen-1771634078-rVsqNKPVZnGwyXEUv4ry,2026-02-21 00:34:38.053,0.000744,,,0,0,2139,67,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3181,854,,Papyrus
+gen-1771634075-SIo3Em1EQh9QUZryhzsI,2026-02-21 00:34:35.022,0.000945,,,0,0,2140,69,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,2815,1117,,Papyrus
+gen-1771634070-Yd6iylNSvlSYAWDZODfv,2026-02-21 00:34:30.813,0.000943,,,0,0,2140,67,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,4056,1986,,Papyrus
+gen-1771634066-MQSi4YlINiN5A3h4v5QA,2026-02-21 00:34:26.312,0.000666,,,0,0,1816,96,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4060,785,,Papyrus
+gen-1771634060-7FnPn9Y3BOPoGqNhcEs5,2026-02-21 00:34:20.934,0.000644,,,0,0,1816,71,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,5205,888,,Papyrus
+gen-1771634056-9qiQcRXvuofyHEVOsvnR,2026-02-21 00:34:16.778,0.000648,,,0,0,1816,76,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3988,401,,Papyrus
+gen-1771634051-uFN75Ufiqp7XhL7lTf1f,2026-02-21 00:34:11.965,0.000668,,,0,0,1810,100,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,4606,764,,Papyrus
+gen-1771634048-QmpQjJ7cfd0NeCL9ox7b,2026-02-21 00:34:08.813,0.000811,,,0,0,1811,67,0,0,deepseek/deepseek-chat-v3,Novita,standard,false,true,,stop,stop,2841,1203,,Papyrus
+gen-1771634044-4eOnjHnYBr8DqlA6172v,2026-02-21 00:34:04.662,0.000668,,,0,0,1810,100,0,0,deepseek/deepseek-chat-v3,DeepInfra,standard,false,true,,stop,stop,3997,510,,Papyrus
+gen-1771634036-gd5pm2CdAzTuziXaS2dl,2026-02-21 00:33:55.748,0.021642,,,0,0,2557,210,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,7920,3814,,Papyrus
+gen-1771634027-IYPq1fHxbu3fWmnvWuT4,2026-02-21 00:33:47.302,0.022482,,,0,0,2557,238,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,7822,1179,,Papyrus
+gen-1771634019-1S8ol9nGC1dGTFrfVlmF,2026-02-21 00:33:39.005,0.022572,,,0,0,2557,241,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,7860,3982,,Papyrus
+gen-1771634012-jkCUg2hSBIF91suflMVz,2026-02-21 00:33:32.047,0.021012,,,0,0,2547,191,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6440,1064,,Papyrus
+gen-1771634004-GSU03E9z9ZTzu2auq4rs,2026-02-21 00:33:24.940,0.020832,,,0,0,2547,185,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6604,1301,,Papyrus
+gen-1771633998-vfpqeKXLuRJ2RpR4rCaH,2026-02-21 00:33:18.153,0.020562,,,0,0,2547,176,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6019,1089,,Papyrus
+gen-1771633990-vLz6PgHHEPfG40ZmIkMi,2026-02-21 00:33:10.601,0.02187,,,0,0,2545,220,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,7053,1354,,Papyrus
+gen-1771633981-cUKhOCXyYGgfiGYvIW6Z,2026-02-21 00:33:01.875,0.024,,,0,0,2545,291,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,8182,1480,,Papyrus
+gen-1771633974-HfOB2joxXnP6vGVPFfCF,2026-02-21 00:32:54.773,0.02196,,,0,0,2545,223,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6331,1176,,Papyrus
+gen-1771633967-32hzyxszWvWihcdYitr9,2026-02-21 00:32:47.234,0.01926,,,0,0,2170,208,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6796,881,,Papyrus
+gen-1771633961-DqYTGmkQVcYYUZ8KkvRb,2026-02-21 00:32:41.209,0.018,,,0,0,2170,166,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5331,960,,Papyrus
+gen-1771633954-c5YVNhS4UGD2gUoJs4Yz,2026-02-21 00:32:34.843,0.01791,,,0,0,2170,163,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5784,1264,,Papyrus
+gen-1771633949-oMip58yqVvxmaC5BqsIw,2026-02-21 00:32:29.804,0.019992,,,0,0,2567,153,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4374,889,,Papyrus
+gen-1771633944-jNwkeI1gL3iNlQmJJEVR,2026-02-21 00:32:24.148,0.021102,,,0,0,2567,190,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5064,1026,,Papyrus
+gen-1771633939-53PZtdzQ2Am7E34HHgFo,2026-02-21 00:32:19.123,0.019662,,,0,0,2567,142,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4429,1524,,Papyrus
+gen-1771633935-ETHyP9RZ8pJK2P5s1paC,2026-02-21 00:32:15.636,0.014616,,,0,0,1991,89,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,2728,993,,Papyrus
+gen-1771633931-2bsS4dxeNTVcQppcUly7,2026-02-21 00:32:11.966,0.014496,,,0,0,1991,85,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3038,915,,Papyrus
+gen-1771633927-t4Q1QKzTyjGt10nkFogJ,2026-02-21 00:32:07.589,0.014736,,,0,0,1991,93,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3443,1100,,Papyrus
+gen-1771633923-emKJVsSnDe7mDgeH4Jzw,2026-02-21 00:32:03.143,0.014022,,,0,0,1867,94,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3697,1805,,Papyrus
+gen-1771633919-1nKFLsSD5ZpFq9mi9Psb,2026-02-21 00:31:59.285,0.013602,,,0,0,1867,80,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3265,1686,,Papyrus
+gen-1771633915-QmxZoWQfwABpBtJmWYXx,2026-02-21 00:31:55.765,0.013692,,,0,0,1867,83,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,2807,1065,,Papyrus
+gen-1771633910-fmRGZEE5CLAl13Gd6pLc,2026-02-21 00:31:50.895,0.012966,,,0,0,1366,159,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4255,844,,Papyrus
+gen-1771633905-Gjda5UMhBMUmSTSwD9NE,2026-02-21 00:31:45.680,0.012996,,,0,0,1366,160,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4587,981,,Papyrus
+gen-1771633900-agBMUubQgh8Age9Gi2ce,2026-02-21 00:31:40.941,0.012966,,,0,0,1366,159,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4134,832,,Papyrus
+gen-1771633896-WeMoXE9HPSnRJrIBcowa,2026-02-21 00:31:35.790,0.02088,,,0,0,2845,127,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4228,1008,,Papyrus
+gen-1771633891-naum7GLPDVChvq9zr6G8,2026-02-21 00:31:31.414,0.02073,,,0,0,2845,122,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3875,873,,Papyrus
+gen-1771633886-6AKflTi8o0I7EhHPlA7q,2026-02-21 00:31:26.234,0.02079,,,0,0,2845,124,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4535,1313,,Papyrus
+gen-1771633876-VF9XlHvGn8sKSMr3Aa5Y,2026-02-21 00:31:16.215,0.02352,,,0,0,2225,339,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,9494,2086,,Papyrus
+gen-1771633864-0UCJqDw0b8YpOG4QstUq,2026-02-21 00:31:03.845,0.02394,,,0,0,2225,353,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,11489,3468,,Papyrus
+gen-1771633854-DxBT0nIemKlQEeIvlGsB,2026-02-21 00:30:54.616,0.02343,,,0,0,2225,336,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,8453,994,,Papyrus
+gen-1771633847-8EKXzg6tIKkH99yOkGQT,2026-02-21 00:30:47.573,0.017664,,,0,0,2124,164,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6508,3129,,Papyrus
+gen-1771633843-d1yTi4lqyKeRyddQokLq,2026-02-21 00:30:43.040,0.016914,,,0,0,2124,139,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4012,1164,,Papyrus
+gen-1771633837-tmOSwqvmPIQ7GUYnvssd,2026-02-21 00:30:37.461,0.017934,,,0,0,2124,173,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4962,1283,,Papyrus
+gen-1771633833-fh71EugLKD0dJKiKiVJJ,2026-02-21 00:30:33.408,0.019848,,,0,0,2748,112,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3607,1052,,Papyrus
+gen-1771633828-TIFinn5FtvvbAj2eE5ws,2026-02-21 00:30:28.698,0.019848,,,0,0,2748,112,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4089,1445,,Papyrus
+gen-1771633825-M8IlvxYb0tcytDdqcl6l,2026-02-21 00:30:24.831,0.019038,,,0,0,2748,85,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,2833,1056,,Papyrus
+gen-1771633815-6X9uLVFt2PpE98LJe8Qy,2026-02-21 00:30:15.074,0.022482,,,0,0,2702,209,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,9044,3489,,Papyrus
+gen-1771633806-U94rekSrESKVkUBOPa9L,2026-02-21 00:30:06.307,0.022902,,,0,0,2702,223,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,8288,1373,,Papyrus
+gen-1771633797-oEg741IdEouIJPmivKkO,2026-02-21 00:29:57.726,0.021732,,,0,0,2702,184,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,8033,1411,,Papyrus
+gen-1771633791-rAppB98yfcceoppaaNmI,2026-02-21 00:29:51.425,0.020178,,,0,0,2523,168,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5482,1241,,Papyrus
+gen-1771633786-ha70wgZAq5mMIqO8vx6c,2026-02-21 00:29:46.170,0.019698,,,0,0,2523,152,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4631,1252,,Papyrus
+gen-1771633779-buw6nh2nelHZB2y8TWNM,2026-02-21 00:29:39.977,0.020328,,,0,0,2523,173,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5510,1053,,Papyrus
+gen-1771633773-IhdYJsercqAFqSoFMXLM,2026-02-21 00:29:33.833,0.018846,,,0,0,2216,185,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5625,1870,,Papyrus
+gen-1771633765-zR04Twr0l4rHVZ9nPgH3,2026-02-21 00:29:25.170,0.017526,,,0,0,2216,141,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,8014,4713,,Papyrus
+gen-1771633759-SHerYV2VyXCJApV1wykj,2026-02-21 00:29:18.952,0.017706,,,0,0,2216,147,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5282,1819,,Papyrus
+gen-1771633754-twoWiAn858pBU9vsu4AU,2026-02-21 00:29:14.872,0.018912,,,0,0,2357,159,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3601,1131,,Papyrus
+gen-1771633751-jOKk91dDocydpFibRsB5,2026-02-21 00:29:11.490,0.017832,,,0,0,2357,123,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,2943,937,,Papyrus
+gen-1771633747-1GCWzekb8suP6qnKIGWf,2026-02-21 00:29:07.592,0.017832,,,0,0,2357,123,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3389,961,,Papyrus
+gen-1771633737-0I3av99j59EwXGNz5BUZ,2026-02-21 00:28:57.386,0.017616,,,0,0,1731,241,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,9640,3036,,Papyrus
+gen-1771633726-7Z7rtq3oK8GJzlVIzBUa,2026-02-21 00:28:46.533,0.018456,,,0,0,1731,269,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,10005,3221,,Papyrus
+gen-1771633719-VexxDuSbABTCBibqkjPX,2026-02-21 00:28:39.152,0.017526,,,0,0,1731,238,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6829,1296,,Papyrus
+gen-1771633714-KPJS6Flk171ry69eZPd7,2026-02-21 00:28:34.104,0.018648,,,0,0,2553,111,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4456,1664,,Papyrus
+gen-1771633709-1dwQkrn7ZSXlJSlbK1cG,2026-02-21 00:28:29.688,0.019758,,,0,0,2553,148,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,3852,1131,,Papyrus
+gen-1771633704-tcyzQe5f5glJodAhswMW,2026-02-21 00:28:24.773,0.018888,,,0,0,2553,119,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4183,1353,,Papyrus
+gen-1771633698-sgP7HsJsnu26TEnglcFN,2026-02-21 00:28:18.028,0.018594,,,0,0,2179,184,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6080,888,,Papyrus
+gen-1771633690-8tm1K0AJ20Bsu1jWHZsG,2026-02-21 00:28:10.717,0.018984,,,0,0,2179,197,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,6494,940,,Papyrus
+gen-1771633681-YSiIZH7pWd4rPtBUtg8z,2026-02-21 00:28:01.590,0.020394,,,0,0,2179,244,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,8577,1499,,Papyrus
+gen-1771633673-EbjxcHFina7nbm35sztZ,2026-02-21 00:27:53.318,0.021102,,,0,0,2172,269,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,7628,1752,,Papyrus
+gen-1771633668-hj6t2qWGuV7pJ1EUi4x8,2026-02-21 00:27:48.474,0.017112,,,0,0,2172,136,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,4153,1036,,Papyrus
+gen-1771633662-m1z2XjpXrkagLZQc28u5,2026-02-21 00:27:42.217,0.017112,,,0,0,2172,136,0,0,anthropic/claude-3.5-sonnet,Amazon Bedrock,standard,false,true,,stop,stop,5649,3130,,Papyrus
