@@ -6,6 +6,7 @@ import time
 import hashlib
 from dotenv import load_dotenv
 from llm.caption_extractor import extract_caption_with_llm
+from indexing.captions import caption_blocks, describe_position, image_rect, layout_caption
 import os
 from utils.llm_retry import llm_call_with_retry, RateLimitException
 import logging
@@ -35,6 +36,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
         })
 
         image_dir = EXTRACTED_DIR
+        page_captions = caption_blocks(page)
 
         for img_page_index, img in enumerate(page.get_images(full=True), start=1):
             xref = img[0]
@@ -93,15 +95,25 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 logger.info(f"Multimodal description disabled for {image_path}")
                 llm_description = ""
             
-            if os.getenv("DISABLE_LLM_CAPTION_EXTRACTION", "false").lower() != "true":
+            # The caption is the caption block printed next to the image on the page. The LLM is only
+            # a fallback for pages where the layout gives no such block. The flag turns off both, so
+            # ablations without captions keep their meaning.
+            captions_on = os.getenv("DISABLE_LLM_CAPTION_EXTRACTION", "false").lower() != "true"
+            rect = image_rect(page, xref)
+            caption = layout_caption(page, rect, page_captions) if captions_on and rect is not None else None
+            if caption is not None:
+                logger.info(f"Layout caption for {image_path}")
+                logger.info(f"Legenda obtida: {caption}")
+            elif captions_on:
                 logger.info(f"Extracting LLM caption for {image_path}")
+                position = describe_position(page, rect)
                 try:
                     caption = llm_call_with_retry(
                         lambda: extract_caption_with_llm(
                             page_text=text,
                             filename=path.name,
                             page_number=page_num,
-                            img_doc_index=img_doc_index
+                            image_position=position
                         )
                     )
                 except RateLimitException:
@@ -110,7 +122,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 logger.info(f"Legenda obtida: {caption}")
                 time.sleep(3)
             else:
-                logger.info(f"LLM caption extraction disabled for {image_path}")
+                logger.info(f"Caption extraction disabled for {image_path}")
                 caption = ""
 
             image_info = {

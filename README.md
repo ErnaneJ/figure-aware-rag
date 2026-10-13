@@ -11,7 +11,7 @@ Code and data for the paper above. Papyrus AI is a retrieval-augmented generatio
 ## How it works
 
 1. **Extraction.** PyMuPDF splits each page into text and embedded images. Images are deduplicated by MD5.
-2. **Image records, once per image.** Tesseract reads the printed text (OCR), a vision-language model (Gemini 2.5 Flash by default) writes a description, and an LLM pulls the figure caption from the page text. The three fields form one image record.
+2. **Image records, once per image.** Tesseract reads the printed text (OCR), a vision-language model (Gemini 2.5 Flash by default) writes a description, and the caption is the "Figure N." block printed next to the image on the page, found from the page layout (an LLM reads the page text only when no such block exists). The three fields form one image record.
 3. **Text chunking.** Each page is cut into 800-character windows with 200 characters of overlap, and each window keeps its page number.
 4. **Indexing.** Text chunks and image records are embedded with `all-MiniLM-L6-v2` into one FAISS index per document.
 5. **Answering.** A LangGraph flow retrieves the top 5 chunks, builds a prompt with grounding rules, and asks the chat model to answer only from that context and to cite `Source: <file>, page <n>`.
@@ -155,6 +155,8 @@ Pre-declared comparisons (question means, N=10, Bonferroni k=7):
 | Revised configuration vs. full text | visual | +0.01 [−0.13, 0.16] | 0.799 | 1.00 | 0.08 |
 
 Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system matched full-text prompting on visual questions at about 5% of the cost. Most of the visual gain came from the OCR text and the captions.
+
+The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. The results above describe the evaluated version and were not rerun.
 
 ## Figures
 

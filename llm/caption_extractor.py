@@ -132,24 +132,27 @@ def extract_caption_with_llm(
     page_text: str,
     filename: str,
     page_number: int,
-    img_doc_index: int
+    image_position: str
 ) -> str | None:
-    """Ask the LLM for the caption of image `img_doc_index` as written in the page text.
-    Returns None when no caption is found."""
+    """Ask the LLM for the caption printed next to an image. Used only when the layout matcher in
+    indexing/captions.py finds no caption block near the image. Returns None when no caption is found.
+
+    `image_position` describes where the image sits on the page (e.g. "top half, left column"). The
+    prompt does not give the image a number: an image counter does not match the figure numbers
+    printed in the paper (logos and other unnumbered images shift it)."""
 
     question = (
-        f"Does the image ({img_doc_index}) on page {page_number} of file {filename} have a visible caption in the text?"
-        f"If so, return only the exact caption as it appears in the text, without interpreting or rewriting it."
-        f"The caption can be anywhere in the page text, but is usually near the image."
-        f"The content can begin with words such as 'Fig.', 'Figure', 'Image', 'Photo', 'Graph', 'Table', or similar."
-        f"and can contain numbers, letters, or symbols. The caption can be long or short."
-        f"and can contain punctuation, such as a colon, dash, or parentheses."
-        f"If there is no clearly defined caption for this image, simply say: 'UNDEFINED'."
+        f"An image sits in the {image_position} of page {page_number} of file {filename}. "
+        f"Does the page text contain the caption printed next to this image? "
+        f"If so, return only the exact caption as it appears in the text, without interpreting or rewriting it. "
+        f"The caption usually begins with words such as 'Fig.', 'Figure', 'Image', 'Photo', 'Graph', or similar, "
+        f"followed by a number. Choose the caption by position, not by figure number. "
+        f"If the page has no caption that clearly belongs to this image, simply say: 'UNDEFINED'."
     )
 
     context = (
         f"You are an assistant who must answer based on the textual content of the page.\n\n"
-        f"FILE: {filename} | PAGE: {page_number} | IMAGE: {img_doc_index}\n\n"
+        f"FILE: {filename} | PAGE: {page_number} | IMAGE POSITION: {image_position}\n\n"
         f"PAGE CONTENT:\n---\n{page_text}\n---\n\n"
         f"QUESTION:\n{question}\n\n"
         f"Answer exclusively with the exact caption or with the term UNDEFINED."
