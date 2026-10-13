@@ -193,3 +193,7 @@ Related work by the first author: the M.Sc. dissertation "Ingestion-Time Visual 
 ## Acknowledgments
 
 Supported by Petrobras through the "Cognitive Assistant for Geophysical Data" project, with support from ANP through the R&D levy regulation, by CAPES, and by FUNPEC.
+
+## License
+
+The code is released under the [MIT License](LICENSE). The `retrieval_context` columns and the model answers in `experiments/` contain short passages from the test document (Chopra and Marfurt, 2005, doi:10.1190/1.2098670). They are kept so that the scores can be checked, and they remain under the publisher's copyright; the MIT License does not cover them. The paper itself is not distributed here.
