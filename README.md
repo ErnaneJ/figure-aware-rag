@@ -108,7 +108,7 @@ python analyze.py             # tables/, figs/ and analysis.json
 
 The answers, scores, tables and figures are in the repository. Rerunning `analyze.py` needs `records.json`, which `rebuild_records.py` builds from the PDF.
 
-## Key results
+## Results
 
 ### Study 1: full-text prompting vs. Papyrus AI
 
@@ -154,9 +154,9 @@ Pre-declared comparisons (question means, N=10, Bonferroni k=7):
 | Revised configuration vs. full text | text | −0.06 [−0.20, 0.09] | 0.407 | 1.00 | 0.26 |
 | Revised configuration vs. full text | visual | +0.01 [−0.13, 0.16] | 0.799 | 1.00 | 0.08 |
 
-Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system matched full-text prompting on visual questions at about 5% of the cost. Most of the visual gain came from the OCR text and the captions.
+Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system matched full-text prompting on visual questions at about 5% of the cost. The visual gain came from both parts of the image record. OCR text and captions helped on the five questions about Figure 1, a timeline printed as text, and the VLM description helped on the five about Figures 10 to 12. Neither part is significant on its own.
 
-The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. A rerun of the three caption-dependent conditions with these captions (`experiments/study2/analyze_layout.py`, 360 answers, same models, prompt and judge) changed visual correctness by -0.02 to +0.01, within the run-to-run variation measured on questions whose prompt did not change. For most questions about Figures 10 to 12 the retriever does not return that figure's image record with either caption version, so retrieval, not caption accuracy, limits those questions. The tables above report the original run.
+The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. A rerun of the three caption-dependent conditions with these captions (`experiments/study2/analyze_layout.py`, 360 answers, same models, prompt and judge) changed visual correctness by -0.03 to +0.01, within the run-to-run variation measured on questions whose prompt did not change. For most questions about Figures 10 to 12 the retriever does not return that figure's image record with either caption version, so retrieval, not caption accuracy, limits those questions. In the rerun, OCR text and captions added 0.05 and the VLM description 0.09 on visual questions. The tables above report the original run.
 
 ## Figures
 
