@@ -1,4 +1,4 @@
-"""Score generations with the same judge configuration as experiments/evaluate.py
+"""Score generations with the same judge configuration as experiments/study1/evaluate.py
 (DeepEval G-Eval Correctness, GPT-4.1 through OpenRouter). The evaluation steps are generated
 once, saved, and reused so every condition is scored against the same rubric."""
 import argparse, json, os, threading

@@ -1,4 +1,4 @@
-"""Analysis of the unified-settings ablation (revision 2).
+"""Analysis of the unified-settings ablation (Study 2).
 
 Reads generations.csv, scores.csv, evidence_map.csv, records.json, retrieval_study.csv and
 judge_check.csv; writes analysis.json, the summary tables in tables/, and the figures in figs/.

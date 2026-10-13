@@ -1,19 +1,25 @@
+"""Study 1, baseline condition: each model receives the full text of the PDF (PyMuPDF) and the question.
+
+5 models x 20 questions x 3 runs = 300 answers, temperature 0.4. Writes answers_baseline.csv.
+Needs OPEN_ROUTER_API_KEY in .env and the source PDF at experiments/gsgpy_70_5_3SO.pdf."""
+from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
-import fitz 
+import fitz
 import os
 import pandas as pd
 import time
 
-load_dotenv(override=True, verbose=True)
+HERE = Path(__file__).resolve().parent
+load_dotenv(HERE.parent.parent / ".env", override=True)
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.getenv("OPEN_ROUTER_API_KEY", "false")
 )
 
-PDF_PATH = "./experiments/gsgpy_70_5_3SO.pdf"
-CSV_PATH = "./experiments/questions.csv"
+PDF_PATH = HERE.parent / "gsgpy_70_5_3SO.pdf"
+CSV_PATH = HERE.parent / "questions.csv"
 MODELS = [
     "openai/gpt-4o",
     "anthropic/claude-3.5-sonnet",
@@ -36,7 +42,7 @@ def run_experiment():
     for model in MODELS:
         for _, row in df_questions.iterrows():
             for r in range(1, 4):
-                print(f"Testando {model} | Q{row['id']} | R{r}")
+                print(f"Running {model} | Q{row['id']} | R{r}")
                 try:
                     completion = client.chat.completions.create(
                         model=model,
@@ -56,10 +62,10 @@ def run_experiment():
                         "actual_output": answer
                     })
                 except Exception as e:
-                    print(f"Erro no modelo {model}: {e}")
+                    print(f"Error with {model}: {e}")
                     time.sleep(5)
                 
-    pd.DataFrame(results).to_csv("./experiments/concorrentes_results.csv", index=False)
+    pd.DataFrame(results).to_csv(HERE / "answers_baseline.csv", index=False)
 
 if __name__ == "__main__":
     run_experiment()

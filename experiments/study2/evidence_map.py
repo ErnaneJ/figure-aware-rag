@@ -1,4 +1,4 @@
-"""Locate the evidence for each Golden Dataset question in the PDF text (page and character offset)
+"""Locate the evidence for each benchmark question in the PDF text (page and character offset)
 by best token-overlap window against the ground-truth answer."""
 import re, json
 import pandas as pd

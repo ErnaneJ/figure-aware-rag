@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 from scipy.stats import spearmanr, wilcoxon
 from judge import score, steps, HERE
 
-old = pd.read_csv(HERE.parent / "AVALIACAO_FINAL_MESTRADO.csv")
+old = pd.read_csv(HERE.parent / "study1" / "scores.csv")
 old = old[old.score_correctness.notna()]
 old["cond"] = old.model.str.startswith("Papyrus").map({True: "papyrus", False: "baseline"})
 sample = old.groupby(["cond", "category"]).sample(10, random_state=7)

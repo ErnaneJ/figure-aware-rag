@@ -1,12 +1,12 @@
 """Rebuild the ingestion records (page text, OCR, caption, VLM description) of the
-Golden Dataset document from the PDF and the original ingestion log, without new API calls."""
+benchmark document from the PDF and the original ingestion log, without new API calls."""
 import hashlib, json, re
 from pathlib import Path
 import fitz
 
 HERE = Path(__file__).resolve().parent
 PDF = HERE.parent / "gsgpy_70_5_3SO.pdf"
-LOG = HERE.parent / "papyrus_file_processing_log.txt"
+LOG = HERE.parent / "study1" / "ingestion_log.txt"
 
 HEAD = re.compile(r"^worker-1  \| \[(?P<ts>[^\]]+): (?P<lvl>\w+)/[^\]]+\] (?P<msg>.*)$")
 

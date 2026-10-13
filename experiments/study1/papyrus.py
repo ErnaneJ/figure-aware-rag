@@ -1,9 +1,12 @@
-"""Augmented condition of the 2026-02 experiment: runs every Golden Dataset question through the
-Papyrus AI chat pipeline (inside the app container) and stores the answer and retrieved context.
+"""Study 1, Papyrus condition: runs every benchmark question through the Papyrus AI chat pipeline
+and stores the answer and the retrieved context (20 questions x 3 runs per model).
 
-Run inside the container (docker compose exec app python experiments/papyrus.py). Provider, model
-and API keys come from the environment (.env, never committed; see .env.example)."""
+Run inside the app container after uploading the PDF in the UI, once per chat model:
+    LLM_MODEL_CHAT=openai/gpt-4o docker compose exec app python experiments/study1/papyrus.py
+The study used TEXT_CHUNKING=page. Answers from the five runs were concatenated into answers_papyrus.csv.
+FILE_HASH is the SHA-256 of the PDF, which names its folder under files/."""
 import os
+from pathlib import Path
 import pandas as pd
 from dotenv import load_dotenv
 
@@ -12,10 +15,11 @@ load_dotenv(override=True)
 from db.queries import create_chat, delete_chat
 from services.chat_engine import run_chat
 
-CSV_PATH = "./experiments/questions.csv"
+HERE = Path(__file__).resolve().parent
+CSV_PATH = HERE.parent / "questions.csv"
 FILE_HASH = "500f9ba505f61d63e7a587a20cb7bf0632a467e346b9ea916b854a649afe6f8f"
 MODEL_NAME = os.getenv("LLM_MODEL_CHAT", "openai/gpt-4o")
-OUTPUT = os.getenv("PAPYRUS_RESULTS_CSV", "results_papyrus_multimodel2.csv")
+OUTPUT = os.getenv("PAPYRUS_RESULTS_CSV", str(HERE / f"answers_papyrus_{MODEL_NAME.split('/')[-1]}.csv"))
 
 
 def test_papyrus():

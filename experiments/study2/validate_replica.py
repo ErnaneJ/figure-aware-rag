@@ -1,11 +1,11 @@
-"""Check that the offline replica reproduces the retrieval contexts stored in results_papyrus_multimodel.csv."""
+"""Check that the offline replica reproduces the retrieval contexts stored in study1/answers_papyrus.csv."""
 import pandas as pd
 from rag import Index, records, text_chunks, image_chunks, HERE
 
 R = records()
 idx = Index(text_chunks(R["pages"], "page") + image_chunks(R["images"]))
 q = pd.read_csv(HERE.parent / "questions.csv").set_index("id")
-res = pd.read_csv(HERE.parent / "results_papyrus_multimodel.csv")
+res = pd.read_csv(HERE.parent / "study1" / "answers_papyrus.csv")
 exact = setmatch = 0
 for qid, grp in res.groupby("id"):
     stored = {c.strip() for c in str(grp.retrieval_context.iloc[0]).split("\n---\n")}
