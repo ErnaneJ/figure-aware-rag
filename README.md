@@ -70,7 +70,7 @@ The test document is S. Chopra and K. J. Marfurt, "Seismic attributes: A histori
 
 ## How the metrics are computed
 
-- Correctness: DeepEval 3.8.4 G-Eval with GPT-4.1 (through OpenRouter) as the judge. The judge compares each answer with the reference answer and returns a score from 0 to 1.
+- Correctness: DeepEval 3.8.4 G-Eval with GPT-4.1 (through OpenRouter) as the judge. The judge compares each answer with the reference answer, without the question, and returns a score from 0 to 1. The criteria text says "Rate it from 1 to 5" while the DeepEval template asks for 0 to 10; scores of 1.0 occur, so the judge used the full range, but the mixed instruction is a known flaw shared by all conditions.
 - Faithfulness: DeepEval faithfulness on Papyrus AI answers, that is, the share of claims in an answer that the retrieved context supports.
 - Citations: a regular expression checks whether the answer has a source line.
 - Cost, tokens and latency: read from the OpenRouter activity exports (`billing_*.csv`), not estimated.
@@ -125,7 +125,7 @@ Five models, 20 questions, three runs each. The original Papyrus AI configuratio
 
 - Prompt tokens per query fell from 31,250 to 2,053 (93.4% less), and total cost fell from US$16.58 to US$1.52 (90.8% less).
 - Papyrus AI answers had a judge-rated mean faithfulness of 0.943, and 84.3% of them scored 1.0. The DeepEval metric counts a claim as faithful unless the context contradicts it, so read this as an upper bound on grounding.
-- 95.0% of Papyrus AI answers ended with a source line, against 0.7% of full-text answers, whose prompt did not ask for one.
+- 95.0% of Papyrus AI answers named a source ("Source:" or a file name), against 0.7% of full-text answers, whose prompt did not ask for one. Counting page mentions too, the baseline reaches 5.3%.
 - Billed costs include provider prompt caching, which favored the full-text baseline (98% of GPT-4o and 97% of Gemini baseline calls were partly cached). At list price the totals are about $18.90 against $1.60, a 91.6% reduction.
 - Mean generation time went from 4.57 s to 3.18 s.
 - No difference passed Bonferroni correction. The largest effects were the text loss for Gemini 2.5 Flash Lite (r=0.74) and the visual gain for Llama 3.1 70B (+0.26, r=0.65).

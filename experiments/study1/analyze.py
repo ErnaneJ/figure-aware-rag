@@ -14,7 +14,9 @@ HERE = Path(__file__).resolve().parent
 MODELS = ["GPT-4o", "Claude 3.5 Sonnet", "Gemini 2.5 Flash Lite", "DeepSeek-V3", "Llama 3.1 70B"]
 KEYS = [("gpt-4o", "GPT-4o"), ("claude", "Claude 3.5 Sonnet"), ("deepseek", "DeepSeek-V3"),
         ("llama", "Llama 3.1 70B"), ("gemini", "Gemini 2.5 Flash Lite")]
-CITATION = r"(?i)source:|page \d|pg\.|p\. ?\d|\.pdf"
+# Same patterns for both conditions: SOURCE names a source, PAGE also counts page mentions.
+SOURCE = r"(?i)source:|\.pdf"
+PAGE = r"(?i)source:|page \d|pg\.|p\. ?\d|\.pdf"
 
 
 def model_name(slug):
@@ -66,11 +68,12 @@ out += ["", "## Faithfulness (Papyrus answers only)", "",
 for m in MODELS:
     out.append(f"- {m}: {f[f.M == m].score_faithfulness.mean():.3f}")
 
-cit_p = f.actual_output.astype(str).str.contains(CITATION).mean()
-cit_b = d[d.cond == "baseline"].actual_output.astype(str).str.contains(r"(?i)source:|\.pdf").mean()
+base = d[d.cond == "baseline"].actual_output.astype(str)
+cit_p, cit_b = f.actual_output.astype(str).str.contains(SOURCE).mean(), base.str.contains(SOURCE).mean()
+pg_p, pg_b = f.actual_output.astype(str).str.contains(PAGE).mean(), base.str.contains(PAGE).mean()
 out += ["", "## Citations", "",
-        f"- Papyrus answers with a source line: {cit_p * 100:.1f}%",
-        f"- Baseline answers that mention a source: {cit_b * 100:.1f}%"]
+        f"- Answers that name a source: Papyrus {cit_p * 100:.1f}%, baseline {cit_b * 100:.1f}%",
+        f"- Counting page mentions too: Papyrus {pg_p * 100:.1f}%, baseline {pg_b * 100:.1f}%"]
 
 out += ["", "## Cost, tokens and latency (OpenRouter billing)", "",
         "| Condition | Model | Queries | Total cost (US$) | Cost per query (US$) | Prompt tokens | Generation time (s) |",

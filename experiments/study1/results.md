@@ -33,8 +33,8 @@ Delta = Papyrus minus baseline. p and r: Wilcoxon on question means (N=10). p_co
 
 ## Citations
 
-- Papyrus answers with a source line: 95.0%
-- Baseline answers that mention a source: 0.7%
+- Answers that name a source: Papyrus 95.0%, baseline 0.7%
+- Counting page mentions too: Papyrus 95.0%, baseline 5.3%
 
 ## Cost, tokens and latency (OpenRouter billing)
 
