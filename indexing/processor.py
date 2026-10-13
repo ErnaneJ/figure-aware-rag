@@ -17,7 +17,7 @@ load_dotenv(override=True, verbose=True)
 def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
     path = Path(pdf_path)
     if not path.exists():
-        raise FileNotFoundError(f"Arquivo não encontrado: {pdf_path}")
+        raise FileNotFoundError(f"File not found: {pdf_path}")
 
     EXTRACTED_DIR = Path("files") / file_hash / "extracted"
     EXTRACTED_DIR.mkdir(parents=True, exist_ok=True)
@@ -72,11 +72,11 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 ocr_text = extract_ocr_text(image_path)
                 logger.info(f"OCR extraído: {ocr_text}")
             else:
-                logger.info(f"OCR desativado para {image_path}")
+                logger.info(f"OCR disabled for {image_path}")
                 ocr_text = ""
 
             if os.getenv("DISABLE_MULTIMODAL_DESCRIPTION", "false").lower() != "true":
-                logger.info(f"Extraindo descrição multimodal para {image_path}")
+                logger.info(f"Extracting multimodal description for {image_path}")
                 try:
                     llm_description = llm_call_with_retry(
                         lambda: describe_image_with_context(
@@ -90,11 +90,11 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 logger.info(f"Descrição obtida: {llm_description}")
                 time.sleep(3)
             else:
-                logger.info(f"Descrição multimodal desativada para {image_path}")
+                logger.info(f"Multimodal description disabled for {image_path}")
                 llm_description = ""
             
             if os.getenv("DISABLE_LLM_CAPTION_EXTRACTION", "false").lower() != "true":
-                logger.info(f"Extraindo legenda LLM para {image_path}")
+                logger.info(f"Extracting LLM caption for {image_path}")
                 try:
                     caption = llm_call_with_retry(
                         lambda: extract_caption_with_llm(
@@ -110,7 +110,7 @@ def extract_text_and_images(pdf_path: str, file_hash: str) -> dict:
                 logger.info(f"Legenda obtida: {caption}")
                 time.sleep(3)
             else:
-                logger.info(f"Extração de legenda LLM desativada para {image_path}")
+                logger.info(f"LLM caption extraction disabled for {image_path}")
                 caption = ""
 
             image_info = {

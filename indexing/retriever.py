@@ -11,7 +11,7 @@ embedding_model = HuggingFaceEmbeddings(model_name="local_models/sentence-transf
 def load_vectorstore(file_hash: str):
     index_path = Path("files") / file_hash / "vectorstore"
     if not index_path.exists():
-        raise FileNotFoundError(f"Índice vetorial não encontrado para {file_hash}")
+        raise FileNotFoundError(f"Vector index not found for {file_hash}")
     
     return FAISS.load_local(str(index_path), embedding_model, allow_dangerous_deserialization=True)
 

@@ -14,8 +14,8 @@ class File(Base):
     pages = relationship(
         "Page",
         back_populates="file",
-        passive_deletes=True,              # respeita ON DELETE CASCADE no banco
-        cascade="all, delete-orphan"       # mantém consistência pelo lado ORM
+        passive_deletes=True,              # let the database apply ON DELETE CASCADE
+        cascade="all, delete-orphan"       # keep the ORM session consistent
     )
     images = relationship(
         "Image",
@@ -65,7 +65,7 @@ class Chat(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
     messages = relationship("ChatMessage", back_populates="chat", cascade="all, delete")
-    # Many-to-many: o cascade é responsabilidade do BANCO via ON DELETE CASCADE no chat_files
+    # Many-to-many: deletes cascade in the database through ON DELETE CASCADE on chat_files
     files = relationship("File", secondary=chat_file_association)
 
 class ChatMessage(Base):
@@ -73,7 +73,7 @@ class ChatMessage(Base):
 
     id = Column(Integer, primary_key=True)
     chat_id = Column(Integer, ForeignKey("chats.id", ondelete="CASCADE"), index=True)
-    role = Column(String)  # "user" ou "assistant"
+    role = Column(String)  # "user" or "assistant"
     content = Column(Text)
     timestamp = Column(DateTime, default=datetime.utcnow)
     think = Column(Text)

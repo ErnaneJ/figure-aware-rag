@@ -19,5 +19,5 @@ def extract_ocr_text(image_path: str) -> str | None:
         return cleaned_text
 
     except Exception as e:
-        logger.info(f"[OCR] Error to extract text from image '{image_path}': {e}")
+        logger.info(f"OCR failed for '{image_path}': {e}")
         return None

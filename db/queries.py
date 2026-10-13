@@ -130,7 +130,7 @@ def remove_file_from_chat(chat_id: int, file_hash: str):
     if chat and file and file in chat.files:
         if len(chat.files) <= 1:
             db.close()
-            raise ValueError("Um chat precisa ter ao menos um arquivo vinculado.")
+            raise ValueError("A chat must keep at least one file.")
         
         chat.files.remove(file)
         db.commit()

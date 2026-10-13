@@ -15,7 +15,6 @@ def render_answer_with_images(message: ChatMessage, container=None, streaming=Fa
     for match in re.finditer(r"\{\{?IMAGE:(\d+)\}?\}", message.content):
         start, end = match.span()
 
-        # Text
         before = message.content[cursor:start].strip()
         if before:
             if streaming:
@@ -23,21 +22,19 @@ def render_answer_with_images(message: ChatMessage, container=None, streaming=Fa
             else:
                 container.write(before)
 
-        # Image
         image_id = int(match.group(1))
         image = db.query(Image).filter(Image.id == image_id).first()
         if image:
-            description = image.caption or image.llm_description or "Imagem relacionada"
+            description = image.caption or image.llm_description or "Related image"
             container.image(image.path, caption=description, width=600)
         else:
             if streaming:
-                container.write_stream(stream_response_data(f"❌ [Imagem {image_id} não encontrada]"))
+                container.write_stream(stream_response_data(f"[Image {image_id} not found]"))
             else:
-                container.write(f"❌ [Imagem {image_id} não encontrada]")
+                container.write(f"[Image {image_id} not found]")
 
         cursor = end
 
-    # Text
     after = message.content[cursor:].strip()
     if after:
         if streaming:
@@ -45,7 +42,7 @@ def render_answer_with_images(message: ChatMessage, container=None, streaming=Fa
         else:
             container.write(after)
 
-    container.write(f"🚀 _Powered by {message.llm_provider or 'unknown'} - {message.llm_model or 'unknown'}_.")
+    container.write(f"_Powered by {message.llm_provider or 'unknown'} - {message.llm_model or 'unknown'}_.")
     db.close()
 
 def render_chat_history(messages):

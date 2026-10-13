@@ -48,7 +48,7 @@ def index_file(file_hash: str):
     db.close()
 
     if not file:
-        logger.info(f"❌ Arquivo {file_hash} não encontrado.")
+        logger.info(f"File {file_hash} not found.")
         return
 
     docs = []
@@ -106,13 +106,10 @@ def index_file(file_hash: str):
             "source": "image"
         }
 
-        # page = [page for page in pages if page.page_number == image.page_number][0]
-        # content += f"\n\nConteúdo da página {page.page_number}:\n{page.text}"
-        
         docs.append(Document(page_content=content, metadata=metadata))
 
     if not docs:
-        logger.info(f"⚠️ Nenhum conteúdo indexável encontrado para o arquivo {file_hash}")
+        logger.info(f"No indexable content for file {file_hash}")
         return
 
     index_path = Path("files") / file_hash / "vectorstore"
@@ -121,4 +118,4 @@ def index_file(file_hash: str):
     vectorstore = FAISS.from_documents(docs, embedding_model)
     vectorstore.save_local(str(index_path))
 
-    logger.info(f"✅ Índice vetorial unificado salvo em: {index_path}")
+    logger.info(f"Vector index saved to: {index_path}")

@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 load_dotenv(override=True, verbose=True)
 
 def get_api_key(provider):
-    """Obtém a chave API baseada no provedor"""
     provider_keys = {
         'openai': 'OPENAI_API_KEY',
         'gemini': 'GEMINI_API_KEY', 
@@ -23,11 +22,11 @@ def get_api_key(provider):
     
     key_name = provider_keys.get(provider)
     if not key_name:
-        raise ValueError(f"Provedor '{provider}' não suportado")
+        raise ValueError(f"Unsupported provider: '{provider}'")
     
     api_key = os.getenv(key_name)
     if not api_key and provider != 'ollama':
-        raise ValueError(f"{key_name} necessário para uso com {provider}")
+        raise ValueError(f"{key_name} is required for {provider}")
     
     return api_key
 
@@ -37,7 +36,7 @@ def get_multimodal_llm():
     api_key = get_api_key(provider)
 
     if provider == "gemini":
-        logger.info("[ℹ️ Multimodal] Usando Gemini LLM para descrição de imagem.")
+        logger.info("Multimodal LLM: Gemini")
         from google import genai
         client = genai.Client(api_key=api_key)
         return lambda prompt, image_bytes, mime_type: client.models.generate_content(
@@ -49,7 +48,7 @@ def get_multimodal_llm():
         ).text.strip()
 
     elif provider == "ollama":
-        logger.info("[ℹ️ Multimodal] Usando Ollama LLM para descrição de imagem.")
+        logger.info("Multimodal LLM: Ollama")
         def ollama_image_call(prompt: str, image_bytes: bytes, mime_type: str) -> str:
             img_b64 = base64.b64encode(image_bytes).decode("utf-8")
             base_url = os.getenv("OLLAMA_BASE_URL", "http://host.docker.internal:11434")
@@ -74,18 +73,18 @@ def get_multimodal_llm():
                         if "response" in parsed:
                             chunks.append(parsed["response"])
                     except Exception as e:
-                        logger.info(f"[⚠️ Erro ao parsear chunk] {e} > {line}")
+                        logger.info(f"Could not parse Ollama chunk: {e} > {line}")
 
                 return "".join(chunks).strip()
 
             except Exception as e:
-                logger.info(f"[❌ Ollama LLM] Erro: {e}")
+                logger.info(f"Ollama LLM error: {e}")
                 return None
 
         return ollama_image_call
 
     elif provider == "openai":
-        logger.info("[ℹ️ Multimodal] Usando OpenAI LLM para descrição de imagem.")
+        logger.info("Multimodal LLM: OpenAI")
         def openai_image_call(prompt: str, image_bytes: bytes, mime_type: str) -> str:
             base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
             img_b64 = base64.b64encode(image_bytes).decode("utf-8")
@@ -130,15 +129,15 @@ def get_multimodal_llm():
                 return result["choices"][0]["message"]["content"].strip()
 
             except Exception as e:
-                logger.info(f"[❌ OpenAI LLM] Erro: {e}")
+                logger.info(f"OpenAI LLM error: {e}")
                 if hasattr(e, 'response') and e.response is not None:
-                    logger.info(f"Resposta de erro: {e.response.text}")
+                    logger.info(f"Error response: {e.response.text}")
                 return None
 
         return openai_image_call
 
     elif provider == "azure-petrobras":
-        logger.info("[ℹ️ Multimodal] Usando Azure Petrobras LLM para descrição de imagem.")
+        logger.info("Multimodal LLM: Azure Petrobras")
         
         def azure_openai_image_call(prompt: str, image_bytes: bytes, mime_type: str) -> str:
             try:
@@ -146,15 +145,15 @@ def get_multimodal_llm():
                 api_version = os.getenv("AZURE_PETROBRAS_API_VERSION", "2025-01-01-preview")
                 
                 if not azure_base_url:
-                    raise ValueError("AZURE_PETROBRAS_BASE_URL necessário para uso com Azure Petrobras.")
+                    raise ValueError("AZURE_PETROBRAS_BASE_URL is required for azure-petrobras")
 
                 http_client = None
                 ca_cert_path = os.getenv("AZURE_CA_CERT_PATH", "./petrobras-ca-root.pem")
                 if os.path.exists(ca_cert_path):
                     http_client = httpx.Client(verify=ca_cert_path)
-                    logger.info(f"[ℹ️] Usando certificado customizado: {ca_cert_path}")
+                    logger.info(f"Using custom CA certificate: {ca_cert_path}")
                 else:
-                    logger.info(f"[⚠️] Certificado não encontrado em {ca_cert_path}, usando verificação padrão")
+                    logger.info(f"CA certificate not found at {ca_cert_path}, using default verification")
 
                 client = AzureOpenAI(
                     api_key=api_key,
@@ -199,13 +198,13 @@ def get_multimodal_llm():
                 return response.choices[0].message.content.strip()
 
             except Exception as e:
-                logger.info(f"[❌ Azure Petrobras LLM] Erro: {e}")
+                logger.info(f"Azure Petrobras LLM error: {e}")
                 return None
 
         return azure_openai_image_call
 
     else:
-        raise ValueError(f"LLM provider '{provider}' não suportado para imagem multimodal.")
+        raise ValueError(f"Unsupported multimodal LLM provider: '{provider}'")
     
 def describe_image_with_context(image_path: str, page_text: str = "") -> str | None:
     try:
@@ -228,5 +227,5 @@ def describe_image_with_context(image_path: str, page_text: str = "") -> str | N
         return multimodal_llm(prompt, image_bytes, mime_type)
 
     except Exception as e:
-        logger.info(f"[Multimodal] Error to describe image {image_path}: {e}")
+        logger.info(f"Image description failed for {image_path}: {e}")
         return None
