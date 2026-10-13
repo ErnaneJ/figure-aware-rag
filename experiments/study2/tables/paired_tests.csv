@@ -1,29 +1,29 @@
-comparison,category,a,b,mean_a,mean_b,mean_diff,ci_low,ci_high,W,p,p_bonf,r,n
-"enrichment, page chunking",visual,PAGE_FULL,PAGE_TEXT,0.5117,0.345,0.1667,0.0367,0.3117,8.0,0.0858,0.6008,0.5432,10
-"enrichment, page chunking [Llama 3.1 70B]",visual,PAGE_FULL,PAGE_TEXT,0.53,0.305,0.225,0.045,0.43,6.0,0.0502,,0.6192,10
-"enrichment, page chunking [DeepSeek-V3]",visual,PAGE_FULL,PAGE_TEXT,0.53,0.4,0.13,-0.03,0.31,8.5,0.1807,,0.4233,10
-"enrichment, page chunking [Gemini 2.5 Flash Lite]",visual,PAGE_FULL,PAGE_TEXT,0.475,0.33,0.145,0.025,0.295,5.0,0.0687,,0.5756,10
-"enrichment, sub-page chunking",visual,SUB_FULL,SUB_TEXT,0.4133,0.2883,0.125,0.0033,0.2683,9.0,0.2076,1.0,0.3985,10
-"enrichment, sub-page chunking [Llama 3.1 70B]",visual,SUB_FULL,SUB_TEXT,0.405,0.32,0.085,0.01,0.185,6.0,0.0913,,0.534,10
-"enrichment, sub-page chunking [DeepSeek-V3]",visual,SUB_FULL,SUB_TEXT,0.47,0.285,0.185,0.045,0.355,2.0,0.0244,,0.712,10
-"enrichment, sub-page chunking [Gemini 2.5 Flash Lite]",visual,SUB_FULL,SUB_TEXT,0.365,0.26,0.105,-0.085,0.33,19.0,0.6781,,0.1312,10
-NMM description over OCR+caption,visual,SUB_FULL,SUB_OCRCAP,0.4133,0.3617,0.0517,-0.04,0.2017,24.0,0.7211,1.0,0.1129,10
-NMM description over OCR+caption [Llama 3.1 70B],visual,SUB_FULL,SUB_OCRCAP,0.405,0.36,0.045,-0.035,0.16,12.0,0.7335,,0.1077,10
-NMM description over OCR+caption [DeepSeek-V3],visual,SUB_FULL,SUB_OCRCAP,0.47,0.39,0.08,-0.03,0.225,8.5,0.1829,,0.4212,10
-NMM description over OCR+caption [Gemini 2.5 Flash Lite],visual,SUB_FULL,SUB_OCRCAP,0.365,0.335,0.03,-0.11,0.235,17.0,0.2832,,0.3393,10
-sub-page vs page chunking,text,SUB_FULL,PAGE_FULL,0.7667,0.51,0.2567,0.0983,0.4283,1.0,0.0173,0.121,0.7528,10
-sub-page vs page chunking [Llama 3.1 70B],text,SUB_FULL,PAGE_FULL,0.81,0.545,0.265,0.065,0.475,3.0,0.0625,,0.589,10
-sub-page vs page chunking [DeepSeek-V3],text,SUB_FULL,PAGE_FULL,0.71,0.5,0.21,0.015,0.4201,10.0,0.1386,,0.4683,10
-sub-page vs page chunking [Gemini 2.5 Flash Lite],text,SUB_FULL,PAGE_FULL,0.78,0.485,0.295,0.095,0.51,3.0,0.063,,0.588,10
-original RAG vs full text,text,PAGE_FULL,FT,0.51,0.8217,-0.3117,-0.5033,-0.125,7.0,0.0367,0.2566,0.6608,10
-original RAG vs full text [Llama 3.1 70B],text,PAGE_FULL,FT,0.545,0.76,-0.215,-0.4551,0.015,5.5,0.1501,,0.4552,10
-original RAG vs full text [DeepSeek-V3],text,PAGE_FULL,FT,0.5,0.825,-0.325,-0.53,-0.115,7.0,0.0367,,0.6608,10
-original RAG vs full text [Gemini 2.5 Flash Lite],text,PAGE_FULL,FT,0.485,0.88,-0.395,-0.6,-0.2,0.0,0.018,,0.7483,10
-revised RAG vs full text,text,SUB_FULL,FT,0.7667,0.8217,-0.055,-0.2033,0.085,15.5,0.4065,1.0,0.2625,10
-revised RAG vs full text [Llama 3.1 70B],text,SUB_FULL,FT,0.81,0.76,0.05,-0.205,0.295,16.5,0.8326,,0.0668,10
-revised RAG vs full text [DeepSeek-V3],text,SUB_FULL,FT,0.71,0.825,-0.115,-0.275,-0.005,3.0,0.1159,,0.4972,10
-revised RAG vs full text [Gemini 2.5 Flash Lite],text,SUB_FULL,FT,0.78,0.88,-0.1,-0.235,0.045,7.0,0.123,,0.4877,10
-revised RAG vs full text,visual,SUB_FULL,FT,0.4133,0.4067,0.0067,-0.1267,0.155,25.0,0.7989,1.0,0.0806,10
-revised RAG vs full text [Llama 3.1 70B],visual,SUB_FULL,FT,0.405,0.235,0.17,0.025,0.305,8.5,0.0523,,0.6136,10
-revised RAG vs full text [DeepSeek-V3],visual,SUB_FULL,FT,0.47,0.49,-0.02,-0.22,0.18,18.5,0.6353,,0.15,10
-revised RAG vs full text [Gemini 2.5 Flash Lite],visual,SUB_FULL,FT,0.365,0.495,-0.13,-0.32,0.1,11.0,0.0922,,0.5325,10
+comparison,category,a,b,mean_a,mean_b,mean_diff,ci_low,ci_high,W,p,p_bonf,r,n,n_eff
+"enrichment, page chunking",visual,PAGE_FULL,PAGE_TEXT,0.5117,0.345,0.1667,0.0367,0.3117,8.0,0.0858,0.6008,0.5432,10,9
+"enrichment, page chunking [Llama 3.1 70B]",visual,PAGE_FULL,PAGE_TEXT,0.53,0.305,0.225,0.045,0.43,6.0,0.0502,,0.6192,10,9
+"enrichment, page chunking [DeepSeek-V3]",visual,PAGE_FULL,PAGE_TEXT,0.53,0.4,0.13,-0.03,0.31,9.5,0.2328,,0.3773,10,8
+"enrichment, page chunking [Gemini 2.5 Flash Lite]",visual,PAGE_FULL,PAGE_TEXT,0.475,0.33,0.145,0.025,0.295,5.0,0.0687,,0.5756,10,8
+"enrichment, sub-page chunking",visual,SUB_FULL,SUB_TEXT,0.4133,0.2883,0.125,0.0033,0.2683,9.0,0.2065,1.0,0.3995,10,8
+"enrichment, sub-page chunking [Llama 3.1 70B]",visual,SUB_FULL,SUB_TEXT,0.405,0.32,0.085,0.01,0.185,6.0,0.0913,,0.534,10,8
+"enrichment, sub-page chunking [DeepSeek-V3]",visual,SUB_FULL,SUB_TEXT,0.47,0.285,0.185,0.045,0.355,1.0,0.0172,,0.7537,10,8
+"enrichment, sub-page chunking [Gemini 2.5 Flash Lite]",visual,SUB_FULL,SUB_TEXT,0.365,0.26,0.105,-0.085,0.33,14.0,0.5749,,0.1773,10,8
+NMM description over OCR+caption,visual,SUB_FULL,SUB_OCRCAP,0.4133,0.3617,0.0517,-0.04,0.2017,20.5,0.8125,1.0,0.075,10,9
+NMM description over OCR+caption [Llama 3.1 70B],visual,SUB_FULL,SUB_OCRCAP,0.405,0.36,0.045,-0.035,0.16,12.0,0.7344,,0.1073,10,7
+NMM description over OCR+caption [DeepSeek-V3],visual,SUB_FULL,SUB_OCRCAP,0.47,0.39,0.08,-0.03,0.225,8.0,0.1614,,0.4428,10,8
+NMM description over OCR+caption [Gemini 2.5 Flash Lite],visual,SUB_FULL,SUB_OCRCAP,0.365,0.335,0.03,-0.11,0.235,23.0,0.6443,,0.146,10,10
+sub-page vs page chunking,text,SUB_FULL,PAGE_FULL,0.7667,0.51,0.2567,0.0983,0.4283,1.0,0.0173,0.121,0.7528,10,8
+sub-page vs page chunking [Llama 3.1 70B],text,SUB_FULL,PAGE_FULL,0.81,0.545,0.265,0.065,0.475,3.0,0.062,,0.5901,10,7
+sub-page vs page chunking [DeepSeek-V3],text,SUB_FULL,PAGE_FULL,0.71,0.5,0.21,0.015,0.4201,8.5,0.0969,,0.5249,10,9
+sub-page vs page chunking [Gemini 2.5 Flash Lite],text,SUB_FULL,PAGE_FULL,0.78,0.485,0.295,0.095,0.51,3.0,0.063,,0.588,10,7
+original RAG vs full text,text,PAGE_FULL,FT,0.51,0.8217,-0.3117,-0.5033,-0.125,7.5,0.0414,0.2895,0.6451,10,10
+original RAG vs full text [Llama 3.1 70B],text,PAGE_FULL,FT,0.545,0.76,-0.215,-0.4551,0.015,5.5,0.1501,,0.4552,10,7
+original RAG vs full text [DeepSeek-V3],text,PAGE_FULL,FT,0.5,0.825,-0.325,-0.53,-0.115,7.0,0.0367,,0.6608,10,10
+original RAG vs full text [Gemini 2.5 Flash Lite],text,PAGE_FULL,FT,0.485,0.88,-0.395,-0.6,-0.2,0.0,0.018,,0.7483,10,7
+revised RAG vs full text,text,SUB_FULL,FT,0.7667,0.8217,-0.055,-0.2033,0.085,15.5,0.4065,1.0,0.2625,10,9
+revised RAG vs full text [Llama 3.1 70B],text,SUB_FULL,FT,0.81,0.76,0.05,-0.205,0.295,16.5,0.8326,,0.0668,10,8
+revised RAG vs full text [DeepSeek-V3],text,SUB_FULL,FT,0.71,0.825,-0.115,-0.275,-0.005,2.5,0.0926,,0.5319,10,6
+revised RAG vs full text [Gemini 2.5 Flash Lite],text,SUB_FULL,FT,0.78,0.88,-0.1,-0.235,0.045,7.0,0.123,,0.4877,10,8
+revised RAG vs full text,visual,SUB_FULL,FT,0.4133,0.4067,0.0067,-0.1267,0.155,25.0,0.7989,1.0,0.0806,10,10
+revised RAG vs full text [Llama 3.1 70B],visual,SUB_FULL,FT,0.405,0.235,0.17,0.025,0.305,8.5,0.0523,,0.6136,10,10
+revised RAG vs full text [DeepSeek-V3],visual,SUB_FULL,FT,0.47,0.49,-0.02,-0.22,0.18,19.0,0.6779,,0.1314,10,9
+revised RAG vs full text [Gemini 2.5 Flash Lite],visual,SUB_FULL,FT,0.365,0.495,-0.13,-0.32,0.1,11.0,0.0922,,0.5325,10,10

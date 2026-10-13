@@ -4,7 +4,7 @@ Reads generations.csv, scores.csv, evidence_map.csv, records.json, retrieval_stu
 judge_check.csv; writes analysis.json, the summary tables in tables/, and the figures in figs/.
 Primary unit: the question (N=10 per category), averaging the two repetitions and, for pooled
 comparisons, the three models. Paired two-sided Wilcoxon signed-rank tests with Bonferroni
-correction over the pre-declared family of comparisons; r = |Z|/sqrt(N); 95% bootstrap CIs of
+correction over the planned family of comparisons; r = |Z|/sqrt(N) with N = 10 questions; 95% bootstrap CIs of
 the mean paired difference (10,000 resamples of questions)."""
 import json, re
 from pathlib import Path
@@ -40,14 +40,18 @@ GOLD_IMAGE = {11: 2, 17: 2, 18: 2, 19: 2, 20: 2, 12: 11, 13: 12, 14: 12, 15: 13,
 
 
 def wilcoxon(a, b):
-    d = np.asarray(a) - np.asarray(b)
+    # Round as in study1/analyze.py so that floating-point noise does not turn a tie into a
+    # small nonzero difference. n_eff counts the questions left after zero differences are dropped.
+    a, b = np.round(np.asarray(a, float), 6), np.round(np.asarray(b, float), 6)
+    d = a - b
     n = len(d)
-    if np.allclose(d, 0):
-        return dict(n=n, mean_diff=0.0, ci_low=0.0, ci_high=0.0, W=np.nan, p=1.0, r=0.0)
+    n_eff = int(np.count_nonzero(d))
+    if n_eff == 0:
+        return dict(n=n, n_eff=0, mean_diff=0.0, ci_low=0.0, ci_high=0.0, W=np.nan, p=1.0, r=0.0)
     res = stats.wilcoxon(a, b, zero_method="wilcox", alternative="two-sided", method="approx")
     z = abs(stats.norm.ppf(res.pvalue / 2))
     boots = RNG.choice(d, size=(10000, n), replace=True).mean(1)
-    return dict(n=n, mean_diff=d.mean(), ci_low=np.percentile(boots, 2.5), ci_high=np.percentile(boots, 97.5),
+    return dict(n=n, n_eff=n_eff, mean_diff=d.mean(), ci_low=np.percentile(boots, 2.5), ci_high=np.percentile(boots, 97.5),
                 W=res.statistic, p=res.pvalue, r=z / np.sqrt(n))
 
 
@@ -91,7 +95,7 @@ def main():
                       p_bonf=np.nan)
             tests.append(tm)
     tt = pd.DataFrame(tests)[["comparison", "category", "a", "b", "mean_a", "mean_b", "mean_diff", "ci_low", "ci_high",
-                               "W", "p", "p_bonf", "r", "n"]]
+                               "W", "p", "p_bonf", "r", "n", "n_eff"]]
     tt.round(4).to_csv(OUT_T / "paired_tests.csv", index=False)
     res["tests"] = tt.round(4).to_dict(orient="records")
 

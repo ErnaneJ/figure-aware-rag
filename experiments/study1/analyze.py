@@ -3,7 +3,8 @@
 Reads scores.csv, billing_baseline.csv and billing_papyrus.csv; writes results.md. No API calls.
 Unit of analysis: the question. The three runs are averaged per question, giving N=10 paired
 observations per model and category. Two-sided Wilcoxon signed-rank test, Bonferroni k=10,
-r = |Z|/sqrt(N). A supporting test on the 30 individual answers is also reported. Means are rounded
+r = |Z|/sqrt(N) with N = 10. N_eff is the number of questions left after zero differences are
+dropped. A supporting test on the 30 individual answers is also reported. Means are rounded
 to 6 decimals so that floating-point noise does not create spurious nonzero differences."""
 from pathlib import Path
 import numpy as np
@@ -39,10 +40,10 @@ d["cond"] = np.where(d.model.str.startswith("Papyrus"), "papyrus", "baseline")
 out = ["# Study 1 results", "", "Recomputed by `analyze.py` from `scores.csv` and the billing exports.", ""]
 
 out += ["## Correctness (G-Eval, 0 to 1)", "",
-        "Delta = Papyrus minus baseline. p and r: Wilcoxon on question means (N=10). "
+        "Delta = Papyrus minus baseline. p and r: Wilcoxon on question means (N=10; N_eff after dropping zero differences). "
         "p_corr: Bonferroni k=10. p30: supporting test on the 30 answers, uncorrected.", "",
-        "| Model | Category | Baseline | Papyrus | Delta | p | p_corr | r | p30 |",
-        "|---|---|---|---|---|---|---|---|---|"]
+        "| Model | Category | Baseline | Papyrus | Delta | N_eff | p | p_corr | r | p30 |",
+        "|---|---|---|---|---|---|---|---|---|---|"]
 for cat in ["text", "visual"]:
     for m in MODELS:
         g = d[(d.M == m) & (d.category == cat)]
@@ -52,12 +53,13 @@ for cat in ["text", "visual"]:
         ab = g[g.cond == "baseline"].sort_values(["id", "iteration"]).score_correctness.values
         ap = g[g.cond == "papyrus"].sort_values(["id", "iteration"]).score_correctness.values
         p30, _ = test(ab, ap) if len(ab) == len(ap) else (np.nan, np.nan)
-        out.append(f"| {m} | {cat} | {qb.mean():.2f} | {qp.mean():.2f} | {qp.mean() - qb.mean():+.2f} "
+        n_eff = int(np.count_nonzero(np.round(qp.loc[qb.index].values, 6) - np.round(qb.values, 6)))
+        out.append(f"| {m} | {cat} | {qb.mean():.2f} | {qp.mean():.2f} | {qp.mean() - qb.mean():+.2f} | {n_eff} "
                    f"| {pv:.3f} | {min(1, pv * 10):.3f} | {r:.2f} | {p30:.3f} |")
 for cat in ["text", "visual"]:
     g = d[d.category == cat]
     out.append(f"| All models | {cat} | {g[g.cond == 'baseline'].score_correctness.mean():.2f} "
-               f"| {g[g.cond == 'papyrus'].score_correctness.mean():.2f} | | | | | |")
+               f"| {g[g.cond == 'papyrus'].score_correctness.mean():.2f} | | | | | | |")
 
 f = d[d.cond == "papyrus"]
 out += ["", "## Faithfulness (Papyrus answers only)", "",

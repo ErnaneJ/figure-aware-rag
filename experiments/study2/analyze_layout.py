@@ -70,7 +70,7 @@ def main():
                                 for g, ids in (("figure_1", FIG1), ("figures_10_12", FIG10_12))}
                             for c in ["SUB_TEXT"] + RERUN}
 
-    # Pre-declared family, recomputed with the rerun conditions
+    # Planned family, recomputed with the rerun conditions
     tests = []
     for name, a, b, cat in FAMILY:
         A, B = qmean(qn, a, cat=cat), qmean(qn, b, cat=cat)
