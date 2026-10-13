@@ -1,82 +1,191 @@
 # Papyrus AI
 
-Retrieval-augmented generation (RAG) over PDF documents, with figures turned into searchable text at ingestion time.
+> **Paper submitted to [IEEE Latin America Transactions](https://latamt.ieeer9.org/index.php/transactions/index)**
+> *Ingestion-Time Visual Enrichment for Retrieval-Augmented Generation over Scientific PDFs: Cost and Accuracy in a Geophysics Case Study*
+> Ernane Ferreira Rocha Junior (UFRN), Victor do Nascimento Gomes (UFRN), José Augusto Agripino de Oliveira (UFRN), Ignacio Sánchez-Gendriz (CETENE), Tiago Tavares Leite Barros (UFRN), Ivanovitch Medeiros Dantas da Silva (UFRN), Luiz Affonso Henderson Guedes de Oliveira (UFRN)
 
-Most PDF question-answering pipelines keep only the text layer, so a language model never sees what is inside figures. Papyrus AI describes each embedded image once, when the document is uploaded, with a vision-language model. It joins that description with the figure caption and the text that OCR reads in the image, and indexes the result next to the page text. At query time any text-only LLM receives the top retrieved chunks, and every answer cites file and page.
+Code and data for the paper above. Papyrus AI is a retrieval-augmented generation (RAG) system for scientific PDFs. Most PDF question-answering pipelines keep only the text layer, so the language model never sees what is inside the figures. Papyrus AI reads each figure once, when the PDF is uploaded, and stores what it finds as a text record in the same vector index as the page text. Any text-only LLM can then answer questions about the figures, and each answer cites the file and page it came from.
 
-![Chat interface](./assets/preview.png)
+![Graphical abstract](assets/graphical_abstract.png)
 
 ## How it works
 
-1. **Extraction.** PyMuPDF splits each page into a text track and an image track. Images are deduplicated by MD5.
-2. **Visual enrichment (once per image).** Tesseract OCR reads printed text, a vision-language model (Gemini 2.5 Flash by default) writes a description, and an LLM extracts the figure caption from the page text. The three fields are joined into one image record.
-3. **Text chunking.** Each page is cut into overlapping windows (800 characters, 200 overlap) that keep their page number. The original page-level chunking is still available (`TEXT_CHUNKING=page`).
-4. **Indexing.** Text chunks and image records are embedded with `all-MiniLM-L6-v2` (384-d) into one FAISS index per document.
-5. **Grounded answer.** A LangGraph workflow retrieves the top 5 chunks per document, builds a prompt with TEXTS and IMAGES blocks and grounding rules, and asks the chat model to answer only from that context and to cite `Source: <file>, page <n>`.
+1. **Extraction.** PyMuPDF splits each page into text and embedded images. Images are deduplicated by MD5.
+2. **Image records, once per image.** Tesseract reads the printed text (OCR), a vision-language model (Gemini 2.5 Flash by default) writes a description, and an LLM pulls the figure caption from the page text. The three fields form one image record.
+3. **Text chunking.** Each page is cut into 800-character windows with 200 characters of overlap, and each window keeps its page number.
+4. **Indexing.** Text chunks and image records are embedded with `all-MiniLM-L6-v2` into one FAISS index per document.
+5. **Answering.** A LangGraph flow retrieves the top 5 chunks, builds a prompt with grounding rules, and asks the chat model to answer only from that context and to cite `Source: <file>, page <n>`.
 
-![Architecture](./assets/flow--arq.png)
+![Architecture](assets/flow--arq.png)
 
 | Component | Role |
 |---|---|
-| Streamlit + LangGraph (`app`) | Chat UI and retrieval/generation workflow |
-| Celery (`worker`) + Redis | Asynchronous ingestion |
-| PostgreSQL (`db`) | Chats, files, pages, image records, messages |
-| FAISS (shared volume) | One vector index per document |
+| Streamlit and LangGraph (`app`) | Chat interface and the retrieval and answer flow |
+| Celery (`worker`) and Redis | Ingestion in the background |
+| PostgreSQL (`db`) | Chats, files, pages, image records and messages |
+| FAISS | One vector index per document |
 | LLM providers | Gemini, OpenAI-compatible APIs (OpenRouter, Groq, DeepSeek), Ollama for local models |
 
-## Running
+## Requirements
 
-Requirements: Docker and Docker Compose.
+- Docker and Docker Compose
+- API keys for the chat model and the vision model (or Ollama for local models)
+- Python 3.10 to rerun the experiments outside Docker
+
+## Quick start
 
 ```bash
-cp .env.example .env                   # provider, model and API key for each role
-python ./utils/download_all_miniLM.py  # embedding model used by the indexer
-docker-compose build
-docker-compose up                      # app on http://localhost:28502
+cp .env.example .env                   # database, providers, models and keys
+python utils/download_all_miniLM.py    # embedding model used by the indexer
+docker compose up --build              # app on http://localhost:28502
 ```
 
-Each LLM role is configured separately in `.env`: chat (`LLM_*_CHAT`), image description (`LLM_*_IMAGE_DESCRIBER`) and caption extraction (`LLM_*_CAPTIONS`). Useful switches:
+Create a chat in the sidebar, attach one or more PDFs, and wait for the worker to finish ingestion. To reset the database, run `docker compose exec app python db/init_db.py`.
+
+The database and Redis values in `.env.example` already match `docker-compose.yml`. Each LLM role has its own provider, model and key: chat (`LLM_*_CHAT`), image description (`LLM_*_IMAGE_DESCRIBER`) and caption extraction (`LLM_*_CAPTIONS`). Providers are `gemini`, `openai` and `ollama`. For OpenRouter, use `openai` and set `OPENAI_BASE_URL=https://openrouter.ai/api/v1`. For Ollama, set `OLLAMA_BASE_URL=http://host.docker.internal:11434`.
 
 | Variable | Default | Effect |
 |---|---|---|
-| `TEXT_CHUNKING` | `subpage` | `subpage` (overlapping windows) or `page` (first 1,800 characters per page) |
+| `TEXT_CHUNKING` | `subpage` | `subpage` (overlapping windows) or `page` (first 1,800 characters of each page, the Study 1 setting) |
 | `CHUNK_SIZE`, `CHUNK_OVERLAP` | `800`, `200` | Window size for `subpage` |
-| `DISABLE_OCR`, `DISABLE_MULTIMODAL_DESCRIPTION`, `DISABLE_LLM_CAPTION_EXTRACTION` | unset | Turn off parts of the image record |
+| `DISABLE_OCR`, `DISABLE_MULTIMODAL_DESCRIPTION`, `DISABLE_LLM_CAPTION_EXTRACTION` | `false` | Turn off parts of the image record |
 
-To use local models, run [Ollama](https://ollama.com) and set `OLLAMA_BASE_URL=http://host.docker.internal:11434`.
+## Repository layout
 
-To reset the database: `docker-compose exec app python ./db/init_db.py`.
-
-## Experiments
-
-The `experiments/` folder holds the evaluation reported in the M.Sc. dissertation and the accompanying article. The benchmark has 20 questions (10 answered in the prose, 10 answered only in figures) on S. Chopra and K. J. Marfurt, "Seismic attributes: A historical perspective," *Geophysics*, 70(5), 2005, [doi:10.1190/1.2098670](https://doi.org/10.1190/1.2098670). The PDF is copyrighted and is not distributed here. To rerun the experiments, obtain it through the DOI and save it as `experiments/gsgpy_70_5_3SO.pdf`.
-
-| Path | Content |
+| Path | Contents |
 |---|---|
-| `experiments/questions.csv` | Benchmark questions and reference answers |
-| `experiments/papyrus.py`, `experiments/evaluate.py` | Study 1: full-text baseline vs. Papyrus on five models (600 answers), judged with G-Eval (GPT-4.1) |
-| `experiments/AVALIACAO_FINAL_MESTRADO.csv` | Study 1 judged answers |
-| `experiments/revision2/` | Study 2: six conditions under one prompt and temperature (720 answers): full text, page vs. sub-page chunks, with and without image records, OCR + caption vs. full record |
+| `app.py`, `frontend/` | Streamlit interface |
+| `indexing/` | PDF processing, image records, FAISS index and retriever |
+| `llm/` | Caption extractor, image describer and answer prompt |
+| `services/` | LangGraph chat flow |
+| `tasks/` | Celery ingestion queue |
+| `db/` | SQLAlchemy models and queries |
+| `experiments/questions.csv` | The 20 benchmark questions with reference answers |
+| `experiments/study1/` | Study 1: full-text prompting vs. Papyrus AI, five LLMs, 600 answers |
+| `experiments/study2/` | Study 2: six conditions under one prompt and temperature, three LLMs, 720 answers |
 
-Study 2 pipeline (needs `OPEN_ROUTER_API_KEY` in `.env`):
+## Benchmark
+
+The test document is S. Chopra and K. J. Marfurt, "Seismic attributes: A historical perspective," *Geophysics*, 70(5), 2005, [doi:10.1190/1.2098670](https://doi.org/10.1190/1.2098670). It has 26 pages and 33 embedded images. The benchmark has 20 questions: 10 answered in the prose and 10 answered only in figures. The PDF is copyrighted and is not in this repository. To rerun the experiments, get it through the DOI and save it as `experiments/gsgpy_70_5_3SO.pdf`.
+
+## How the metrics are computed
+
+- Correctness: DeepEval 3.8.4 G-Eval with GPT-4.1 (through OpenRouter) as the judge. The judge compares each answer with the reference answer and returns a score from 0 to 1.
+- Faithfulness: DeepEval faithfulness on Papyrus AI answers, that is, the share of claims in an answer that the retrieved context supports.
+- Citations: a regular expression checks whether the answer has a source line.
+- Cost, tokens and latency: read from the OpenRouter activity exports (`billing_*.csv`), not estimated.
+- Statistics: the question is the unit of analysis. Repeated answers are averaged per question, which gives N=10 pairs per category. Conditions are compared with the two-sided Wilcoxon signed-rank test with Bonferroni correction (k=10 in Study 1, k=7 in Study 2). Effect size is r = |Z|/√N, and Study 2 adds 95% bootstrap intervals over questions. A test on the individual answers (N=30) is reported as support only, because those answers are not independent.
+
+## Reproducing the results
+
+Put the keys in `.env` (see `.env.example`). DeepEval reads `OPENAI_API_KEY`, so set it to the OpenRouter key before running the judge.
+
+### Study 1
 
 ```bash
-cd experiments/revision2
-python rebuild_records.py     # page text + image records from the PDF and the ingestion log (no API calls)
+pip install -r requirements.txt deepeval==3.8.4 scipy
+python experiments/study1/baseline.py    # full-text prompting: 5 models x 20 questions x 3 runs
+LLM_MODEL_CHAT=openai/gpt-4o docker compose exec app python experiments/study1/papyrus.py   # one run per model
+python experiments/study1/evaluate.py    # correctness and faithfulness, writes scores.csv
+python experiments/study1/analyze.py     # statistics, citations and cost, writes results.md
+```
+
+`analyze.py` makes no API calls and needs only the CSV files in `study1/`, so it reproduces every Study 1 number in the paper without the PDF or any key. Its output is in [`experiments/study1/results.md`](experiments/study1/results.md).
+
+### Study 2
+
+```bash
+cd experiments/study2
+python rebuild_records.py     # page text and image records from the PDF and the ingestion log (no API calls)
 python validate_replica.py    # checks the offline retriever against the logged retrieval
+python evidence_map.py        # locates the evidence for each question in the PDF
 python retrieval_study.py     # evidence recall at k=5 for each chunking (no API calls)
 python generate.py            # answers for all conditions
 python judge.py               # G-Eval correctness
+python judge_check.py         # rescores a sample of Study 1 answers to check judge drift
 python analyze.py             # tables/, figs/ and analysis.json
 ```
 
-Main results on this benchmark: retrieval cuts prompt tokens by more than 93% and cost by 91% to 95% against sending the whole document. Sub-page chunking recovers most of the accuracy lost on text questions, and image records raise accuracy on figure questions, mostly through OCR text and captions. With 10 questions per category the differences are exploratory. See the dissertation and the article for the full analysis.
+The answers, scores, tables and figures are in the repository. Rerunning `analyze.py` needs `records.json`, which `rebuild_records.py` builds from the PDF.
+
+## Key results
+
+### Study 1: full-text prompting vs. Papyrus AI
+
+Five models, 20 questions, three runs each. The original Papyrus AI configuration used page chunks. Mean G-Eval correctness:
+
+| Model | Text, full text | Text, Papyrus | Visual, full text | Visual, Papyrus |
+|---|:---:|:---:|:---:|:---:|
+| GPT-4o | 0.75 | 0.47 | 0.34 | 0.34 |
+| Claude 3.5 Sonnet | 0.63 | 0.46 | 0.35 | 0.35 |
+| Gemini 2.5 Flash Lite | 0.77 | 0.44 | 0.37 | 0.30 |
+| DeepSeek-V3 | 0.63 | 0.41 | 0.38 | 0.40 |
+| Llama 3.1 70B | 0.68 | 0.47 | 0.15 | 0.41 |
+| All models | 0.69 | 0.45 | 0.32 | 0.36 |
+
+- Prompt tokens per query fell from 31,250 to 2,053 (93.4% less), and total cost fell from US$16.58 to US$1.52 (90.8% less).
+- Papyrus AI answers had a mean faithfulness of 0.943, and 84.3% of them scored 1.0.
+- 95.0% of Papyrus AI answers cited a source, against 0.7% of full-text answers.
+- Mean generation time went from 4.57 s to 3.18 s.
+- No difference passed Bonferroni correction. The largest effects were the text loss for Gemini 2.5 Flash Lite (r=0.74) and the visual gain for Llama 3.1 70B (+0.26, r=0.65).
+
+### Study 2: what caused the text loss, and what the image records add
+
+Six conditions, three models (DeepSeek-V3, Gemini 2.5 Flash Lite, Llama 3.1 70B), 20 questions, two repetitions. All conditions use the same prompt and temperature 0.3.
+
+| Condition | Text | Visual | Overall | Prompt tokens | Cost per answer (US$) |
+|---|:---:|:---:|:---:|:---:|:---:|
+| Full text | 0.82 | 0.41 | 0.61 | 31,080 | 0.00804 |
+| Page chunks, no images | 0.58 | 0.35 | 0.46 | 2,261 | 0.00063 |
+| Page chunks, full image records | 0.51 | 0.51 | 0.51 | 2,001 | 0.00057 |
+| Sub-page chunks, no images | 0.75 | 0.29 | 0.52 | 1,192 | 0.00036 |
+| Sub-page chunks, OCR and caption | 0.75 | 0.36 | 0.55 | 1,174 | 0.00036 |
+| Sub-page chunks, full image records | 0.77 | 0.41 | 0.59 | 1,222 | 0.00040 |
+
+Pre-declared comparisons (question means, N=10, Bonferroni k=7):
+
+| Comparison | Category | Difference [95% CI] | p | p corrected | r |
+|---|---|:---:|:---:|:---:|:---:|
+| Image records, page chunks | visual | +0.17 [0.04, 0.31] | 0.086 | 0.60 | 0.54 |
+| Image records, sub-page chunks | visual | +0.13 [0.00, 0.27] | 0.208 | 1.00 | 0.40 |
+| VLM description over OCR and caption | visual | +0.05 [−0.04, 0.20] | 0.721 | 1.00 | 0.11 |
+| Sub-page vs. page chunks | text | +0.26 [0.10, 0.43] | 0.017 | 0.12 | 0.75 |
+| Study 1 configuration vs. full text | text | −0.31 [−0.50, −0.13] | 0.037 | 0.26 | 0.66 |
+| Revised configuration vs. full text | text | −0.06 [−0.20, 0.09] | 0.407 | 1.00 | 0.26 |
+| Revised configuration vs. full text | visual | +0.01 [−0.13, 0.16] | 0.799 | 1.00 | 0.08 |
+
+Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system matched full-text prompting on visual questions at about 5% of the cost. Most of the visual gain came from the OCR text and the captions.
+
+## Figures
+
+| | |
+|---|---|
+| ![Study 1 correctness](assets/study1_correctness.png) | ![Study 2 cost and accuracy](assets/study2_cost_accuracy.png) |
+| Study 1: correctness per model and question type | Study 2: cost per answer and correctness for each condition |
+
+![Chat interface](assets/preview.png)
 
 ## Citation
 
-E. F. Rocha Junior, "Ingestion-Time Visual Enrichment for Retrieval-Augmented Generation over Scientific Documents: Cost and Accuracy Trade-offs in a Geophysics Case Study," M.Sc. dissertation, PPgEEC, Universidade Federal do Rio Grande do Norte, Natal, Brazil, 2026.
+This repository accompanies a paper under review at IEEE Latin America Transactions. If you use this code, please cite:
 
-E. F. Rocha Junior, "LLMs e Vetorização Semântica para Interação Multimodal com Documentos PDF: Uma Abordagem de Geração Aumentada por Recuperação (RAG)," undergraduate thesis, UFRN, 2025. [Repository](https://repositorio.ufrn.br/items/0d91f59a-21de-4477-b27f-236c469d7661).
+```bibtex
+@article{rocha2026ingestion,
+  author  = {Rocha Junior, Ernane Ferreira and Gomes, Victor do Nascimento and Oliveira, Jos{\'e} Augusto Agripino de and S{\'a}nchez-Gendriz, Ignacio and Barros, Tiago Tavares Leite and Silva, Ivanovitch Medeiros Dantas da and Oliveira, Luiz Affonso Henderson Guedes de},
+  title   = {Ingestion-Time Visual Enrichment for Retrieval-Augmented Generation over Scientific {PDFs}: Cost and Accuracy in a Geophysics Case Study},
+  journal = {IEEE Latin America Transactions},
+  note    = {Under review},
+  year    = {2026}
+}
+```
+
+Related work by the first author: the M.Sc. dissertation "Ingestion-Time Visual Enrichment for Retrieval-Augmented Generation over Scientific Documents" (PPgEEC/UFRN, 2026) and the undergraduate thesis "LLMs e Vetorização Semântica para Interação Multimodal com Documentos PDF" (UFRN, 2025, [repository](https://repositorio.ufrn.br/items/0d91f59a-21de-4477-b27f-236c469d7661)).
+
+## Notes
+
+- With 10 questions per category the results are exploratory. No comparison in either study passes Bonferroni correction on question means.
+- The judge is an LLM. Rescoring 40 Study 1 answers with the fixed Study 2 rubric gave a Spearman correlation of 0.94 with the original scores and a mean shift of +0.08.
+- A few strings in `llm/generator.py`, `indexing/indexer.py` and `indexing/processor.py` are in Portuguese. They are the prompt and log format used in the experiments, and the Study 2 scripts parse them, so they were kept as they are.
 
 ## Acknowledgments
 
