@@ -124,7 +124,7 @@ Five models, 20 questions, three runs each. The original Papyrus AI configuratio
 | All models | 0.69 | 0.45 | 0.32 | 0.36 |
 
 - Prompt tokens per query fell from 31,250 to 2,053 (93.4% less), and total cost fell from US$16.58 to US$1.52 (90.8% less).
-- Papyrus AI answers had a judge-rated mean faithfulness of 0.943, and 84.3% of them scored 1.0. No human checked these scores, so read them as an upper bound.
+- Papyrus AI answers had a judge-rated mean faithfulness of 0.943, and 84.3% of them scored 1.0. The DeepEval metric counts a claim as faithful unless the context contradicts it, so read this as an upper bound on grounding.
 - 95.0% of Papyrus AI answers ended with a source line, against 0.7% of full-text answers, whose prompt did not ask for one.
 - Billed costs include provider prompt caching, which favored the full-text baseline (98% of GPT-4o and 97% of Gemini baseline calls were partly cached). At list price the totals are about $18.90 against $1.58, a 91.6% reduction.
 - Mean generation time went from 4.57 s to 3.18 s.
