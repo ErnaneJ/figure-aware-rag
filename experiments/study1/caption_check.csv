@@ -1,0 +1,37 @@
+img_doc_index,page,reference_figure,extracted_figure,verdict,extracted_caption
+1,1,,,correct,
+2,3,1.0,1.0,correct,"Figure 1. A time line of seismic attribute developments and their relation to key advances in seismic exploration technology. (Modiﬁed from Barnes, 2001.)"
+3,5,2.0,2.0,correct,"Figure 2. Perhaps the earliest example of a computer-generated seismic attribute. (a) Schematic of a device built to crosscorrelate seismic traces recorded on analog magnetic tape, which was then used"
+4,6,3.0,4.0,wrong figure,"Figure 4. A composite attribute image from the early 1970s showing interval velocities (estimated using Dix’s equation) superimposed on the structural section of Figure 3. (After Anstey, 2005.)"
+5,6,4.0,5.0,wrong figure,"Figure 5. A composite attribute image from the early 1970s showing reﬂection strength (in early days, the most popular attribute) superimposed on the structural section of Figure 3. (After Anstey, 200"
+6,6,5.0,6.0,wrong figure,"Figure 6. A composite attribute image from the early 1970s showing the apparent polarity of reﬂections (positive as red, negative as blue) superimposed on the structural section of Figure 3. (After An"
+7,6,6.0,,missing,
+8,7,7.0,8.0,wrong figure,"Figure 8. From the early 1970s, one of many bright spots identiﬁed in the North Sea. Display of reﬂection strength as in Figure 4. (After Anstey, 2005.)"
+9,7,8.0,9.0,wrong figure,"Figure 9. No substitute for 3D work, but valuable in its day. From the early 1970s, an isometric fence diagram of reﬂection strength on a grid of 2D lines over a gas ﬁeld in the North Sea. (After Anst"
+10,7,9.0,,missing,
+11,8,10.0,11.0,wrong figure,Figure 11. Scanned copies of two slides used by Tury Taner in the 1970s to illustrate the value of complex trace analysis applied to (a) a hard-streak lime buildup and (b) a gas-charged reservoir. Not
+12,8,11.0,12.0,wrong figure,Figure 12. we display some of Taner’s early displays of complex-attribute analysis of different lithologies.
+13,9,12.0,13.0,wrong figure,Figure 13 shows an inverted seismic section from the Swan Hills Devonian reef bank that Lindseth used for prediction of carbonate porosity.
+14,10,13.0,,missing,
+15,11,14.0,14.0,correct,"Figure 14. Combining (a) reﬂection envelope and (b) reﬂection phase using (c) a 2D color bar to form (d) a composite image. This technique, originally presented by Knobloch (1982), emphasizes the phas"
+16,13,15.0,15.0,correct,Figure 15. (a) A vertical section through a 3D seismic data volume with a picked top (blue dots) and bottom (green dots) of a formation. (b) A dip magnitude and (c) a shaded relief map of the top reﬂe
+17,14,16.0,16.0,correct,Figure 16. Time slices through (a) a seismic and (b) coherence data volumes. (c) Overlay of coherence on seismic. Note that the coherence slice not only reveals faults with clarity but also the intens
+18,15,17.0,,missing,
+19,16,18.0,,missing,
+20,17,19.0,,missing,
+21,18,20.0,21.0,wrong figure,"Figure 21. Spline curve–inverted porosity corresponding to the time slices shown in Figures 19 and 20. (After Chopra et al., 2004.)"
+22,18,21.0,22.0,wrong figure,Figure 22. Strat cubes (a subvolume of 60-ms thickness bounded by two not necessarily parallel horizons) of the (a) seismic and (b) coherence volumes. Notice the clarity with which the north-south nar
+23,18,22.0,,missing,
+24,19,23.0,24.0,wrong figure,"Figure 24. This image shows minimum curvature draped over a near-basement reﬂection in part of the San Juan Basin. A prominent north-south-trending incised valley is apparent, as are some curvilinear "
+25,19,24.0,,missing,
+26,20,25.0,26.0,wrong figure,Figure 26. (a) A cross section from a ﬁnal processed seismic data volume. The dipping event in the center of the panel is interpreted as a sand injection feature. (b) The same cross section from the s
+27,20,26.0,,missing,
+28,21,27.0,28.0,wrong figure,"Figure 28. A time slice through a coherence volume corre-
+sponding to Figure 27. It depicts the expected connection
+(marked by the red oval) between producers C and D. (Af-
+ter Parr and Marsh, 2000)."
+29,21,28.0,29.0,wrong figure,Figure 29 shows the dynamic changes in the Weyburn reservoir (Canada) caused by increased CO2 saturation by computing the inverted impedance model of the reservoir on the differenced volume of the bas
+30,22,29.0,30.0,wrong figure,"Figure 30. CO2 saturation map computed from time-lapse (2000–2002 inversion of the difference) impedance values. Shown are areas that responded to CO2 injection wells (white), horizontal injectors (bl"
+31,22,30.0,31.0,wrong figure,"Figure 31. Probability map on a scale of zero (blue) to 0.6 (white) that water saturation (left) and pore pressure (right) have increased within the Cook reservoir of Gulfaks ﬁeld, Norwegian North Sea"
+32,22,31.0,32.0,wrong figure,Figure 32 shows a frequency attribute section (with seismic data overlaid) covering the Fort Union/Lance stratigraphic interval intersecting the anomalously slow velocity domains (outlined by white do
+33,23,32.0,32.0,correct,"Figure 32. Seismic data display superimposed on a frequency attribute section at Frenchie Draw ﬁeld, Wind River Basin. Shaded region shows anomalous velocity overlap. (After Surdam et al., 2004a.)"
