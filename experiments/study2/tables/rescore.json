@@ -1,0 +1,317 @@
+{
+ "n_rescored": 720,
+ "n_paired": 720,
+ "agreement": {
+  "spearman": 0.882,
+  "mean_old": 0.542,
+  "mean_new": 0.597,
+  "mean_abs_diff": 0.123,
+  "identical": 0.336
+ },
+ "shift_by_condition": [
+  {
+   "condition": "FT",
+   "category": "text",
+   "s_old": 0.822,
+   "s_new": 0.95
+  },
+  {
+   "condition": "FT",
+   "category": "visual",
+   "s_old": 0.407,
+   "s_new": 0.497
+  },
+  {
+   "condition": "PAGE_FULL",
+   "category": "text",
+   "s_old": 0.51,
+   "s_new": 0.588
+  },
+  {
+   "condition": "PAGE_FULL",
+   "category": "visual",
+   "s_old": 0.512,
+   "s_new": 0.483
+  },
+  {
+   "condition": "PAGE_TEXT",
+   "category": "text",
+   "s_old": 0.58,
+   "s_new": 0.65
+  },
+  {
+   "condition": "PAGE_TEXT",
+   "category": "visual",
+   "s_old": 0.345,
+   "s_new": 0.437
+  },
+  {
+   "condition": "SUB_FULL",
+   "category": "text",
+   "s_old": 0.767,
+   "s_new": 0.847
+  },
+  {
+   "condition": "SUB_FULL",
+   "category": "visual",
+   "s_old": 0.413,
+   "s_new": 0.427
+  },
+  {
+   "condition": "SUB_OCRCAP",
+   "category": "text",
+   "s_old": 0.745,
+   "s_new": 0.83
+  },
+  {
+   "condition": "SUB_OCRCAP",
+   "category": "visual",
+   "s_old": 0.362,
+   "s_new": 0.382
+  },
+  {
+   "condition": "SUB_TEXT",
+   "category": "text",
+   "s_old": 0.752,
+   "s_new": 0.828
+  },
+  {
+   "condition": "SUB_TEXT",
+   "category": "visual",
+   "s_old": 0.288,
+   "s_new": 0.248
+  }
+ ],
+ "length_correlation": {
+  "s_old": 0.166,
+  "s_new": 0.152
+ },
+ "new_score_values": {
+  "0.0": 92,
+  "0.1": 36,
+  "0.2": 89,
+  "0.3": 24,
+  "0.4": 37,
+  "0.5": 14,
+  "0.6": 50,
+  "0.7": 40,
+  "0.8": 56,
+  "0.9": 52,
+  "1.0": 230
+ },
+ "family_original_run": [
+  {
+   "comparison": "enrichment, page chunking",
+   "category": "visual",
+   "mean_a": 0.483,
+   "mean_b": 0.437,
+   "mean_diff": 0.047,
+   "ci_low": -0.028,
+   "ci_high": 0.153,
+   "t_low": -0.066,
+   "t_high": 0.159,
+   "p": 0.3105,
+   "p_bonf": 1.0,
+   "r": 0.321,
+   "n_eff": 7
+  },
+  {
+   "comparison": "enrichment, sub-page chunking",
+   "category": "visual",
+   "mean_a": 0.427,
+   "mean_b": 0.248,
+   "mean_diff": 0.178,
+   "ci_low": 0.028,
+   "ci_high": 0.338,
+   "t_low": -0.012,
+   "t_high": 0.369,
+   "p": 0.1097,
+   "p_bonf": 0.7682,
+   "r": 0.506,
+   "n_eff": 9
+  },
+  {
+   "comparison": "NMM description over OCR+caption",
+   "category": "visual",
+   "mean_a": 0.427,
+   "mean_b": 0.382,
+   "mean_diff": 0.045,
+   "ci_low": -0.053,
+   "ci_high": 0.19,
+   "t_low": -0.111,
+   "t_high": 0.201,
+   "p": 0.859,
+   "p_bonf": 1.0,
+   "r": 0.056,
+   "n_eff": 9
+  },
+  {
+   "comparison": "sub-page vs page chunking",
+   "category": "text",
+   "mean_a": 0.847,
+   "mean_b": 0.588,
+   "mean_diff": 0.258,
+   "ci_low": 0.087,
+   "ci_high": 0.45,
+   "t_low": 0.034,
+   "t_high": 0.482,
+   "p": 0.0284,
+   "p_bonf": 0.1988,
+   "r": 0.693,
+   "n_eff": 9
+  },
+  {
+   "comparison": "original RAG vs full text",
+   "category": "text",
+   "mean_a": 0.588,
+   "mean_b": 0.95,
+   "mean_diff": -0.362,
+   "ci_low": -0.543,
+   "ci_high": -0.19,
+   "t_low": -0.58,
+   "t_high": -0.143,
+   "p": 0.008,
+   "p_bonf": 0.056,
+   "r": 0.839,
+   "n_eff": 10
+  },
+  {
+   "comparison": "revised RAG vs full text",
+   "category": "text",
+   "mean_a": 0.847,
+   "mean_b": 0.95,
+   "mean_diff": -0.103,
+   "ci_low": -0.208,
+   "ci_high": -0.012,
+   "t_low": -0.221,
+   "t_high": 0.015,
+   "p": 0.1077,
+   "p_bonf": 0.7538,
+   "r": 0.509,
+   "n_eff": 7
+  },
+  {
+   "comparison": "revised RAG vs full text",
+   "category": "visual",
+   "mean_a": 0.427,
+   "mean_b": 0.497,
+   "mean_diff": -0.07,
+   "ci_low": -0.195,
+   "ci_high": 0.073,
+   "t_low": -0.235,
+   "t_high": 0.095,
+   "p": 0.2845,
+   "p_bonf": 1.0,
+   "r": 0.338,
+   "n_eff": 10
+  }
+ ],
+ "n_rescored_layout": 360,
+ "family_layout_run": [
+  {
+   "comparison": "enrichment, page chunking",
+   "category": "visual",
+   "mean_a": 0.522,
+   "mean_b": 0.437,
+   "mean_diff": 0.085,
+   "ci_low": -0.025,
+   "ci_high": 0.268,
+   "t_low": -0.112,
+   "t_high": 0.282,
+   "p": 0.6784,
+   "p_bonf": 1.0,
+   "r": 0.131,
+   "n_eff": 9
+  },
+  {
+   "comparison": "enrichment, sub-page chunking",
+   "category": "visual",
+   "mean_a": 0.445,
+   "mean_b": 0.248,
+   "mean_diff": 0.197,
+   "ci_low": 0.048,
+   "ci_high": 0.365,
+   "t_low": 0.003,
+   "t_high": 0.391,
+   "p": 0.1384,
+   "p_bonf": 0.9687,
+   "r": 0.469,
+   "n_eff": 10
+  },
+  {
+   "comparison": "NMM description over OCR+caption",
+   "category": "visual",
+   "mean_a": 0.445,
+   "mean_b": 0.382,
+   "mean_diff": 0.063,
+   "ci_low": -0.043,
+   "ci_high": 0.212,
+   "t_low": -0.098,
+   "t_high": 0.225,
+   "p": 0.5936,
+   "p_bonf": 1.0,
+   "r": 0.169,
+   "n_eff": 9
+  },
+  {
+   "comparison": "sub-page vs page chunking",
+   "category": "text",
+   "mean_a": 0.848,
+   "mean_b": 0.598,
+   "mean_diff": 0.25,
+   "ci_low": 0.068,
+   "ci_high": 0.458,
+   "t_low": 0.011,
+   "t_high": 0.489,
+   "p": 0.0753,
+   "p_bonf": 0.5271,
+   "r": 0.562,
+   "n_eff": 9
+  },
+  {
+   "comparison": "original RAG vs full text",
+   "category": "text",
+   "mean_a": 0.598,
+   "mean_b": 0.95,
+   "mean_diff": -0.352,
+   "ci_low": -0.55,
+   "ci_high": -0.17,
+   "t_low": -0.586,
+   "t_high": -0.118,
+   "p": 0.0178,
+   "p_bonf": 0.1243,
+   "r": 0.75,
+   "n_eff": 7
+  },
+  {
+   "comparison": "revised RAG vs full text",
+   "category": "text",
+   "mean_a": 0.848,
+   "mean_b": 0.95,
+   "mean_diff": -0.102,
+   "ci_low": -0.212,
+   "ci_high": -0.005,
+   "t_low": -0.224,
+   "t_high": 0.021,
+   "p": 0.1763,
+   "p_bonf": 1.0,
+   "r": 0.428,
+   "n_eff": 7
+  },
+  {
+   "comparison": "revised RAG vs full text",
+   "category": "visual",
+   "mean_a": 0.445,
+   "mean_b": 0.497,
+   "mean_diff": -0.052,
+   "ci_low": -0.195,
+   "ci_high": 0.113,
+   "t_low": -0.24,
+   "t_high": 0.137,
+   "p": 0.4443,
+   "p_bonf": 1.0,
+   "r": 0.242,
+   "n_eff": 10
+  }
+ ]
+}
