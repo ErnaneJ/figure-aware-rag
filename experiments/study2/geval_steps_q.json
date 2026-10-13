@@ -1,0 +1,7 @@
+[
+ "Read the Input (the question) to know what the answer must address.",
+ "Compare the Actual Output to the Expected Output (Ground Truth) for factual accuracy on the points the question asks about.",
+ "Check whether the Actual Output covers every aspect of the Expected Output that the question requires.",
+ "Penalize information that is incorrect or that contradicts the Expected Output; do not reward extra material that the question does not ask for.",
+ "Give 10 for a fully correct and complete answer, 0 for an answer that is wrong or does not address the question, and intermediate values in proportion to how much of the Expected Output is correctly covered."
+]

@@ -1,6 +1,10 @@
 """Score generations with the same judge configuration as experiments/study1/evaluate.py
 (DeepEval G-Eval Correctness, GPT-4.1 through OpenRouter). The evaluation steps are generated
-once, saved, and reused so every condition is scored against the same rubric."""
+once, saved, and reused so every condition is scored against the same rubric.
+
+--with-question rescoring: the judge also receives the question, and the steps in
+geval_steps_q.json (written by hand) use only the 0 to 10 scale of the DeepEval template, so the
+judge sees one scale instead of two. Scores go to scores_q.csv / scores_layout_q.csv."""
 import argparse, json, os, threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -19,6 +23,8 @@ CRITERIA = ("Determine if the answer is factually correct and complete in relati
             "Rate it from 1 to 5.")
 STEPS_FILE = HERE / "geval_steps.json"
 PARAMS = [LLMTestCaseParams.ACTUAL_OUTPUT, LLMTestCaseParams.EXPECTED_OUTPUT]
+STEPS_Q_FILE = HERE / "geval_steps_q.json"
+PARAMS_Q = [LLMTestCaseParams.INPUT, LLMTestCaseParams.ACTUAL_OUTPUT, LLMTestCaseParams.EXPECTED_OUTPUT]
 
 def steps():
     if STEPS_FILE.exists():
@@ -29,8 +35,8 @@ def steps():
     STEPS_FILE.write_text(json.dumps(m.evaluation_steps, indent=1))
     return m.evaluation_steps
 
-def score(row, gold, ev_steps):
-    m = GEval(name="Correctness", model=JUDGE, evaluation_steps=ev_steps, evaluation_params=PARAMS, async_mode=False)
+def score(row, gold, ev_steps, params=PARAMS):
+    m = GEval(name="Correctness", model=JUDGE, evaluation_steps=ev_steps, evaluation_params=params, async_mode=False)
     tc = LLMTestCase(input=str(gold.question), actual_output=str(row.actual_output), expected_output=str(gold.ground_truth))
     try:
         m.measure(tc)
@@ -43,6 +49,8 @@ def main():
     ap.add_argument("--inp", default=str(HERE / "generations.csv"))
     ap.add_argument("--out", default=str(HERE / "scores.csv"))
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--with-question", action="store_true")
+    ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
     gold = pd.read_csv(HERE.parent / "questions.csv").set_index("id")
     df = pd.read_csv(a.inp)
@@ -56,17 +64,20 @@ def main():
         df = df[df._merge == "left_only"].drop(columns="_merge")
     if a.limit:
         df = df.head(a.limit)
-    ev_steps = steps()
+    if a.with_question:
+        ev_steps, params = json.loads(STEPS_Q_FILE.read_text()), PARAMS_Q
+    else:
+        ev_steps, params = steps(), PARAMS
     print("to score", len(df), flush=True)
     cols = key + ["category", "score_correctness", "reason_correctness"]
     lock = threading.Lock()
     def work(r):
-        s, why = score(r, gold.loc[r.id], ev_steps)
+        s, why = score(r, gold.loc[r.id], ev_steps, params)
         with lock:
             rec = pd.DataFrame([[r.condition, r.model, r.id, r.iteration, r.category, s, why]], columns=cols)
             rec.to_csv(out, mode="a", header=not out.exists(), index=False)
             print(r.condition, r.model, r.id, r.iteration, s, flush=True)
-    with ThreadPoolExecutor(4) as ex:
+    with ThreadPoolExecutor(a.workers) as ex:
         list(ex.map(work, [r for _, r in df.iterrows()]))
 
 if __name__ == "__main__":
