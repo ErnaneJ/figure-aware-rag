@@ -124,8 +124,9 @@ Five models, 20 questions, three runs each. The original Papyrus AI configuratio
 | All models | 0.69 | 0.45 | 0.32 | 0.36 |
 
 - Prompt tokens per query fell from 31,250 to 2,053 (93.4% less), and total cost fell from US$16.58 to US$1.52 (90.8% less).
-- Papyrus AI answers had a mean faithfulness of 0.943, and 84.3% of them scored 1.0.
-- 95.0% of Papyrus AI answers cited a source, against 0.7% of full-text answers.
+- Papyrus AI answers had a judge-rated mean faithfulness of 0.943, and 84.3% of them scored 1.0. No human checked these scores, so read them as an upper bound.
+- 95.0% of Papyrus AI answers ended with a source line, against 0.7% of full-text answers, whose prompt did not ask for one.
+- Billed costs include provider prompt caching, which favored the full-text baseline (98% of GPT-4o and 97% of Gemini baseline calls were partly cached). At list price the totals are about $18.90 against $1.58, a 91.6% reduction.
 - Mean generation time went from 4.57 s to 3.18 s.
 - No difference passed Bonferroni correction. The largest effects were the text loss for Gemini 2.5 Flash Lite (r=0.74) and the visual gain for Llama 3.1 70B (+0.26, r=0.65).
 
@@ -154,7 +155,7 @@ Pre-declared comparisons (question means, N=10, Bonferroni k=7):
 | Revised configuration vs. full text | text | −0.06 [−0.20, 0.09] | 0.407 | 1.00 | 0.26 |
 | Revised configuration vs. full text | visual | +0.01 [−0.13, 0.16] | 0.799 | 1.00 | 0.08 |
 
-Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system matched full-text prompting on visual questions at about 5% of the cost. The visual gain came from both parts of the image record. OCR text and captions helped on the five questions about Figure 1, a timeline printed as text, and the VLM description helped on the five about Figures 10 to 12. Neither part is significant on its own.
+Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system showed no measurable difference from full-text prompting on visual questions (+0.01, 95% CI -0.13 to +0.16, with opposite signs across models) at about 5% of the cost. Image records raised visual correctness over text-only retrieval, but the split between OCR text with captions and the VLM description is bounded by truncation: `rag.py` keeps the first 600 characters of OCR text and 400 of the description, and the answers to questions 18 to 20 lie beyond both cuts in the Figure 1 record. No difference survives Bonferroni correction.
 
 The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. A rerun of the three caption-dependent conditions with these captions (`experiments/study2/analyze_layout.py`, 360 answers, same models, prompt and judge) changed visual correctness by -0.03 to +0.01, within the run-to-run variation measured on questions whose prompt did not change. For most questions about Figures 10 to 12 the retriever does not return that figure's image record with either caption version, so retrieval, not caption accuracy, limits those questions. In the rerun, OCR text and captions added 0.05 and the VLM description 0.09 on visual questions. The tables above report the original run.
 
