@@ -17,8 +17,8 @@ def embedder():
         _model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device="cpu")
     return _model
 
-def records():
-    return json.loads((HERE / "records.json").read_text())
+def records(name="records.json"):
+    return json.loads((HERE / name).read_text())
 
 def text_chunks(pages, mode, size=800, overlap=200):
     """mode='page': first 1800 chars of each page (original). mode='subpage': full page text split

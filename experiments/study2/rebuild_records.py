@@ -1,6 +1,6 @@
 """Rebuild the ingestion records (page text, OCR, caption, VLM description) of the
 benchmark document from the PDF and the original ingestion log, without new API calls."""
-import hashlib, json, re
+import argparse, hashlib, json, re, sys
 from pathlib import Path
 import fitz
 
@@ -40,6 +40,14 @@ def parse_log():
     return images
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--captions", choices=["log", "layout"], default="log",
+                    help="log: captions as extracted at ingestion (records.json). layout: captions matched by "
+                         "page layout with indexing/captions.py (records_layout.json); OCR and VLM fields unchanged.")
+    a = ap.parse_args()
+    if a.captions == "layout":
+        sys.path.insert(0, str(HERE.parent.parent))
+        from indexing.captions import caption_blocks, image_rect, layout_caption
     log_images = parse_log()
     doc = fitz.open(PDF)
     pages, images, seen = [], [], {}
@@ -56,11 +64,14 @@ def main():
             else:
                 rec = dict(log_images[name])
                 rec["is_duplicate"] = False
+                if a.captions == "layout":
+                    rect = image_rect(page, img[0])
+                    rec["caption"] = layout_caption(page, rect, caption_blocks(page)) if rect is not None else None
                 seen[h] = rec
             images.append(rec)
             idx += 1
     out = {"sha256": hashlib.sha256(PDF.read_bytes()).hexdigest(), "pages": pages, "images": images}
-    (HERE / "records.json").write_text(json.dumps(out, ensure_ascii=False, indent=1))
+    (HERE / ("records.json" if a.captions == "log" else "records_layout.json")).write_text(json.dumps(out, ensure_ascii=False, indent=1))
     uniq = [i for i in images if not i["is_duplicate"]]
     print("sha256", out["sha256"][:16], "pages", len(pages), "images", len(images), "unique", len(uniq),
           "log entries", len(log_images))

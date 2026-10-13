@@ -156,7 +156,7 @@ Pre-declared comparisons (question means, N=10, Bonferroni k=7):
 
 Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system matched full-text prompting on visual questions at about 5% of the cost. Most of the visual gain came from the OCR text and the captions.
 
-The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. The results above describe the evaluated version and were not rerun.
+The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. A rerun of the three caption-dependent conditions with these captions (`experiments/study2/analyze_layout.py`, 360 answers, same models, prompt and judge) changed visual correctness by -0.02 to +0.01, within the run-to-run variation measured on questions whose prompt did not change. For most questions about Figures 10 to 12 the retriever does not return that figure's image record with either caption version, so retrieval, not caption accuracy, limits those questions. The tables above report the original run.
 
 ## Figures
 

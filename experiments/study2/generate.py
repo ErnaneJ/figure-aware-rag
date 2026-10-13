@@ -58,7 +58,10 @@ def main():
     ap.add_argument("--reps", type=int, default=2)
     ap.add_argument("--questions", nargs="*", type=int)
     ap.add_argument("--out", default=str(HERE / "generations.csv"))
+    ap.add_argument("--records", default="records.json", help="records.json, or records_layout.json for the layout-caption rerun")
     a = ap.parse_args()
+    global R
+    R = records(a.records)
     q = pd.read_csv(HERE.parent / "questions.csv")
     if a.questions:
         q = q[q.id.isin(a.questions)]
