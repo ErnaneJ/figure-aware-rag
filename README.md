@@ -66,7 +66,7 @@ The database and Redis values in `.env.example` already match `docker-compose.ym
 
 ## Benchmark
 
-The test document is S. Chopra and K. J. Marfurt, "Seismic attributes: A historical perspective," *Geophysics*, 70(5), 2005, [doi:10.1190/1.2098670](https://doi.org/10.1190/1.2098670). It has 26 pages and 33 embedded images. The benchmark has 20 questions: 10 answered in the prose and 10 answered only in figures. The PDF is copyrighted and is not in this repository. To rerun the experiments, get it through the DOI and save it as `experiments/gsgpy_70_5_3SO.pdf`.
+The test document is S. Chopra and K. J. Marfurt, "Seismic attributes: A historical perspective," *Geophysics*, 70(5), 2005, [doi:10.1190/1.2098670](https://doi.org/10.1190/1.2098670). It has 26 pages and 33 embedded images. The benchmark has 20 questions: 10 answered in the prose and 10 about figures. The answers to three of the figure questions (17, 18 and 20) are also stated in the prose; `experiments/study2/visual_split.py` reports them apart from the seven that need the figure. The PDF is copyrighted and is not in this repository. To rerun the experiments, get it through the DOI and save it as `experiments/gsgpy_70_5_3SO.pdf`.
 
 ## How the metrics are computed
 
@@ -143,19 +143,19 @@ Six conditions, three models (DeepSeek-V3, Gemini 2.5 Flash Lite, Llama 3.1 70B)
 | Sub-page chunks, OCR and caption | 0.75 | 0.36 | 0.55 | 1,174 | 0.00036 |
 | Sub-page chunks, full image records | 0.77 | 0.41 | 0.59 | 1,222 | 0.00040 |
 
-Pre-declared comparisons (question means, N=10, Bonferroni k=7):
+Planned comparisons (question means, N=10 before zero differences are dropped, Bonferroni k=7; `tables/paired_tests.csv` gives the effective N of each test):
 
 | Comparison | Category | Difference [95% CI] | p | p corrected | r |
 |---|---|:---:|:---:|:---:|:---:|
 | Image records, page chunks | visual | +0.17 [0.04, 0.31] | 0.086 | 0.60 | 0.54 |
 | Image records, sub-page chunks | visual | +0.13 [0.00, 0.27] | 0.208 | 1.00 | 0.40 |
-| VLM description over OCR and caption | visual | +0.05 [−0.04, 0.20] | 0.721 | 1.00 | 0.11 |
+| VLM description over OCR and caption | visual | +0.05 [−0.04, 0.20] | 0.813 | 1.00 | 0.08 |
 | Sub-page vs. page chunks | text | +0.26 [0.10, 0.43] | 0.017 | 0.12 | 0.75 |
-| Study 1 configuration vs. full text | text | −0.31 [−0.50, −0.13] | 0.037 | 0.26 | 0.66 |
+| Study 1 configuration vs. full text | text | −0.31 [−0.50, −0.13] | 0.041 | 0.29 | 0.65 |
 | Revised configuration vs. full text | text | −0.06 [−0.20, 0.09] | 0.407 | 1.00 | 0.26 |
 | Revised configuration vs. full text | visual | +0.01 [−0.13, 0.16] | 0.799 | 1.00 | 0.08 |
 
-Page chunks indexed only 37% of the document text, which explains most of the Study 1 text loss. With sub-page chunks and full image records, the system showed no measurable difference from full-text prompting on visual questions (+0.01, 95% CI -0.13 to +0.16, with opposite signs across models) at about 5% of the cost. Image records raised visual correctness over text-only retrieval, but the split between OCR text with captions and the VLM description is bounded by truncation, and the +0.05 for the description comes almost entirely from question 13, where the description made the target image record retrievable: `rag.py` keeps the first 600 characters of OCR text and 400 of the description, and the answers to questions 18 to 20 lie beyond both cuts in the Figure 1 record. No difference survives Bonferroni correction.
+Page chunks indexed only 37% of the document text. Sub-page chunks, which index all of it in smaller pieces, removed most of the Study 1 text loss; the change alters coverage and chunk size together, so it does not isolate either. With sub-page chunks and full image records, the comparison with full-text prompting on visual questions was inconclusive (+0.01, 95% CI -0.13 to +0.16, with opposite signs across models) at about 5% of the cost. Image records raised visual correctness over text-only retrieval, but the split between OCR text with captions and the VLM description is bounded by truncation, and the +0.05 for the description comes almost entirely from question 13, where the description made the target image record retrievable: `rag.py` keeps the first 600 characters of OCR text and 400 of the description, and the answers to questions 18 to 20 lie beyond both cuts in the Figure 1 record. No difference survives Bonferroni correction. On the seven visual questions that need the figure, image records added 0.18 with page chunks and 0.10 with sub-page chunks, and the description added 0.10 over OCR text and captions (`tables/visual_split.csv`).
 
 The captions in these results come from an earlier extractor that asked an LLM for the caption of image N, where N counted every image in the document. The journal logo is image 1, so the count ran one ahead of the figure numbers, and only 6 of the 32 figures got their own caption (`experiments/study1/caption_check.py`). The current extractor matches captions by page layout and assigns all 32 correctly. A rerun of the three caption-dependent conditions with these captions (`experiments/study2/analyze_layout.py`, 360 answers, same models, prompt and judge) changed visual correctness by -0.03 to +0.01, within the run-to-run variation measured on questions whose prompt did not change. For most questions about Figures 10 to 12 the retriever does not return that figure's image record with either caption version, so retrieval, not caption accuracy, limits those questions. In the rerun, OCR text and captions added 0.05 and the VLM description 0.09 on visual questions. The tables above report the original run.
 
